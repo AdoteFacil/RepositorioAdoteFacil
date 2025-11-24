@@ -109,7 +109,7 @@ session_start();
                 <div class="opcao">
                     <h2>&#128227; | Compartilhe nas Redes</h2>
                     <p>Divulgue um pet e aumente as chances de adoção.</p>
-                    <button class="botao-link">Divulgue</button>
+                    <a href="https://www.instagram.com/" class="botao-link">Divulgue</a>
                 </div>
 
                 <div class="opcao">
