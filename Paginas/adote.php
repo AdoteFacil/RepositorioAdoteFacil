@@ -46,54 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/adote.css" />
   <script src="../JS/adote.js" defer></script>
-  <style>
-    .search-box {
-    margin: 20px auto 35px;
-    padding: 12px 18px;
-    width: 100%;
-    max-width: 480px;
-
-    background: #ffffff;
-    border-radius: 12px;
-
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.search-box input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-}
-
-.search-box input:focus {
-    border-color: #5669FF;
-    box-shadow: 0 0 0 2px rgba(86,105,255,0.2);
-}
-
-.search-box button {
-    background: #5669FF;
-    color: white;
-    padding: 10px 18px;
-    font-size: 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.search-box button:hover {
-    background: #3543d1;
-}
-  </style>
-
 </head>
 <body>
     <header>
@@ -171,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <?php endif; ?>
         </div>
             <div class="cadastro-pet-container">
-                <a href="cadastropet.html" class="cadastro-pet-btn">Quero cadastrar meu pet</a>
+                <a href="cadastropet.php" class="cadastro-pet-btn">Quero cadastrar meu pet</a>
             </div>
     </main>
 
