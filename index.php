@@ -115,7 +115,7 @@ session_start();
                 <div class="opcao">
                     <h2>&#128722; | Parcerias Locais</h2>
                     <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                   <a href="https://wa.me/5599991148710" class="botao-link" target="_blank">Fazer parceria</a>
+                   <a href="https://wa.me/5599991148710?text=Ol%C3%A1%20gostaria%20de%20saber%20mais%20sobre%20essa%20parceria" class="botao-link" target="_blank">Fazer parceria</a>
                 </div>
             </div>
 		</section>
