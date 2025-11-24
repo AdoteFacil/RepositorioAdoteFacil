@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 require '../conexao.php';
 
@@ -42,12 +46,22 @@ $stmtUp->bind_param("ssi", $token, $expira, $id);
 $stmtUp->execute();
 
 // link de redefinição
-$link = "http://localhost/RepositorioAdoteFacil/Paginas/redefinirSenha.php?token=" . $token;
+// monta url base automaticamente
+$protocolo = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+
+// pega apenas o diretório raiz do seu projeto
+$root = dirname($_SERVER['REQUEST_URI']);
+$root = str_replace('/PHP/Usuario', '', $root); // sobe até a raiz
+
+$base = "$protocolo://$host$root";
+
+// link final
+$link = $base . "/Paginas/redefinirSenha.php?token=" . $token;
 
 // ENVIO DE EMAIL
 $mail = new PHPMailer(true);
 
-$mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
@@ -55,7 +69,7 @@ try {
     $mail->SMTPAuth = true;
 
     $mail->Username = 'isaacenzo126@gmail.com';
-    $mail->Password = 'forqcavdtuvuhyks'; // senha de app SEM espaços
+    $mail->Password = 'kiadehssirthwpgh'; // senha de app SEM espaços
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;

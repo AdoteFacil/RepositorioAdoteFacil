@@ -1,7 +1,8 @@
 <?php
 include('../PHP/conexao.php');
+session_start();
 
-$sql = "SELECT * FROM pet ORDER BY id_pet DESC";
+$sql = "SELECT * FROM pet WHERE statusPet = 'disponivel' ORDER BY id_pet DESC";
 $result = mysqli_query($conexao, $sql);
 
 if ($result) {
@@ -20,10 +21,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     $termo = trim($_GET['busca']);
 
     $sql = "SELECT * FROM pet 
-            WHERE porte LIKE ? 
-            OR raca LIKE ?
-            OR nome LIKE ?
-            OR especie LIKE ?";
+        WHERE statusPet = 'disponivel' 
+        AND (porte LIKE ? 
+        OR raca LIKE ?
+        OR nome LIKE ?
+        OR especie LIKE ?)";
 
     $stmt = mysqli_prepare($conexao, $sql);
     $like = "%" . $termo . "%";
@@ -92,10 +94,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
 
                 <div class="pet-info">
-                    <h2><?= htmlspecialchars($animal['nome']) ?></h2>
-                    <p><strong>Idade:</strong> <?= htmlspecialchars($animal['idade']) ?> anos</p>
-                    <p><strong>Gênero:</strong> <?= htmlspecialchars($animal['genero']) ?></p>
-                    <p><strong>Local:</strong> <?= htmlspecialchars($animal['localidade']) ?></p>
+                    <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                    <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                    <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                    <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
                 </div>
 
                 <div class="sobre">

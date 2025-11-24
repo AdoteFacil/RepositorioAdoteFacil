@@ -29,6 +29,7 @@ $user = $res->fetch_assoc();
 if (password_verify($senha, $user['senha'])) {
 
     // SESSÕES COM OS NOMES CORRETOS
+    $_SESSION['id_cliente'] = $user['id_cliente'];
     $_SESSION['usuario_id']    = $user['id_cliente'];
     $_SESSION['usuario_nome']  = $user['nome'];
     $_SESSION['usuario_email'] = $user['email'];

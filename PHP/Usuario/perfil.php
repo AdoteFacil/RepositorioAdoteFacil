@@ -21,6 +21,14 @@ if ($result->num_rows === 0) {
 }
 
 $usuario = $result->fetch_assoc();
+
+// Busca os pets do usuário
+$sqlPets = "SELECT * FROM pet WHERE id_cliente = ?";
+$stmtPets = $conexao->prepare($sqlPets);
+$stmtPets->bind_param("i", $id_usuario);
+$stmtPets->execute();
+$resultPets = $stmtPets->get_result();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -122,6 +130,43 @@ $usuario = $result->fetch_assoc();
         </div>
     </div>
 
+    <h2>Meus Pets Cadastrados</h2>
+
+    <div class="pets-container">
+    <?php if ($resultPets->num_rows > 0): ?>
+        <?php while ($pet = $resultPets->fetch_assoc()): ?>
+            <div class="pet-card">
+                <img src="../../<?= htmlspecialchars($pet['foto']) ?>" class="pet-img">
+
+                <h3><?= htmlspecialchars($pet['nome']) ?></h3>
+                <p><strong>Raça:</strong> <?= htmlspecialchars($pet['raca']) ?></p>
+                <p><strong>Idade:</strong> <?= htmlspecialchars($pet['idade']) ?></p>
+                <p><strong>Status:</strong> 
+                    <?= $pet['statusPet'] === 'adotado' ? '🐾 Adotado' : '🟢 Disponível' ?>
+                </p>
+
+                <!-- Form para alterar o status -->
+                <form action="../PETs/alterarStatus.php" method="POST">
+                    <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
+
+                    <select name="status">
+                        <option value="disponivel" <?= $pet['statusPet']=='disponivel'?'selected':'' ?>>
+                            Disponível
+                        </option>
+                        <option value="adotado" <?= $pet['statusPet']=='adotado'?'selected':'' ?>>
+                            Adotado
+                        </option>
+                    </select>
+
+                    <button type="submit">Atualizar</button>
+                </form>
+
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>Nenhum pet cadastrado ainda.</p>
+    <?php endif; ?>
+    </div>
 
     <footer>
         <div class="footer-coluna" id="cl1">

@@ -1,5 +1,13 @@
 <?php
-require_once '../../conexao.php';
+session_start();
+require '../conexao.php';
+
+// usa a sessão correta
+if (!isset($_SESSION['usuario_id'])) {
+    die("Erro: cliente não está logado.");
+}
+
+$id_cliente = $_SESSION['usuario_id'];
 
 // Recebe os dados do formulário
 $nome = $_POST['nome'];
@@ -42,11 +50,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mensagem = "Upload realizado com sucesso!";
         $caminhoImagem = $caminhoFinal;
 //---------------------FIM PROCESSO IMAGEM---------------------------------------------------------------------------------------
-        $sql = "INSERT INTO pet (nome, genero, peso, idade, especie, porte, raca, situacao, sobrePet, foto) VALUES ('$nome', '$genero', '$peso', '$idade', '$especie', '$porte', '$raca', '$situacao','$sobre', '$caminhoImagem')";
-    if (mysqli_query($conexao, $sql)) {
-       echo "Cadastro realizado com sucesso!";
-       header("Location: ../../index.php");
-    } else {
-        echo "Erro ao cadastrar: " . mysqli_error($conexao);
-    }
+$sql = "INSERT INTO pet 
+(id_cliente, nome, genero, peso, idade, especie, porte, raca, situacao, sobrePet, foto, statusPet)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'disponivel')";
+
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param(
+    "isssissssss",
+    $id_cliente,
+    $nome,
+    $genero,
+    $peso,
+    $idade,
+    $especie,
+    $porte,
+    $raca,
+    $situacao,
+    $sobre,
+    $caminhoImagem
+);
+if ($stmt->execute()) {
+    $id_pet = $stmt->insert_id;
+
+    $sqlHistorico = "INSERT INTO historico (id_pet, id_cliente, status_pet)
+                     VALUES (?, ?, 'disponivel')";
+    $stmtH = $conexao->prepare($sqlHistorico);
+    $stmtH->bind_param("ii", $id_pet, $id_cliente);
+    $stmtH->execute();
+
+    header("Location: ../../index.php");
+    exit;
+}
 }};
+?>

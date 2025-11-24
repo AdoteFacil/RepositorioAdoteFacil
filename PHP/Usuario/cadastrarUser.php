@@ -62,6 +62,7 @@ if ($stmt->execute()) {
     $idInserido = $conexao->insert_id;
 
     // criar sessão COM AS MESMAS CHAVES QUE A SUA NAV CHECA
+    $_SESSION['id_cliente'] = $idInserido;
     $_SESSION['usuario_id']   = $idInserido;
     $_SESSION['usuario_nome'] = $nome;
     $_SESSION['usuario_email']= $email;
