@@ -1,11 +1,95 @@
 <?php
 session_start();
+
+include('PHP/conexao.php');
+
+$sql = "SELECT * FROM pet ORDER BY id_pet DESC";
+$result = mysqli_query($conexao, $sql);
+
+if ($result) {
+    $pet = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result); // Libera a memória do resultado
+} else {
+    echo "Erro na consulta: " . mysqli_error($conexao);
+    $pet = array(); // Array vazio em caso de erro
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style> 
+  /* Fundo escuro */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Caixa do popup */
+.popup {
+    background: #fff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    text-align: center;
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+}
+
+.popup p {
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.botoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancelar, .btn-confirmar {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background: #ccc;
+}
+
+.btn-cancelar:hover {
+    background: #b3b3b3;
+}
+
+.btn-confirmar {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background: #449d48;
+}
+</style>
   <title>Adote Fácil</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/padrao.css">
@@ -28,9 +112,19 @@ session_start();
             </label>
         <div class="dropdown-content">
             <a href="index.php">Início</a>
-            <a href="Paginas/sobre.html">Sobre Nós</a>
+            <a href="Paginas/sobre.php">Sobre Nós</a>
             <a href="Paginas/adote.php">Adote um pet</a>
-            <a href="Paginas/comoajudar.html">Como ajudar</a>
+            <a href="Paginas/comoajudar.php">Como ajudar</a>
+            <?php 
+            if (
+                isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+            ): ?>
+                <a href="PHP/ADM/Usuario/consulta.php">adm</a>
+            <?php endif; ?>
+
+
 
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -122,88 +216,36 @@ session_start();
 
 		<section class="cards-vitrini">
             <h1>Conheça alguns dos animais disponiveis</h1>
-			<div class="vitrine">
-				<div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/capreto.jpg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
+			<?php if (count($pet) > 0): ?>
+    <div class="vitrine">
+        <?php foreach ($pet as $animal): ?>
+            <div class="pet-card">
+                <div class="pet-imagem">
+                    <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
                 </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/golden.jpg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
+                <div class="pet-info">
+                    <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                    <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                    <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                    <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
                 </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/gato-siames.jpg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
+                <div class="sobre">
+                    <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
+                    <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
+                    <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
+                    <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
+                    <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
+                    <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+
+
                 </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/pet 4.jpeg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
-                </div>
-			</div>
+                <button class="saiba">Saber mais</button>
+            </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+            <p>Nenhum usuario cadastrado.</p>
+        <?php endif; ?>
+    </div>
             <nav class="vejamais">
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
             </nav>
@@ -244,6 +286,33 @@ session_start();
             <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
+        <div id="popup-confirmacao" class="popup-overlay">
+    <div class="popup">
+        <h2>Confirmar Adoção</h2>
+        <p>Você realmente deseja adotar este pet?</p>
+
+        <div class="botoes">
+            <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
+            <button class="btn-confirmar" id="confirmarBtn">Confirmar</button>
+        </div>
+    </div>
+</div>
 
 </body>
+<script>
+let linkDestino = "";
+
+function abrirPopup(link) {
+    linkDestino = link;
+    document.getElementById("popup-confirmacao").style.display = "flex";
+}
+
+function fecharPopup() {
+    document.getElementById("popup-confirmacao").style.display = "none";
+}
+
+document.getElementById("confirmarBtn").addEventListener("click", function () {
+    window.location.href = linkDestino;
+});
+</script>
 </html>
