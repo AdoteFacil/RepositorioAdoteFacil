@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,12 +11,13 @@
     <link rel="stylesheet" href="../CSS/padrao.css" />
     <link rel="stylesheet" href="../CSS/comoajudar.css" />
     <script src="../JS/comoajudar.js" defer></script>
+  <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil" /></a>
+                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -22,13 +26,29 @@
                     <span></span>
                     <span></span>
                 </label>
-
                 <div class="dropdown-content">
                     <a href="../index.php">Início</a>
-                    <a href="sobre.html">Sobre Nós</a>
+                    <a href="sobre.php">Sobre Nós</a>
                     <a href="adote.php">Adote um pet</a>
-                    <a href="comoajudar.html" id="ajudar">Como ajudar</a>
-                    <a href="entrar.html">Entrar</a>
+                    <a href="comoajudar.php">Como ajudar</a>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                    <?php else: ?>
+                    <div class="usuario-box" id="userMenu">
+                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                            class="foto-perfil" alt="Foto">
+
+                        <div class="dropdown-user">
+                            <span class="nome-dropdown">
+                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                            </span>
+
+                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -67,34 +87,6 @@
             </section>
         </section>
 
-        <section id="depoimentos" style="max-width: 900px; margin: 50px auto; padding: 0 10px;">
-            <h2>O que dizem sobre a Peludinhos do Bem</h2>
-
-            <div class="depoimento-bloco" style="margin-bottom: 40px; text-align: center;">
-                <img src="../IMG/comoajudar/depoimento1.jpg" alt="Depoimento Maria" class="depoimento">
-                <p><em>"Adotar com a Peludinhos do Bem mudou minha vida e a do Thor. Eles são profissionais, carinhosos e realmente se importam. Nunca imaginei que um simples gesto pudesse transformar tanto. Sou eternamente grata."</em></p>
-                <strong>- Maria S.</strong>
-            </div>
-
-            <div class="depoimento-bloco" style="margin-bottom: 40px; text-align: center;">
-                <img src="../IMG/comoajudar/depoimento2.jpg" alt="Depoimento João" class="depoimento">
-                <p><em>"Ter adotado aqui foi uma das melhores decisões que já tomei. Ver a recuperação e o carinho da minha humana me dá uma sensação de propósito que não tem preço."</em></p>
-                <strong>- João, o cão.</strong>
-            </div>
-
-            <div class="depoimento-bloco" style="margin-bottom: 40px; text-align: center;">
-                <img src="../IMG/comoajudar/depoimento3.jpg" alt="Depoimento Ana" class="depoimento">
-                <p><em>"Doar um pouco do meu tempo e compartilhar as campanhas nas redes sociais me faz sentir parte de algo maior. É emocionante ver quantas vidas são tocadas por essa ONG."</em></p>
-                <strong>- Marcelo M.</strong>
-            </div>
-
-            <div class="depoimento-bloco" style="margin-bottom: 40px; text-align: center;">
-                <img src="../IMG/comoajudar/depoimento4.jpg" alt="Depoimento Carlos" class="depoimento">
-                <p><em>"Conhecer o trabalho da Peludinhos do Bem me inspirou a começar a ajudar mais ativamente. Cada gesto, por menor que seja, faz uma diferença enorme para esses animais."</em></p>
-                <strong>- Carlos R.</strong>
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -115,11 +107,11 @@
 
         <div class="icons-row">
             <a href="https://www.instagram.com/">
-            <img src="IMG/index/insta.png" alt="Instagram">
+            <img src="../IMG/index/insta.png" alt="Instagram">
             </a>
 
             <a href="https://web.whatsapp.com/">
-            <img src="IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+            <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
             </a>
         </div>
     </div>

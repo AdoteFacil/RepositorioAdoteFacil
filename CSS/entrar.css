@@ -2,10 +2,17 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #fefefe;
   color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-#entrar{
+
+#entrar {
   background-color: #7a8ccb;
 }
+
 .login-container {
   max-width: 420px;
   margin: 40px auto;
@@ -14,11 +21,12 @@ body {
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   text-align: left;
+  flex: 1;
 }
 
 .login-container h1 {
   font-size: 2.4rem;
-   color: #4169e1;
+  color: #4169e1;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -26,7 +34,7 @@ body {
 .linha-decorativa {
   width: 90px;
   height: 4px;
-  background-color:  #4169e1;
+  background-color: #4169e1;
   margin: 0 auto 40px auto;
   border-radius: 2px;
 }
@@ -95,10 +103,222 @@ body {
   text-decoration: underline;
 }
 
-
 @media (max-width: 480px) {
   .login-container {
     margin: 50px 20px;
     padding: 30px 20px;
+  }
+}
+footer {
+  background-color: #f5f5f5;
+  border-top: 3px solid #ddd;
+  padding: 30px 0 15px;
+  margin-top: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  color: #4b0082;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-contato {
+  flex: 2;
+  min-width: 300px;
+}
+
+.footer-contato p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.footer-contato strong {
+  color: #4b0082;
+}
+
+.footer-historia {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-historia a {
+  color: #4b0082;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-block;
+  margin-top: 10px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.footer-historia a:hover {
+  border-bottom: 1px solid #4b0082;
+}
+
+.footer-contatos {
+  flex: 1;
+  min-width: 200px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #4b0082;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #6a0dad;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  width: 100%;
+  font-size: 0.85rem;
+  color: #666;
+}
+/* TABLET (768px a 1024px) */
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 0 30px;
+    gap: 25px;
+  }
+  
+  .footer-section {
+    min-width: 200px;
+  }
+  
+  .footer-contato {
+    min-width: 250px;
+  }
+}
+
+/* TABLET PEQUENO (601px a 767px) */
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 25px;
+    gap: 20px;
+  }
+  
+  .footer-section {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 25px;
+  }
+  
+  .footer-contato {
+    min-width: auto;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* MOBILE (Menor que 600px) */
+@media (max-width: 600px) {
+  footer {
+    padding: 25px 0 15px;
+  }
+  
+  .footer-container {
+    padding: 0 20px;
+    gap: 15px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  
+  .footer-contato p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-historia a {
+    font-size: 0.95rem;
+  }
+  
+  .social-icons {
+    gap: 12px;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom {
+    font-size: 0.8rem;
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+}
+
+/* MOBILE MUITO PEQUENO (Menor que 400px) */
+@media (max-width: 400px) {
+  .footer-container {
+    padding: 0 15px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .footer-contato p {
+    font-size: 0.85rem;
+  }
+  
+  .social-icons {
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
   }
 }

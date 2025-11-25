@@ -1,17 +1,43 @@
 <?php
+include('PHP/conexao.php');
 session_start();
 
-include('PHP/conexao.php');
-
-$sql = "SELECT * FROM pet ORDER BY id_pet DESC";
+// --- PETS RECENTES ---
+$sql = "SELECT * FROM pet WHERE statusPet = 'disponivel' ORDER BY id_pet DESC LIMIT 4";
 $result = mysqli_query($conexao, $sql);
 
 if ($result) {
     $pet = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result); // Libera a memória do resultado
+    mysqli_free_result($result);
 } else {
     echo "Erro na consulta: " . mysqli_error($conexao);
-    $pet = array(); // Array vazio em caso de erro
+    $pet = [];
+}
+
+// --- PESQUISA PET ---
+if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
+    $termo = trim($_GET['busca']);
+
+    $sql = "SELECT * FROM pet 
+        WHERE statusPet = 'disponivel'
+        AND (
+            porte LIKE ? 
+            OR raca LIKE ?
+            OR nome LIKE ?
+            OR especie LIKE ?
+        )
+        ORDER BY id_pet DESC";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    $like = "%" . $termo . "%";
+    mysqli_stmt_bind_param($stmt, "ssss", $like, $like, $like, $like);
+
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    $pet = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
 }
 ?>
 <!DOCTYPE html>
@@ -96,6 +122,7 @@ if ($result) {
   <link rel="stylesheet" href="CSS/index.css">
   <script src="JS/index.js" defer></script>
   <script src="JS/padrao.js" defer></script>
+  <script src="JS/depoimentos.js" defer></script>
 </head>
 <body>
     <header>
@@ -191,13 +218,13 @@ if ($result) {
                 <div class="opcao">
                     <h2>Seja Voluntário</h2>
                     <p>Ajude nas feirinhas, lares temporários ou redes sociais.</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Seja um Voluntário</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Seja um Voluntário</a>
                 </div>
 
                 <div class="opcao">
                     <h2>&#128176; | Apoie com Doações</h2>
                     <p>Sua atitude pode mudar uma vida</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Doe Agora</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Doe Agora</a>
                 </div>
 
                 <div class="opcao">
@@ -209,10 +236,17 @@ if ($result) {
                 <div class="opcao">
                     <h2>&#128722; | Parcerias Locais</h2>
                     <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                    <a class="botao-link" href="Paginas/comoajudar.html">Fazer parceria</a>
+                    <a class="botao-link" href="Paginas/comoajudar.php">Fazer parceria</a>
                 </div>
             </div>
 		</section>
+        <?php if (!empty($pet)): ?>
+            <div class="vitrine">
+            <?php foreach ($pet as $animal): ?>
+                <div class="pet-card">
+                    <div class="pet-imagem">
+                        <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="Imagem do pet" />
+                    </div>
 
 		<section class="cards-vitrini">
             <h1>Conheça alguns dos animais disponiveis</h1>
@@ -250,8 +284,108 @@ if ($result) {
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
             </nav>
 		</section>
-
 	</main>
+<div class="container-depoimentos">
+    <div class="header-depoimentos">
+        <h2>O que dizem sobre os peludinhos do bem?</h2>
+    </div>
+
+    <div class="carousel-wrapper">
+        <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
+        <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
+        
+        <div class="carousel-container" id="carouselContainer">
+            
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimento1.jpg" class="author-photo">
+                    <div class="author-details">
+                        <h3>Maria S.</h3>
+                        <p>Tutora do Thor</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Adotar com a Peludinhos do Bem mudou minha vida e a do Thor..."
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimentos.08.png" class="author-photo">
+                    <div class="author-details">
+                        <h3>João, o Gato</h3>
+                        <p>Tutor do Rex</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Ter adotado aqui foi uma das melhores decisões..."
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimento3.jpg" class="author-photo">
+                    <div class="author-details">
+                        <h3>Marcelo M.</h3>
+                        <p>Voluntário</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Doar um pouco do meu tempo me fez sentir parte de algo maior..."
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimentos.07.png" class="author-photo">
+                    <div class="author-details">
+                        <h3>Carlos R.</h3>
+                        <p>Apoiador</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Conhecer o trabalho da Peludinhos do Bem me inspirou muito..."
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimento2.jpg" class="author-photo">
+                    <div class="author-details">
+                        <h3>Ana Paula</h3>
+                        <p>Tutora da Luna</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "A Luna chegou na minha vida e trouxe tanta alegria!"
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="author-info">
+                    <img src="IMG/comoajudar/depoimento4.jpg" class="author-photo">
+                    <div class="author-details">
+                        <h3>Pedro Santos</h3>
+                        <p>Tutor do Bob</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Adotar foi fácil, teve acompanhamento e tudo..."
+                </div>
+                <div class="stars"><span class="star">★★★★★</span></div>
+            </div>
+
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+</div>
+
 
     <footer>
         <section class="footer">
@@ -279,6 +413,7 @@ if ($result) {
                     <img src="IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
                     </a>
                 </div>
+                
             </div>
         </section>
 

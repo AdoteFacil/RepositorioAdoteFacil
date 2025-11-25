@@ -48,76 +48,43 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/adote.css" />
   <script src="../JS/adote.js" defer></script>
-  <style>
-    .search-box {
-    margin: 20px auto 35px;
-    padding: 12px 18px;
-    width: 100%;
-    max-width: 480px;
-
-    background: #ffffff;
-    border-radius: 12px;
-
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.search-box input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-}
-
-.search-box input:focus {
-    border-color: #5669FF;
-    box-shadow: 0 0 0 2px rgba(86,105,255,0.2);
-}
-
-.search-box button {
-    background: #5669FF;
-    color: white;
-    padding: 10px 18px;
-    font-size: 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.search-box button:hover {
-    background: #3543d1;
-}
-  </style>
-
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="/index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil" /></a>
-                
+                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
                 <label class="burger" for="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </label>
-
                 <div class="dropdown-content">
-                <a href="../index.php">Início</a>
-                <a href="sobre.html">Sobre Nós</a>
-                <a href="adote.php" id="adote">Adote um pet</a>
-                <a href="comoajudar.html">Como ajudar</a>
-                <a href="entrar.html">Entrar</a>
+                    <a href="../index.php">Início</a>
+                    <a href="sobre.php">Sobre Nós</a>
+                    <a href="adote.php">Adote um pet</a>
+                    <a href="comoajudar.php">Como ajudar</a>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                    <?php else: ?>
+                    <div class="usuario-box" id="userMenu">
+                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                            class="foto-perfil" alt="Foto">
+
+                        <div class="dropdown-user">
+                            <span class="nome-dropdown">
+                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                            </span>
+
+                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -178,37 +145,37 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     </main>
 
     <footer>
-    <div class="footer-coluna" id="cl1">
-        <h2>Peludinhos do bem</h2>
-        <p>08989-8989898</p>
-        <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
-        <p>adotefacil@peludinhosdobem.org</p>
-    </div>
+        <section class="footer">
+            <div class="footer-coluna" id="cl1">
+                <h2>Peludinhos do bem</h2>
+                <p>08989-8989898</p>
+                <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
+                <p>adotefacil@peludinhosdobem.org</p>
+            </div>
 
-    <div class="footer-coluna" id="cl2">
-        <a href="sobre.html"></a>
-        <h2>Conheça a História da Peludinhos do Bem</h2>
-    </div>
+            <div class="footer-coluna" id="cl2">
+                <a href="Paginas/sobre.html"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+                
+            </div>
 
-    <div class="footer-coluna" id="cl3">
-        <h2>Contatos</h2>
+            <div class="footer-coluna" id="cl3">
+                <h2>Contatos</h2>
 
-        <div class="icons-row">
-            <a href="https://www.instagram.com/">
-            <img src="IMG/index/insta.png" alt="Instagram">
-            </a>
+                <div class="icons-row">
+                    <a href="https://www.instagram.com/">
+                    <img src="../IMG/index/insta.png" alt="Instagram">
+                    </a>
 
-            <a href="https://web.whatsapp.com/">
-            <img src="IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
-            </a>
+                    <a href="https://web.whatsapp.com/">
+                    <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-rodape">
+            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
-    </div>
-
-
-    <div class="footer-rodape">
-        <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
-    </div>
-    
     </footer>
 
 </body>
