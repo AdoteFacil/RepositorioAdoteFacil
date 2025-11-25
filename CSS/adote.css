@@ -199,6 +199,7 @@ main {
   z-index: 10;
   margin: -15px;
   overflow-y: hidden;
+
 }
 
 .qadot {
@@ -238,7 +239,7 @@ main {
   transition: background-color 0.3s, transform 0.2s;
   width: 100%;
   z-index: 11;
-   margin-top: auto;
+  margin-top: auto;
   
 }
 
