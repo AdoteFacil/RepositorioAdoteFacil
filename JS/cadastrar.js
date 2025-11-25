@@ -47,3 +47,61 @@ document.addEventListener("DOMContentLoaded", () => {
         carregarCidades(cidadeDoBanco);
     }
 });
+
+function mascaraCPF(input) {
+  let value = input.value.replace(/\D/g, "");
+
+  if (value.length > 11) value = value.slice(0, 11);
+
+  if (value.length >= 3 && value.length < 6)
+    input.value = value.replace(/(\d{3})(\d+)/, "$1.$2");
+  else if (value.length >= 6 && value.length < 9)
+    input.value = value.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+  else if (value.length >= 9)
+    input.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, "$1.$2.$3-$4");
+  else
+    input.value = value;
+}
+
+function mascaraTel(input) {
+  let value = input.value.replace(/\D/g, "");
+
+  if (value.length > 11) value = value.slice(0, 11);
+
+  if (value.length > 6)
+    input.value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+  else if (value.length > 2)
+    input.value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+  else
+    input.value = value;
+}
+
+
+function validar() {
+  const senhaInput = document.getElementById("senha");
+  const CsenhaInput = document.getElementById("Csenha");
+
+  const senha = senhaInput.value;
+  const Csenha = CsenhaInput.value;
+
+  const regex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+
+  // Reset (remove o vermelho se estiver ok)
+  senhaInput.style.border = "";
+  CsenhaInput.style.border = "";
+
+  if (!regex.test(senha)) {
+    senhaInput.style.border = "2px solid red";
+    alert("A senha deve ter no mínimo 8 caracteres e conter letras e números.");
+    return false;
+  }
+
+  if (senha !== Csenha) {
+    CsenhaInput.style.border = "2px solid red";
+    alert("As senhas não coincidem.");
+    return false;
+  }
+
+  return true;
+}
+

@@ -24,9 +24,9 @@
         </label>
         <div class="dropdown-content">
           <a href="../index.php">Início</a>
-          <a href="sobre.html">Sobre Nós</a>
+          <a href="sobre.php">Sobre Nós</a>
           <a href="adote.php">Adote um pet</a>
-          <a href="comoajudar.html">Como ajudar</a>
+          <a href="comoajudar.php">Como ajudar</a>
           <a href="entrar.html">Entrar</a>
         </div>
       </div>
@@ -34,7 +34,7 @@
   </header>
 
   <div class="box">
-    <form action="../PHP/Usuario/cadastrarUser.php" method="post" enctype="multipart/form-data">
+    <form action="../PHP/Usuario/cadastrarUser.php" method="post" enctype="multipart/form-data" onsubmit="return validar()">
       <fieldset>
         <legend><b>Cadastre-se</b></legend>
 
@@ -46,12 +46,13 @@
         <div class="inputBox">
           <label for="email" class="labelinput">E-mail</label>
           <input type="email" name="email" id="email" class="inputUser" required>
-          <p>Coloque um e-mail ativo. As mensagens da adoção serão enviadas para ele.</p>
+          <p>Coloque um e-mail ativo.</p>
         </div>
         
         <div class="inputBox">
           <label for="cpf" class="labelinput">CPF</label>
-          <input type="text" name="cpf" id="cpf" class="inputUser" required>
+          <input type="text" name="cpf" id="cpf" class="inputUser" maxlength="14" required 
+       oninput="mascaraCPF(this)">
         </div>
         
         <div class="inputBox">
@@ -61,12 +62,12 @@
 
         <div class="inputBox">
           <label for="telefone" class="labelinput">Telefone</label>
-          <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+          <input type="tel" name="telefone" id="telefone" class="inputUser" required oninput="mascaraTel(this)">
         </div>
 
         <div class="inputBox">
           <label for="whats" class="labelinput">WhatsApp</label>
-          <input type="tel" name="whats" id="whats" class="inputUser" required>
+          <input type="tel" name="whats" id="whats" class="inputUser" required oninput="mascaraTel(this)">
         </div>
 
         <div class="scroll">

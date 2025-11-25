@@ -135,12 +135,12 @@ $usuario = $res->fetch_assoc();
             </label>
             <div class="dropdown-content">
                 <a href="../../index.php">Início</a>
-                <a href="../../Paginas/sobre.html">Sobre Nós</a>
+                <a href="../../Paginas/sobre.php">Sobre Nós</a>
                 <a href="../../Paginas/adote.php">Adote um pet</a>
-                <a href="../../Paginas/comoajudar.html">Como ajudar</a>
+                <a href="../../Paginas/comoajudar.php">Como ajudar</a>
 
                 <?php if (!isset($_SESSION['usuario_id'])): ?>
-                    <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                    <a href="../../Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
                 <?php else: ?>
                     <div class="usuario-box" id="userMenu">
                         <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 

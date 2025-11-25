@@ -1,5 +1,43 @@
 <?php
+include('PHP/conexao.php');
 session_start();
+
+$sql = "SELECT * FROM pet WHERE statusPet = 'disponivel' ORDER BY id_pet DESC LIMIT 4";
+$result = mysqli_query($conexao, $sql);
+
+if ($result) {
+    $pet = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result); // Libera a memória do resultado
+} else {
+    echo "Erro na consulta: " . mysqli_error($conexao);
+    $pet = array(); // Array vazio em caso de erro
+}
+
+//PESQUISA PET
+$resultados = [];
+$termo = '';
+
+if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
+    $termo = trim($_GET['busca']);
+
+    $sql = "SELECT * FROM pet 
+        WHERE statusPet = 'disponivel' 
+        AND (porte LIKE ? 
+        OR raca LIKE ?
+        OR nome LIKE ?
+        OR especie LIKE ?)
+        ORDER BY id_pet DESC";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+    $like = "%" . $termo . "%";
+    mysqli_stmt_bind_param($stmt, "ssss", $like, $like, $like, $like);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+    $resultados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
+
+    $pet = $resultados;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,9 +66,9 @@ session_start();
             </label>
         <div class="dropdown-content">
             <a href="index.php">Início</a>
-            <a href="Paginas/sobre.html">Sobre Nós</a>
+            <a href="Paginas/sobre.php">Sobre Nós</a>
             <a href="Paginas/adote.php">Adote um pet</a>
-            <a href="Paginas/comoajudar.html">Como ajudar</a>
+            <a href="Paginas/comoajudar.php">Como ajudar</a>
 
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -119,90 +157,37 @@ session_start();
                 </div>
             </div>
 		</section>
-
+        
+        <?php if (!empty($pet)): ?>
 		<section class="cards-vitrini">
             <h1>Conheça alguns dos animais disponiveis</h1>
 			<div class="vitrine">
-				<div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/capreto.jpg" alt="cachorrinho fofo" />
+                <?php foreach ($pet as $animal): ?>
+				    <div class="pet-card">
+                        <div class="pet-imagem">
+                                <img src="../IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="Imagem do pet" />
+                            </div>
+                        <div class="pet-info">
+                            <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                            <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                            <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                            <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
+                        </div>
+
+                        <div class="sobre">
+                            <p><strong>Peso:</strong> <?= htmlspecialchars($animal['peso']) ?> kg</p>
+                            <p><strong>Espécie:</strong> <?= htmlspecialchars($animal['especie']) ?></p>
+                            <p><strong>Porte:</strong> <?= htmlspecialchars($animal['porte']) ?></p>
+                            <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
+                            <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
+
+                            <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
+                        </div>
+
+                        <button class="saiba">Saber mais</button>
                     </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
-                </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/golden.jpg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
-                </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/gato-siames.jpg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
-                </div>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/pet 4.jpeg" alt="cachorrinho fofo" />
-                    </div>
-                    <div class="pet-info">
-                        <h2>Nome: thor</h2>
-                        <p><strong>Idade:</strong> 3 meses</p>
-                        <p><strong>Gênero:</strong> macho</p>
-                        <p><strong>Local:</strong> Imperatriz-MA</p>
-                    </div>
-                    <div class="sobre">
-                        <p><strong>Peso:</strong> 3 kg</p>
-                        <p><strong>Espécie:</strong> cachorro</p>
-                        <p><strong>Porte:</strong> pequeno</p>
-                        <p><strong>Raça:</strong> kokoni</p>
-                        <p><strong>Sobre pet:</strong> Cachorrinho muito dócil, carinhoso, brincalhão, adora brincar com bolinhas</p>
-                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
-                    </div>
-                    <button class="saiba">Saber mais</button>
-                </div>
+                <?php endforeach; ?>
+        <?php endif; ?>
 			</div>
             <nav class="vejamais">
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>

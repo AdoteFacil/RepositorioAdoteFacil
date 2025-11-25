@@ -101,23 +101,38 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="/index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil" /></a>
-                
+                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
                 <label class="burger" for="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </label>
-
                 <div class="dropdown-content">
-                <a href="../index.php">Início</a>
-                <a href="sobre.html">Sobre Nós</a>
-                <a href="adote.php" id="adote">Adote um pet</a>
-                <a href="comoajudar.html">Como ajudar</a>
-                <a href="entrar.html">Entrar</a>
+                    <a href="../index.php">Início</a>
+                    <a href="sobre.php">Sobre Nós</a>
+                    <a href="adote.php">Adote um pet</a>
+                    <a href="comoajudar.php">Como ajudar</a>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                    <?php else: ?>
+                    <div class="usuario-box" id="userMenu">
+                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                            class="foto-perfil" alt="Foto">
+
+                        <div class="dropdown-user">
+                            <span class="nome-dropdown">
+                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                            </span>
+
+                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>

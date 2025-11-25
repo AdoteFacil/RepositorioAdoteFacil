@@ -8,14 +8,28 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $nome     = $_POST['nome'];
-$cpf      = $_POST['cpf'];
+$cpf      = preg_replace('/\D/', '', $_POST['cpf']);
 $dataNasc = $_POST['dataNascimento'];
 $email    = $_POST['email'];
-$telefone = $_POST['telefone'];
-$whatsapp = $_POST['whats'];
+$telefone = preg_replace('/\D/', '', $_POST['telefone']);
+$whatsapp = preg_replace('/\D/', '', $_POST['whats']);
 $estado   = $_POST['estado'];
 $cidade   = $_POST['cidade'];
 $senhaRaw = $_POST['senha'] ?? '';
+    
+// validações mínimas
+if(strlen($cpf) != 11){
+    echo "CPF inválido";
+    exit;
+}
+if(strlen($telefone) != 11){
+    echo "Telefone inválido";
+    exit;
+}
+if(strlen($whatsapp) != 11){
+    echo "WhatsApp inválido";
+    exit;
+}
 
 // validação básica
 if (empty($nome) || empty($email) || empty($senhaRaw)) {
