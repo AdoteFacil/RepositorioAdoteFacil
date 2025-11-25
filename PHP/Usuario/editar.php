@@ -28,7 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $whatsapp = $_POST['whats'] ?? '';
     $estado = $_POST['estado'] ?? '';
     $cidade = $_POST['cidade'] ?? '';
-    $senha = trim($_POST['senha'] ?? '');
+    
+    $nova_senha = trim($_POST['nova_senha'] ?? ''); 
+    $senha_atual_digitada = trim($_POST['senha_atual'] ?? '');
 
     // Inicialização para montagem dinâmica do SQL
     $campos_para_atualizar = [
@@ -46,9 +48,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome, $cpf, $dataNasc, $email, $telefone, $whatsapp, $estado, $cidade
     ];
 
-    // 1. Lógica da Senha (Opcional)
-    if (!empty($senha)) {
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    // 1. Lógica da Senha 
+    if (!empty($nova_senha)) {
+        // 1.1. Verifica se a senha atual foi fornecida
+        if (empty($senha_atual_digitada)) {
+            echo "<script>alert('Para alterar a senha, você deve fornecer a Senha Atual.'); window.location.href='editar.php';</script>";
+            exit;
+        }
+
+        // 1.2. Busca o hash da senha atual no banco
+        $sql_senha = "SELECT senha FROM cliente WHERE id_cliente = ?";
+        $stmt_senha = $conexao->prepare($sql_senha);
+        $stmt_senha->bind_param("i", $id_usuario);
+        $stmt_senha->execute();
+        $res_senha = $stmt_senha->get_result();
+        $dados_senha = $res_senha->fetch_assoc();
+        $hash_senha_bd = $dados_senha['senha'];
+
+        // 1.3. Verifica a senha
+        if (!password_verify($senha_atual_digitada, $hash_senha_bd)) {
+            echo "<script>alert('A Senha Atual fornecida está incorreta.'); window.location.href='editar.php';</script>";
+            exit;
+        }
+        
+        // Se a senha atual está correta, atualiza com a nova senha
+        $senhaHash = password_hash($nova_senha, PASSWORD_DEFAULT);
         $campos_para_atualizar[] = "senha = ?";
         $tipos .= "s";
         $parametros[] = $senhaHash;
@@ -177,7 +201,8 @@ $usuario = $res->fetch_assoc();
         <div class="info">
             <label>CPF:</label>
             <input class="input-info" type="text" name="cpf" 
-                   value="<?= htmlspecialchars($usuario['cpf']) ?>" >
+                   value="<?= htmlspecialchars($usuario['cpf']) ?>" 
+                   readonly disabled>
         </div>
         
         <div class="info">
@@ -240,9 +265,17 @@ $usuario = $res->fetch_assoc();
         </div>
 
         <div class="info">
-            <label>Nova Senha (opcional):</label>
-            <input class="input-info" type="password" name="senha" 
-                   placeholder="Deixe vazio para manter a atual">
+            <label>Senha Atual:</label>
+            <input class="input-info" type="password" name="senha_atual" 
+                   placeholder="Digite sua senha atual para alterar"
+                   id="senha_atual_input">
+        </div>
+
+        <div class="info">
+            <label>Nova Senha:</label>
+            <input class="input-info" type="password" name="nova_senha" 
+                   placeholder="Preencha a Senha Atual para mudar"
+                   id="nova_senha_input" disabled>
         </div>
 
         <div class="info">
@@ -268,7 +301,6 @@ $usuario = $res->fetch_assoc();
 
             <div class="footer-coluna" id="cl2">
                 <a href="Paginas/sobre.html"><h2>Conheça a História da Peludinhos do Bem</h2></a>
-                
             </div>
 
             <div class="footer-coluna" id="cl3">
@@ -290,6 +322,5 @@ $usuario = $res->fetch_assoc();
             <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
-
 </body>
 </html>

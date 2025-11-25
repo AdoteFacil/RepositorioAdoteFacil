@@ -105,3 +105,21 @@ function validar() {
   return true;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  const senhaAtualInput = document.getElementById('senha_atual_input');
+  const novaSenhaInput = document.getElementById('nova_senha_input');
+
+function toggleNovaSenha() {
+  if (senhaAtualInput.value.trim() !== '') {
+  novaSenhaInput.disabled = false;
+  novaSenhaInput.placeholder = "Digite a nova senha";
+} else {
+  novaSenhaInput.disabled = true;
+  novaSenhaInput.value = '';
+  novaSenhaInput.placeholder = "Preencha a Senha Atual para mudar";
+}
+}
+
+  senhaAtualInput.addEventListener('input', toggleNovaSenha);
+  toggleNovaSenha(); 
+});

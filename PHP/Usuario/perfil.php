@@ -158,10 +158,14 @@ $resultPets = $stmtPets->get_result();
                                 Adotado
                             </option>
                         </select>
-
+                        
                         <button type="submit">Atualizar</button>
                     </form>
-
+                    <form action="../PETs/deletePet.php" method="POST"
+                        onsubmit="return confirm('Tem certeza que deseja deletar seu pet?');">
+                        <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
+                        <button type="submit">Deletar</button>
+                    </form>
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
