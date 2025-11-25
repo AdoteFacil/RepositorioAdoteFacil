@@ -182,7 +182,7 @@ main {
 
 .sobre {
   position: absolute;
-  top: 15px;
+  top: 55px;
   left: 15px;
   right: 15px;
   bottom: 60px;
@@ -198,7 +198,21 @@ main {
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   z-index: 10;
   margin: -15px;
+  overflow-y: hidden;
+}
 
+.qadot {
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9ddf9f;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 75%;
 }
 
 .pet-card.expandido .pet-imagem {
@@ -231,19 +245,6 @@ main {
 .saiba:hover {
   transform: scale(1.03);
   background-color: lightblue;
-}
-
-.qadot {
-  padding: 8px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #9ddf9f;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  width: 100%;
 }
 
 .qadot:hover {

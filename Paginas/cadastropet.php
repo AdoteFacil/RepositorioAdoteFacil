@@ -121,7 +121,7 @@ include ('../PHP/conexao.php');
 
           <div class="inputBox">
             <label for="sobre" class="labelinput">Sobre o Pet</label>
-            <textarea name="sobre" id="sobre" class="inputUser" rows="4" placeholder="Conte um pouco sobre seu pet..."></textarea>
+            <textarea name="sobre" id="sobre" class="inputUser" maxlength="144" rows="4" placeholder="Conte um pouco sobre seu pet..."></textarea>
           </div>
 
           <div class="inputBox">
