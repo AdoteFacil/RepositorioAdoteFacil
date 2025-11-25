@@ -2,7 +2,6 @@
 session_start();
 require '../conexao.php';
 
-// Verifica sessão
 if (!isset($_SESSION['usuario_id'])) {
     echo "<script>alert('Sessão expirada! Faça login novamente.'); window.location.href='../../Paginas/entrar.html';</script>";
     exit;
@@ -10,7 +9,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $id = $_SESSION['usuario_id'];
 
-// Buscar a foto antes de apagar
+/* === 1. Buscar foto antes de excluir === */
 $sqlFoto = "SELECT foto FROM cliente WHERE id_cliente = ?";
 $stmtFoto = $conexao->prepare($sqlFoto);
 $stmtFoto->bind_param("i", $id);
@@ -21,32 +20,35 @@ if ($resultFoto->num_rows > 0) {
     $foto = $resultFoto->fetch_assoc()['foto'];
     $caminhoFoto = "../../IMG/usuario/" . $foto;
 
-    if (file_exists($caminhoFoto) && is_file($caminhoFoto)) {
-        unlink($caminhoFoto); // Apaga a foto
+    if (file_exists($caminhoFoto)) {
+        unlink($caminhoFoto);
     }
 }
 
-// Excluir usuário do banco
-$sql = "DELETE FROM cliente WHERE id_cliente = ?";
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $id);
+/* === 2. Deletar histórico do cliente === */
+$sqlHistorico = "DELETE FROM historico WHERE id_cliente = ?";
+$stmtHistorico = $conexao->prepare($sqlHistorico);
+$stmtHistorico->bind_param("i", $id);
+$stmtHistorico->execute();
 
-if ($stmt->execute()) {
+/* === 3. Deletar Pets do cliente === */
+$sqlPet = "DELETE FROM pet WHERE id_cliente = ?";
+$stmtPet = $conexao->prepare($sqlPet);
+$stmtPet->bind_param("i", $id);
+$stmtPet->execute();
 
+/* === 4. Deletar usuário === */
+$sqlCliente = "DELETE FROM cliente WHERE id_cliente = ?";
+$stmtCliente = $conexao->prepare($sqlCliente);
+$stmtCliente->bind_param("i", $id);
+
+if ($stmtCliente->execute()) {
     session_unset();
     session_destroy();
-
-    echo "<script>
-            alert('Conta deletada com sucesso.');
-            window.location.href='../../Paginas/entrar.html';
-          </script>";
+    echo "<script>alert('Conta deletada com sucesso.'); window.location.href='../../Paginas/entrar.html';</script>";
     exit;
-
 } else {
-    echo "<script>
-            alert('Erro ao deletar conta.');
-            window.location.href='../Paginas/perfil.php';
-          </script>";
+    echo "<script>alert('Erro ao deletar conta.'); window.location.href='../Paginas/perfil.php';</script>";
     exit;
 }
 ?>
