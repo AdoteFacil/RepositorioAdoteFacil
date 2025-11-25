@@ -11,6 +11,7 @@ include ('../PHP/conexao.php');
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS/padrao.css"/>
   <link rel="stylesheet" href="../CSS/cadastropet.css"/>
+  <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
   <header>

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/sobreNos.css" />
   <script src="../JS/sobre.js" defer></script>
+  <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
