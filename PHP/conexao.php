@@ -1,5 +1,5 @@
 <?php
-$servidor = "localhost:8889";
+$servidor = "localhost";
 $usuario  = "root";
 $senha    = "root"; 
 $dbname   = "adotefacil";

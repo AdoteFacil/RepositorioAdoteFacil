@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../CSS/padrao.css" />
     <link rel="stylesheet" href="../CSS/comoajudar.css" />
     <script src="../JS/comoajudar.js" defer></script>
+  <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
