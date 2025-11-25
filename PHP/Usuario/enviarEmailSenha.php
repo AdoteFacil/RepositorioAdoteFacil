@@ -80,7 +80,7 @@ try {
     $mail->addAddress($email);
 
     $mail->isHTML(true);
-    $mail->Subject = 'Redefinição de senha';
+    $mail->Subject = 'Adote Fácil Recuperação de Senha';
     $mail->Body = "
         <h2>Recuperação de senha</h2>
         <p>Para redefinir sua senha, clique no link abaixo:</p>

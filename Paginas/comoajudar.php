@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +16,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil" /></a>
+                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -22,13 +25,29 @@
                     <span></span>
                     <span></span>
                 </label>
-
                 <div class="dropdown-content">
                     <a href="../index.php">Início</a>
-                    <a href="sobre.html">Sobre Nós</a>
+                    <a href="sobre.php">Sobre Nós</a>
                     <a href="adote.php">Adote um pet</a>
-                    <a href="comoajudar.html" id="ajudar">Como ajudar</a>
-                    <a href="entrar.html">Entrar</a>
+                    <a href="comoajudar.php">Como ajudar</a>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                    <?php else: ?>
+                    <div class="usuario-box" id="userMenu">
+                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                            class="foto-perfil" alt="Foto">
+
+                        <div class="dropdown-user">
+                            <span class="nome-dropdown">
+                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                            </span>
+
+                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -87,11 +106,11 @@
 
         <div class="icons-row">
             <a href="https://www.instagram.com/">
-            <img src="IMG/index/insta.png" alt="Instagram">
+            <img src="../IMG/index/insta.png" alt="Instagram">
             </a>
 
             <a href="https://web.whatsapp.com/">
-            <img src="IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+            <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
             </a>
         </div>
     </div>
