@@ -1,5 +1,44 @@
 <?php
+include('PHP/conexao.php');
 session_start();
+
+// --- PETS RECENTES ---
+$sql = "SELECT * FROM pet WHERE statusPet = 'disponivel' ORDER BY id_pet DESC LIMIT 4";
+$result = mysqli_query($conexao, $sql);
+
+if ($result) {
+    $pet = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+} else {
+    echo "Erro na consulta: " . mysqli_error($conexao);
+    $pet = [];
+}
+
+// --- PESQUISA PET ---
+if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
+    $termo = trim($_GET['busca']);
+
+    $sql = "SELECT * FROM pet 
+        WHERE statusPet = 'disponivel'
+        AND (
+            porte LIKE ? 
+            OR raca LIKE ?
+            OR nome LIKE ?
+            OR especie LIKE ?
+        )
+        ORDER BY id_pet DESC";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    $like = "%" . $termo . "%";
+    mysqli_stmt_bind_param($stmt, "ssss", $like, $like, $like, $like);
+
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    $pet = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,9 +68,9 @@ session_start();
             </label>
         <div class="dropdown-content">
             <a href="index.php">Início</a>
-            <a href="Paginas/sobre.html">Sobre Nós</a>
+            <a href="Paginas/sobre.php">Sobre Nós</a>
             <a href="Paginas/adote.php">Adote um pet</a>
-            <a href="Paginas/comoajudar.html">Como ajudar</a>
+            <a href="Paginas/comoajudar.php">Como ajudar</a>
 
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -98,13 +137,13 @@ session_start();
                 <div class="opcao">
                     <h2>Seja Voluntário</h2>
                     <p>Ajude nas feirinhas, lares temporários ou redes sociais.</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Seja um Voluntário</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Seja um Voluntário</a>
                 </div>
 
                 <div class="opcao">
                     <h2>&#128176; | Apoie com Doações</h2>
                     <p>Sua atitude pode mudar uma vida</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Doe Agora</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Doe Agora</a>
                 </div>
 
                 <div class="opcao">
@@ -116,15 +155,40 @@ session_start();
                 <div class="opcao">
                     <h2>&#128722; | Parcerias Locais</h2>
                     <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                    <a class="botao-link" href="Paginas/comoajudar.html">Fazer parceria</a>
+                    <a class="botao-link" href="Paginas/comoajudar.php">Fazer parceria</a>
                 </div>
             </div>
 		</section>
+        <?php if (!empty($pet)): ?>
+            <div class="vitrine">
+            <?php foreach ($pet as $animal): ?>
+                <div class="pet-card">
+                    <div class="pet-imagem">
+                        <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="Imagem do pet" />
+                    </div>
 
-		
-            <nav class="vejamais">
-                <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
-            </nav>
+                    <div class="pet-info">
+                        <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                        <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                        <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                        <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
+                    </div>
+
+                    <div class="sobre">
+                        <p><strong>Peso:</strong> <?= htmlspecialchars($animal['peso']) ?> kg</p>
+                        <p><strong>Espécie:</strong> <?= htmlspecialchars($animal['especie']) ?></p>
+                        <p><strong>Porte:</strong> <?= htmlspecialchars($animal['porte']) ?></p>
+                        <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
+                        <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
+
+                        <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
+                    </div>
+
+                    <button class="saiba">Saber mais</button>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 		</section>
 	</main>
 <div class="container-depoimentos">
