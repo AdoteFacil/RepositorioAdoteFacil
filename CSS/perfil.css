@@ -1,4 +1,3 @@
-
 header {
     width: 100%;
     margin: 0 auto;
@@ -20,7 +19,6 @@ body {
     min-height: 100vh;
 }
 
-/* === CONTAINER DO PERFIL === */
 .container {
     background-color: #ffffff;
     max-width: 500px;
@@ -36,14 +34,12 @@ body {
     align-items: center;
 }
 
-/* === TÍTULO === */
 .container h1 {
     color: #7a8ccb;
     font-weight: 700;
     margin-bottom: 25px;
 }
 
-/* === FOTO DO PERFIL === */
 .fotoPerfil {
     width: 180px;
     height: 180px;
@@ -53,7 +49,6 @@ body {
     margin-bottom: 25px;
 }
 
-/* === INFORMAÇÕES === */
 .info {
     background-color: #e9ebff;
     padding: 12px 16px;
@@ -62,34 +57,37 @@ body {
     width: 100%;
     text-align: left;
     color: #333;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: background 0.3s ease;
+    box-sizing: border-box;
 }
 
 .info:hover {
     background-color: #d7dbff;
 }
-.numeros, .locais{
+
+.numeros, .locais {
     display: flex;
     flex-direction: row;
-    width: 440px;
-    gap: 5px;
-}
-.tel, .zap{
-    width: 220px;
-    white-space: nowrap;
-}
-.estado{
-    width: 150px;
+    width: 100%;
+    gap: 15px;
+    box-sizing: border-box;
 }
 
-/* === BOTÕES === */
+.tel, .zap, .estado, .cidade {
+    flex: 1;
+    width: auto;
+    white-space: nowrap;
+    min-width: 0;
+}
+
 #registrar {
     margin-top: 25px;
     width: 100%;
     display: flex;
     gap: 12px;
+    justify-content: center;
 }
 
 #registrar a,
@@ -103,9 +101,11 @@ body {
     transition: background 0.3s ease, transform 0.2s ease;
     width: 150px;
     height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* === Botões padrão === */
 #registrar a.btn {
     background-color: #7a8ccb;
     color: #fff;
@@ -117,7 +117,6 @@ body {
     transform: scale(1.02);
 }
 
-/* === Botão Deletar === */
 #registrar button {
     background-color: #ff4b4b;
     color: #fff;
@@ -128,7 +127,47 @@ body {
     transform: scale(1.02);
 }
 
-/* === ANIMAÇÃO === */
+.pets-container {
+    background-color: #ffffff;
+    max-width: 500px;
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-info {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-info:focus {
+    border-color: #7a8ccb;
+    box-shadow: 0 0 0 3px rgba(122, 140, 203, 0.2);
+}
+
+input[type="file"].input-info {
+    padding: 6px;
+    background-color: transparent;
+    border: none;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -140,7 +179,6 @@ body {
     }
 }
 
-/* === RESPONSIVO === */
 @media (max-width: 480px) {
     .container {
         padding: 25px 20px;
@@ -158,5 +196,15 @@ body {
     #registrar a,
     #registrar button {
         font-size: 15px;
+    }
+
+    .numeros, .locais {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .tel, .zap, .estado, .cidade {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

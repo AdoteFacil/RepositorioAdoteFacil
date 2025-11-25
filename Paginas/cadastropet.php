@@ -16,7 +16,7 @@ include ('../PHP/conexao.php');
   <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
             </div>
         <div class="dropdown">
             <input type="checkbox" id="burger-menu">
@@ -35,7 +35,7 @@ include ('../PHP/conexao.php');
                     <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
                 <?php else: ?>
                     <div class="usuario-box" id="userMenu">
-                        <img src="IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
                             class="foto-perfil" alt="Foto">
 
                         <div class="dropdown-user">
@@ -101,9 +101,9 @@ include ('../PHP/conexao.php');
           <div class="inputBox">
             <label for="porte" class="labelinput">Porte</label>
             <select name="porte" id="porte">
-              <option value="pequeno">Pequeno</option>
-              <option value="medio">Médio</option>
-              <option value="grande">Grande</option>
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
             </select>
           </div>
 
