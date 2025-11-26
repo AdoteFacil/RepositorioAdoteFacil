@@ -139,8 +139,8 @@ $usuario = $res->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="../../css/padrao.css">
-    <link rel="stylesheet" href="../../css/perfil.css">
+    <link rel="stylesheet" href="../../CSS/padrao.css">
+    <link rel="stylesheet" href="../../CSS/perfil.css">
     <script src="../../JS/padrao.js" defer></script>
     <script src="../../JS/cadastrar.js" defer></script>
 </head>
@@ -158,10 +158,10 @@ $usuario = $res->fetch_assoc();
                 <span></span>
             </label>
             <div class="dropdown-content">
-                <a href="../../index.php">Início</a>
-                <a href="../../Paginas/sobre.php">Sobre Nós</a>
-                <a href="../../Paginas/adote.php">Adote um pet</a>
-                <a href="../../Paginas/comoajudar.php">Como ajudar</a>
+                <a href="../../index.php" class="linkIndex">Início</a>
+                <a href="../../Paginas/sobre.php" class="linkSobre">Sobre Nós</a>
+                <a href="../../Paginas/adote.php" class="linkAdote">Adote um pet</a>
+                <a href="../../Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a>
 
                 <?php if (!isset($_SESSION['usuario_id'])): ?>
                     <a href="../../Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>

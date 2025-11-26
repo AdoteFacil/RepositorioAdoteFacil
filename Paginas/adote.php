@@ -64,10 +64,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <span></span>
                 </label>
                 <div class="dropdown-content">
-                    <a href="../index.php">Início</a>
-                    <a href="sobre.php">Sobre Nós</a>
-                    <a href="adote.php">Adote um pet</a>
-                    <a href="comoajudar.php">Como ajudar</a>
+                    <a href="../index.php"class="linkIndex">Início</a>
+                    <a href="sobre.php" class="linkSobre">Sobre Nós</a>
+                    <a href="adote.php" class="linkAdote">Adote um pet</a>
+                    <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
