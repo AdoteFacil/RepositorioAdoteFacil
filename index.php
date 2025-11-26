@@ -45,77 +45,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style> 
-  /* Fundo escuro */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-/* Caixa do popup */
-.popup {
-    background: #fff;
-    width: 350px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    text-align: center;
-    animation: aparecer 0.3s ease;
-}
-
-@keyframes aparecer {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.popup h2 {
-    margin-bottom: 10px;
-}
-
-.popup p {
-    margin-bottom: 20px;
-}
-
-/* Botões */
-.botoes {
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-cancelar, .btn-confirmar {
-    width: 48%;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.btn-cancelar {
-    background: #ccc;
-}
-
-.btn-cancelar:hover {
-    background: #b3b3b3;
-}
-
-.btn-confirmar {
-    background: #4CAF50;
-    color: white;
-}
-
-.btn-confirmar:hover {
-    background: #449d48;
-}
-</style>
   <title>Adote Fácil</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/padrao.css">
@@ -240,49 +169,39 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
             </div>
 		</section>
-        <?php if (!empty($pet)): ?>
-            <div class="vitrine">
-            <?php foreach ($pet as $animal): ?>
-                <div class="pet-card">
-                    <div class="pet-imagem">
-                        <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="Imagem do pet" />
-                    </div>
-
 		<section class="cards-vitrini">
             <h1>Conheça alguns dos animais disponiveis</h1>
 			<?php if (count($pet) > 0): ?>
-    <div class="vitrine">
-        <?php foreach ($pet as $animal): ?>
-            <div class="pet-card">
-                <div class="pet-imagem">
-                    <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
+                <div class="vitrine">
+                    <?php foreach ($pet as $animal): ?>
+                        <div class="pet-card">
+                            <div class="pet-imagem">
+                                <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
+                             </div>
+                             <div class="pet-info">
+                                <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                                <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                                <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                                <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
+                            </div>
+                            <div class="sobre">
+                                <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
+                                <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
+                                <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
+                                <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
+                                <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
+                                <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                            </div>
+                            <button class="saiba">Saber mais</button>
+                        </div>
+                    <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum usuario cadastrado.</p>
+            <?php endif; ?>
                 </div>
-                <div class="pet-info">
-                    <h2>Nome: <?php echo $animal['nome']; ?></h2>
-                    <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
-                    <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
-                    <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
-                </div>
-                <div class="sobre">
-                    <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
-                    <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
-                    <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
-                    <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
-                    <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
-                    <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
-
-
-                </div>
-                <button class="saiba">Saber mais</button>
-            </div>
-        <?php endforeach; ?>
-        <?php else: ?>
-            <p>Nenhum usuario cadastrado.</p>
-        <?php endif; ?>
-    </div>
-            <nav class="vejamais">
+           <!-- <nav class="vejamais">
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
-            </nav>
+            </nav>-->
 		</section>
 	</main>
 <div class="container-depoimentos">
@@ -384,9 +303,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
 
         <div class="carousel-dots" id="carouselDots"></div>
     </div>
-</div>
-
-
+    </div>
     <footer>
         <section class="footer">
             <div class="footer-coluna" id="cl1">
