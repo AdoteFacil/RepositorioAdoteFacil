@@ -47,6 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/adote.css" />
+  <script src="../JS/padrao.js" defer></script>
   <script src="../JS/adote.js" defer></script>
 </head>
 <body>
@@ -63,10 +64,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <span></span>
                 </label>
                 <div class="dropdown-content">
-                    <a href="../index.php">Início</a>
-                    <a href="sobre.php">Sobre Nós</a>
-                    <a href="adote.php">Adote um pet</a>
-                    <a href="comoajudar.php">Como ajudar</a>
+                    <a href="../index.php"class="linkIndex">Início</a>
+                    <a href="sobre.php" class="linkSobre">Sobre Nós</a>
+                    <a href="adote.php" class="linkAdote">Adote um pet</a>
+                    <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -133,8 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <?php else: ?>
 
         <div class="nenhum-resultado">
-            <p>❌ Nenhum pet encontrado para "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
-            <a href="adote.php" class="limpar-busca">Limpar busca</a>
+            <p>❌ Nenhum pet encontrado "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
         </div>
 
     <?php endif; ?>

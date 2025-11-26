@@ -35,12 +35,140 @@ $resultPets = $stmtPets->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <script src="../../JS/delete.js" defer></script>
     <link rel="stylesheet" href="../../CSS/perfil.css">
     <link rel="stylesheet" href="../../CSS/padrao.css">
     <script src="../../JS/padrao.js" defer></script>
     <title>Perfil</title>
+    <style>
+        /* --- CONTAINER PRINCIPAL (A GRADE) --- */
+.pets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
+.pets-container h2 {
+    grid-column: 1 / -1;
+    color: #444;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+/* --- ESTILO DO CARD --- */
+.pet-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efeito ao passar o mouse */
+.pet-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- IMAGEM DO PET --- */
+.pet-img {
+    width: 100%;
+    height: 160px; 
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- TEXTOS (Nome, Raça, Status) --- */
+.pet-card h3 {
+    margin: 10px 10px 4px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.pet-card p {
+    margin: 3px 10px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Destaque para o texto do Status */
+.pet-card p strong {
+    color: #333;
+}
+
+/* --- FORMULÁRIOS E BOTÕES --- */
+.pet-card form {
+    padding: 0 10px 8px; 
+    display: flex;
+    gap: 8px; 
+    margin-top: auto;
+}
+
+/* Select (Menu suspenso) */
+.pet-card select {
+    flex: 1; 
+    padding: 6px; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 0.85rem; 
+    cursor: pointer;
+}
+
+/* Botões Gerais */
+.pet-card button {
+    padding: 7px 10px; 
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.85rem; 
+    color: white;
+}
+
+/* Botão de Atualizar (Primeiro form) */
+.pet-card form:first-of-type button {
+    background-color: #007bff;
+}
+
+.pet-card form:first-of-type button:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de Deletar (Segundo form) */
+.pet-card form:last-of-type {
+    padding-bottom: 10px; 
+}
+
+.pet-card form:last-of-type button {
+    background-color: #fff;
+    color: #dc3545; 
+    border: 1px solid #dc3545;
+    width: 100%; 
+}
+
+.pet-card form:last-of-type button:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Mensagem de "Nenhum pet" */
+.pets-container > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 15px;
+}
+    </style>
 </head>
 <body>
     <header>
@@ -137,8 +265,8 @@ $resultPets = $stmtPets->get_result();
         <?php if ($resultPets->num_rows > 0): ?>
             <?php while ($pet = $resultPets->fetch_assoc()): ?>
                 <div class="pet-card">
-                    <img src="../../<?= htmlspecialchars($pet['foto']) ?>" class="pet-img">
-
+                    <img src="../../IMG<?= htmlspecialchars($pet['foto']) ?>" class="pet-img">
+ 
                     <h3><?= htmlspecialchars($pet['nome']) ?></h3>
                     <p><strong>Raça:</strong> <?= htmlspecialchars($pet['raca']) ?></p>
                     <p><strong>Idade:</strong> <?= htmlspecialchars($pet['idade']) ?></p>

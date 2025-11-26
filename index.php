@@ -1,5 +1,44 @@
 <?php
+include('PHP/conexao.php');
 session_start();
+
+// --- PETS RECENTES ---
+$sql = "SELECT * FROM pet WHERE statusPet = 'disponivel' ORDER BY id_pet DESC LIMIT 4";
+$result = mysqli_query($conexao, $sql);
+
+if ($result) {
+    $pet = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+} else {
+    echo "Erro na consulta: " . mysqli_error($conexao);
+    $pet = [];
+}
+
+// --- PESQUISA PET ---
+if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
+    $termo = trim($_GET['busca']);
+
+    $sql = "SELECT * FROM pet 
+        WHERE statusPet = 'disponivel'
+        AND (
+            porte LIKE ? 
+            OR raca LIKE ?
+            OR nome LIKE ?
+            OR especie LIKE ?
+        )
+        ORDER BY id_pet DESC";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    $like = "%" . $termo . "%";
+    mysqli_stmt_bind_param($stmt, "ssss", $like, $like, $like, $like);
+
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    $pet = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,10 +67,20 @@ session_start();
                 <span></span>
             </label>
         <div class="dropdown-content">
-            <a href="index.php">Início</a>
-            <a href="Paginas/sobre.html">Sobre Nós</a>
-            <a href="Paginas/adote.php">Adote um pet</a>
-            <a href="Paginas/comoajudar.html">Como ajudar</a>
+            <a href="index.php" class="linkIndex">Início</a>
+            <a href="Paginas/sobre.php" class="linkSobre">Sobre Nós</a>
+            <a href="Paginas/adote.php" class="linkAdote">Adote um pet</a>
+            <a href="Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a>
+            <?php 
+            if (
+                isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+            ): ?>
+                <a href="PHP/ADM/Usuario/consulta.php">adm</a>
+            <?php endif; ?>
+
+
 
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -98,13 +147,13 @@ session_start();
                 <div class="opcao">
                     <h2>Seja Voluntário</h2>
                     <p>Ajude nas feirinhas, lares temporários ou redes sociais.</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Seja um Voluntário</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Seja um Voluntário</a>
                 </div>
 
                 <div class="opcao">
                     <h2>&#128176; | Apoie com Doações</h2>
                     <p>Sua atitude pode mudar uma vida</p>
-                    <a href="Paginas/comoajudar.html" class="botao-link">Doe Agora</a>
+                    <a href="Paginas/comoajudar.php" class="botao-link">Doe Agora</a>
                 </div>
 
                 <div class="opcao">
@@ -116,20 +165,48 @@ session_start();
                 <div class="opcao">
                     <h2>&#128722; | Parcerias Locais</h2>
                     <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                    <a class="botao-link" href="Paginas/comoajudar.html">Fazer parceria</a>
+                    <a class="botao-link" href="Paginas/comoajudar.php">Fazer parceria</a>
                 </div>
             </div>
 		</section>
-
-		
-            <nav class="vejamais">
+		<section class="cards-vitrini">
+            <h1>Conheça alguns dos animais disponiveis</h1>
+			<?php if (count($pet) > 0): ?>
+                <div class="vitrine">
+                    <?php foreach ($pet as $animal): ?>
+                        <div class="pet-card">
+                            <div class="pet-imagem">
+                                <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
+                             </div>
+                             <div class="pet-info">
+                                <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                                <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
+                                <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                                <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
+                            </div>
+                            <div class="sobre">
+                                <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
+                                <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
+                                <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
+                                <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
+                                <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
+                                <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                            </div>
+                            <button class="saiba">Saber mais</button>
+                        </div>
+                    <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum usuario cadastrado.</p>
+            <?php endif; ?>
+                </div>
+           <!-- <nav class="vejamais">
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
-            </nav>
+            </nav>-->
 		</section>
 	</main>
 <div class="container-depoimentos">
     <div class="header-depoimentos">
-        <h1>O que dizem sobre os peludinhos do bem?</h1>
+        <h2>O que dizem sobre os peludinhos do bem?</h2>
     </div>
 
     <div class="carousel-wrapper">
@@ -154,7 +231,11 @@ session_start();
 
             <div class="testimonial-card">
                 <div class="author-info">
+<<<<<<< HEAD
                     <img src="" class="author-photo">
+=======
+                    <img src="IMG/comoajudar/depoimentos.08.png" class="author-photo">
+>>>>>>> 54662367941f90c6ad879fad993c30c3f837d8bb
                     <div class="author-details">
                         <h3>João, o Gato</h3>
                         <p>Tutor do Rex</p>
@@ -182,7 +263,7 @@ session_start();
 
             <div class="testimonial-card">
                 <div class="author-info">
-                    <img src="IMG/comoajudar/depoimento6.png" class="author-photo">
+                    <img src="IMG/comoajudar/depoimentos.07.png" class="author-photo">
                     <div class="author-details">
                         <h3>Carlos R.</h3>
                         <p>Apoiador</p>
@@ -226,9 +307,7 @@ session_start();
 
         <div class="carousel-dots" id="carouselDots"></div>
     </div>
-</div>
-
-
+    </div>
     <footer>
         <section class="footer">
             <div class="footer-coluna" id="cl1">
@@ -263,6 +342,33 @@ session_start();
             <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
+        <div id="popup-confirmacao" class="popup-overlay">
+    <div class="popup">
+        <h2>Confirmar Adoção</h2>
+        <p>Você realmente deseja adotar este pet?</p>
+
+        <div class="botoes">
+            <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
+            <button class="btn-confirmar" id="confirmarBtn">Confirmar</button>
+        </div>
+    </div>
+</div>
 
 </body>
+<script>
+let linkDestino = "";
+
+function abrirPopup(link) {
+    linkDestino = link;
+    document.getElementById("popup-confirmacao").style.display = "flex";
+}
+
+function fecharPopup() {
+    document.getElementById("popup-confirmacao").style.display = "none";
+}
+
+document.getElementById("confirmarBtn").addEventListener("click", function () {
+    window.location.href = linkDestino;
+});
+</script>
 </html>

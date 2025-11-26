@@ -182,7 +182,7 @@ input[type="file"].input-info {
 @media (max-width: 480px) {
     .container {
         padding: 25px 20px;
-    }
+    } 
 
     .fotoPerfil {
         width: 140px;
@@ -208,3 +208,66 @@ input[type="file"].input-info {
         margin-bottom: 10px;
     }
 }
+
+
+
+    
+        /* Container pai que segura o Perfil e os Pets */
+        .conteudo-principal {
+            display: flex; /* Ativa o layout flexível */
+            flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+            gap: 20px; /* Espaço entre as duas colunas */
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            align-items: flex-start; /* Alinha os itens ao topo */
+        }
+
+        /* Coluna da Esquerda (Perfil) */
+        .container {
+            flex: 1; /* Ocupa 1 parte do espaço */
+            min-width: 300px; /* Largura mínima */
+            background: #fff; /* Opcional: cor de fundo */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Opcional: sombra */
+        }
+
+        /* Coluna da Direita (Pets) */
+        .pets-container {
+            flex: 2; /* Ocupa 2 partes do espaço (mais largo que o perfil) */
+            min-width: 300px;
+        }
+
+        /* Grade para os cards dos pets ficarem bonitos dentro da coluna da direita */
+        .lista-pets {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .pet-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .pet-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 768px) {
+            .conteudo-principal {
+                flex-direction: column; /* Volta a ficar um embaixo do outro no celular */
+            }
+            .container, .pets-container {
+                width: 100%;
+            }
+        }
+  
