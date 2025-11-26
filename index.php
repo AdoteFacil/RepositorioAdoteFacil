@@ -154,7 +154,7 @@ session_start();
 
             <div class="testimonial-card">
                 <div class="author-info">
-                    <img src="IMG/comoajudar/depoimentos5.JPG" class="author-photo">
+                    <img src="" class="author-photo">
                     <div class="author-details">
                         <h3>João, o Gato</h3>
                         <p>Tutor do Rex</p>
