@@ -11,30 +11,60 @@ if (!isset($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// Buscar a foto do usuário
+// Buscar foto do cliente
 $sqlFoto = "SELECT foto FROM cliente WHERE id_cliente = $id LIMIT 1";
 $resultFoto = mysqli_query($conexao, $sqlFoto);
 
 if (mysqli_num_rows($resultFoto) === 0) {
-    die("Usuário não encontrado.");
+    die("Cliente não encontrado.");
 }
 
 $dados = mysqli_fetch_assoc($resultFoto);
-$foto = $dados['foto'];
+$fotoCliente = $dados['foto'];
 
-// Deletar usuário do banco
-$sqlDelete = "DELETE FROM cliente WHERE id_cliente = $id";
 
-if (mysqli_query($conexao, $sqlDelete)) {
+// 🔵 1 — Buscar todos os pets do cliente
+$sqlPets = "SELECT id_pet, foto FROM pet WHERE id_cliente = $id";
+$resultPets = mysqli_query($conexao, $sqlPets);
 
-    // Se existir uma foto, apagar da pasta
-    if (!empty($foto) && file_exists("../../../IMG/usuario/" . $foto)) {
-        unlink("../../../IMG/usuario/" . $foto);
+// Guardar pets para apagar fotos depois
+$pets = [];
+while ($row = mysqli_fetch_assoc($resultPets)) {
+    $pets[] = $row;
+}
+
+
+// 🔵 2 — Apagar histórico de todos os pets do cliente
+$sqlDeleteHistorico = "DELETE FROM historico WHERE id_pet IN (SELECT id_pet FROM pet WHERE id_cliente = $id)";
+mysqli_query($conexao, $sqlDeleteHistorico);
+
+
+// 🔵 3 — Apagar pets do cliente
+$sqlDeletePets = "DELETE FROM pet WHERE id_cliente = $id";
+mysqli_query($conexao, $sqlDeletePets);
+
+
+// 🔵 4 — Apagar cliente
+$sqlDeleteCliente = "DELETE FROM cliente WHERE id_cliente = $id";
+
+if (mysqli_query($conexao, $sqlDeleteCliente)) {
+
+    // Apagar foto do cliente
+    if (!empty($fotoCliente) && file_exists("../../../IMG/usuario/" . $fotoCliente)) {
+        unlink("../../../IMG/usuario/" . $fotoCliente);
+    }
+
+    // Apagar fotos dos pets
+    foreach ($pets as $pet) {
+        if (!empty($pet['foto']) && file_exists("../../../IMG/usuario/" . $pet['foto'])) {
+            unlink("../../../IMG/usuario/" . $pet['foto']);
+        }
     }
 
     header("Location: consulta.php?msg=apagado");
     exit();
+    
 } else {
-    echo "Erro ao apagar: " . mysqli_error($conexao);
+    echo "Erro ao apagar cliente: " . mysqli_error($conexao);
 }
 ?>

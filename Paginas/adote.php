@@ -68,6 +68,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <a href="sobre.php" class="linkSobre">Sobre Nós</a>
                     <a href="adote.php" class="linkAdote">Adote um pet</a>
                     <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 2   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <a href="../PHP/ADM/Usuario/consulta.php">adm</a>
+                    <?php endif; ?>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -123,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
                     <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
 
-                    <a href="entrar.html"><button class="qadot">Quero adotar</button></a>
+                    <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
                 </div>
 
                 <button class="saiba">Saber mais</button>
@@ -177,5 +185,33 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
             <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
+    <div id="popup-confirmacao" class="popup-overlay">
+        <div class="popup">
+            <h2>Confirmar Adoção</h2>
+            <p>Você realmente deseja adotar este pet?</p>
+
+            <div class="botoes">
+                <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
+                <button class="btn-confirmar" id="confirmarBtn">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
 </body>
+<script>
+let linkDestino = "";
+
+function abrirPopup(link) {
+    linkDestino = link;
+    document.getElementById("popup-confirmacao").style.display = "flex";
+}
+
+function fecharPopup() {
+    document.getElementById("popup-confirmacao").style.display = "none";
+}
+
+document.getElementById("confirmarBtn").addEventListener("click", function () {
+    window.location.href = linkDestino;
+});
+</script>
 </html>

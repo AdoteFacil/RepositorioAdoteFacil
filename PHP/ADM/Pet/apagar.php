@@ -5,36 +5,45 @@ error_reporting(E_ALL);
 session_start();
 include('../../conexao.php');
 
-if (!isset($_GET['id'])) {
+// Verifica se o ID foi passado
+if (!isset($_GET['id_pet'])) {
     die("ID não informado.");
 }
 
-$id = intval($_GET['id']);
+$id = intval($_GET['id_pet']);
 
-// Buscar a foto do usuário
-$sqlFoto = "SELECT foto FROM cliente WHERE id_cliente = $id LIMIT 1";
+// Buscar a foto do pet
+$sqlFoto = "SELECT foto FROM pet WHERE id_pet = $id LIMIT 1";
 $resultFoto = mysqli_query($conexao, $sqlFoto);
 
 if (mysqli_num_rows($resultFoto) === 0) {
-    die("Usuário não encontrado.");
+    die("Pet não encontrado.");
 }
 
 $dados = mysqli_fetch_assoc($resultFoto);
 $foto = $dados['foto'];
 
-// Deletar usuário do banco
-$sqlDelete = "DELETE FROM cliente WHERE id_cliente = $id";
+// 🔥 Primeiro apaga o histórico relacionado ao pet
+$sqlDeleteHist = "DELETE FROM historico WHERE id_pet = $id";
+mysqli_query($conexao, $sqlDeleteHist);
 
-if (mysqli_query($conexao, $sqlDelete)) {
+// Agora pode apagar o pet
+$sqlDeletePet = "DELETE FROM pet WHERE id_pet = $id";
 
-    // Se existir uma foto, apagar da pasta
-    if (!empty($foto) && file_exists("../../../IMG/usuario/" . $foto)) {
-        unlink("../../../IMG/usuario/" . $foto);
+if (mysqli_query($conexao, $sqlDeletePet)) {
+
+    // Se existir uma foto, apagar a imagem da pasta
+    $caminhoFoto = "../../../IMG/usuario/" . $foto;
+
+    if (!empty($foto) && file_exists($caminhoFoto)) {
+        unlink($caminhoFoto);
     }
 
+    // Redireciona de volta para a consulta
     header("Location: consulta.php?msg=apagado");
     exit();
+
 } else {
-    echo "Erro ao apagar: " . mysqli_error($conexao);
+    echo "Erro ao apagar o pet: " . mysqli_error($conexao);
 }
 ?>
