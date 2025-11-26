@@ -8,10 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adote Fácil</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/padrao.css" />
-    <link rel="stylesheet" href="../CSS/comoajudar.css" />
-    <script src="../JS/comoajudar.js" defer></script>
-  <script src="../JS/padrao.js" defer></script>
+    <link rel="stylesheet" href="../CSS/padrao.css"> 
+    <link rel="stylesheet" href="../CSS/comoajudar.css"> 
+    <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
@@ -27,10 +26,10 @@
                     <span></span>
                 </label>
                 <div class="dropdown-content">
-                    <a href="../index.php">Início</a>
-                    <a href="sobre.php">Sobre Nós</a>
-                    <a href="adote.php">Adote um pet</a>
-                    <a href="comoajudar.php">Como ajudar</a>
+                    <a href="../index.php"class="linkIndex">Início</a>
+                    <a href="sobre.php" class="linkSobre">Sobre Nós</a>
+                    <a href="adote.php" class="linkAdote">Adote um pet</a>
+                    <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
@@ -86,41 +85,41 @@
                  <h2>Seja a mudança. Salve uma vida hoje.</h2>
             </section>
         </section>
-
     </main>
 
-    <footer>
-    <div class="footer-coluna" id="cl1">
-        <h2>Peludinhos do bem</h2>
-        <p>08989-8989898</p>
-        <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
-        <p>adotefacil@peludinhosdobem.org</p>
-    </div>
+     <footer>
+        <section class="footer">
+            <div class="footer-coluna" id="cl1">
+                <h2>Peludinhos do bem</h2>
+                <p>08989-8989898</p>
+                <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
+                <p>adotefacil@peludinhosdobem.org</p>
+            </div>
 
-    <div class="footer-coluna" id="cl2">
-        <a href="sobre.html"></a>
-        <h2>Conheça a História da Peludinhos do Bem</h2>
-    </div>
+            <div class="footer-coluna" id="cl2">
+                <a href="Paginas/sobre.html"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+                
+            </div>
 
-    <div class="footer-coluna" id="cl3">
-        <h2>Contatos</h2>
+            <div class="footer-coluna" id="cl3">
+                <h2>Contatos</h2>
 
-        <div class="icons-row">
-            <a href="https://www.instagram.com/">
-            <img src="../IMG/index/insta.png" alt="Instagram">
-            </a>
+                <div class="icons-row">
+                    <a href="https://www.instagram.com/">
+                    <img src="../IMG/index/insta.png" alt="Instagram">
+                    </a>
 
-            <a href="https://web.whatsapp.com/">
-            <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
-            </a>
+                    <a href="https://web.whatsapp.com/">
+                    <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+
+        <div class="footer-rodape">
+            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
-    </div>
-
-
-    <div class="footer-rodape">
-        <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
-    </div>
-    
     </footer>
 
 </body>

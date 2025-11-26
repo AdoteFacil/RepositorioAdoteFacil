@@ -275,6 +275,14 @@ main {
   background-color: #274bdb;
 }
 
+.nenhum-resultado{
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+}
 
 /* Responsividade */
 @media (max-width: 768px) {

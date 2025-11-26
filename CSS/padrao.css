@@ -322,6 +322,32 @@ header {
     border-radius: 6px;
     text-align: center;
   }
+
+  .dropdown-content #userMenu{
+    order: 0;
+  }
+  .dropdown-content .linkIndex{
+    order: 1;
+  }
+  .dropdown-content .linkSobre{
+    order: 2;
+  }
+  .dropdown-content .linkAdote{
+    order: 3;
+  }
+  .dropdown-content .linkCajudar{
+    order: 4;
+  }
+
+  .foto-perfil{
+    margin: 0 70px;
+  }
+
+  .foto-perfil:hover{
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+
 }
 
 

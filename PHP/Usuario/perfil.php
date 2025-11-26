@@ -56,10 +56,10 @@ $resultPets = $stmtPets->get_result();
                     <span></span>
                 </label>
                 <div class="dropdown-content">
-                    <a href="../../index.php">Início</a>
-                    <a href="../../Paginas/sobre.php">Sobre Nós</a>
-                    <a href="../../Paginas/adote.php">Adote um pet</a>
-                    <a href="../../Paginas/comoajudar.php">Como ajudar</a>
+                    <a href="../../index.php" class="linkIndex">Início</a>
+                    <a href="../../Paginas/sobre.php" class="linkSobre">Sobre Nós</a>
+                    <a href="../../Paginas/adote.php" class="linkAdote">Adote um pet</a>
+                    <a href="../../Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="Paginas/entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
