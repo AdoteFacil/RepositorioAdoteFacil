@@ -8,7 +8,7 @@
   --header-height: 72px;
   --verde-hover: #2e8b57;
   --cinza-claro: #f8f9fa;
-  --cinza-medio: #ccc;
+  --cinza-medio: #ccc; 
   --cinza-escuro: #444;
 }
 
@@ -44,6 +44,7 @@ form {
   padding: 35px;
   width: 100%;
   max-width: 800px;
+}
 /* ======== RESET E BASE ======== */
 * {
   margin: 0;
@@ -186,6 +187,7 @@ button[type="submit"]:hover {
   background-color: #2d4d66;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 button:hover {
   background-color: #005f8e;
 }
@@ -344,6 +346,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+}
 .footer-rodape {
   width: 100%;
   text-align: center;

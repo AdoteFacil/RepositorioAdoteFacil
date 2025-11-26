@@ -47,8 +47,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/adote.css" />
-  <script src="../JS/adote.js" defer></script>      
   <script src="../JS/padrao.js" defer></script>
+  <script src="../JS/adote.js" defer></script>
 </head>
 <body>
     <header>
@@ -142,8 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <?php else: ?>
 
         <div class="nenhum-resultado">
-            <p>❌ Nenhum pet encontrado para "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
-            <a href="adote.php" class="limpar-busca">Limpar busca</a>
+            <p>❌ Nenhum pet encontrado "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
         </div>
 
     <?php endif; ?>

@@ -12,7 +12,7 @@ $id_cliente = intval($_SESSION['usuario_id']);
 
 // Verifica se o id_pet veio do formulário
 if (!isset($_POST['id_pet'])) {
-    echo "<script>alert('Pet não encontrado.'); window.location.href='../Usuarios/perfil.php';</script>";
+    echo "<script>alert('Pet não encontrado.'); window.location.href='../Usuario/perfil.php';</script>";
     exit;
 }
 
@@ -27,7 +27,7 @@ $result = $stmt->get_result();
 
 // Nenhum pet encontrado ou não pertence ao usuário
 if ($result->num_rows === 0) {
-    echo "<script>alert('Pet não encontrado ou não pertence ao seu usuário.'); window.location.href='../Usuarios/perfil.php';</script>";
+    echo "<script>alert('Pet não encontrado ou não pertence ao seu usuário.'); window.location.href='../Usuario/perfil.php';</script>";
     exit;
 }
 
@@ -56,12 +56,12 @@ $stmtDelete->bind_param("ii", $id_pet, $id_cliente);
 if ($stmtDelete->execute()) {
     echo "<script>
             alert('Pet deletado com sucesso!');
-            window.location.href='../Usuarios/perfil.php';
+            window.location.href='../Usuario/perfil.php';
           </script>";
 } else {
     echo "<script>
             alert('Erro ao deletar o pet.');
-            window.location.href='../Usuarios/perfil.php';
+            window.location.href='../Usuario/perfil.php';
           </script>";
 }
 
