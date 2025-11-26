@@ -114,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 <div class="slide-texto">
                     <h2>Bem-vindo ao Adote Fácil</h2>
                     <p>Transforme a vida de um pet com amor e cuidado.</p>
-                    <a href="adote.php" class="btn-slide">Adotar agora</a>
+                    <a href="Paginas/adote.php" class="btn-slide">Adotar agora</a>
                 </div>
                 </div>
                 <div class="slide">
@@ -122,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 <div class="slide-texto">
                     <h2>Ajude a nossa causa</h2>
                     <p>Doe, compartilhe ou seja voluntário. Toda ajuda importa!</p>
-                    <a href="comoajudar.html" class="btn-slide">Como ajudar</a>
+                    <a href="Paginas/comoajudar.php" class="btn-slide">Como ajudar</a>
                 </div>
                 </div>
                 <div class="slide">
@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 <div class="slide-texto">
                     <h2>Conheça nossos parceiros</h2>
                     <p>Petshops, clínicas e apoiadores que fazem a diferença.</p>
-                    <a href="comoajudar.html" class="btn-slide">Ver parcerias</a>
+                    <a href="Paginas/comoajudar.php" class="btn-slide">Ver parcerias</a>
                 </div>
                 </div>
             </div>
@@ -338,7 +338,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
             <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
-        <div id="popup-confirmacao" class="popup-overlay">
+<div id="popup-confirmacao" class="popup-overlay">
     <div class="popup">
         <h2>Confirmar Adoção</h2>
         <p>Você realmente deseja adotar este pet?</p>

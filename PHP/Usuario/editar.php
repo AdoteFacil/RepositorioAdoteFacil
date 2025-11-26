@@ -34,18 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Inicialização para montagem dinâmica do SQL
     $campos_para_atualizar = [
-        "nome = ?",
-        "cpf = ?",
-        "data_nasc = ?",
-        "email = ?", 
-        "telefone = ?", 
-        "whatsapp = ?", 
-        "estado = ?", 
-        "cidade = ?"
+    "nome = ?",
+    "data_nasc = ?",
+    "email = ?", 
+    "telefone = ?", 
+    "whatsapp = ?", 
+    "estado = ?", 
+    "cidade = ?"
     ];
-    $tipos = "ssssssss"; // Tipos iniciais para os 8 campos de string
+
+    $tipos = "sssssss";
     $parametros = [
-        $nome, $cpf, $dataNasc, $email, $telefone, $whatsapp, $estado, $cidade
+        $nome, $dataNasc, $email, $telefone, $whatsapp, $estado, $cidade
     ];
 
     // 1. Lógica da Senha 
