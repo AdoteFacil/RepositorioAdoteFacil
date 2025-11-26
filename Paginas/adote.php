@@ -47,7 +47,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/padrao.css" />
   <link rel="stylesheet" href="../CSS/adote.css" />
-  <script src="../JS/adote.js" defer></script>
+  <script src="../JS/adote.js" defer></script>      
+  <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
