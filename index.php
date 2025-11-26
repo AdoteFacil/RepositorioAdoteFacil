@@ -186,12 +186,16 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                                 <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
                             </div>
                             <div class="sobre">
-                                <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
-                                <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
-                                <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
-                                <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
-                                <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
-                                <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                                <div class="sobre-content">
+                                    <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
+                                    <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
+                                    <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
+                                    <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
+                                    <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
+                                </div>
+                                <div class="div-qadot">
+                                    <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                                </div>
                             </div>
                             <button class="saiba">Saber mais</button>
                         </div>
@@ -350,7 +354,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
             </div>
         </div>
-
 </body>
 <script>
 let linkDestino = "";

@@ -125,13 +125,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
 
                 <div class="sobre">
-                    <p><strong>Peso:</strong> <?= htmlspecialchars($animal['peso']) ?> kg</p>
-                    <p><strong>Espécie:</strong> <?= htmlspecialchars($animal['especie']) ?></p>
-                    <p><strong>Porte:</strong> <?= htmlspecialchars($animal['porte']) ?></p>
-                    <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
-                    <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
-
-                    <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                    <div class="sobre-content">
+                        <p><strong>Peso:</strong> <?= htmlspecialchars($animal['peso']) ?> kg</p>
+                        <p><strong>Espécie:</strong> <?= htmlspecialchars($animal['especie']) ?></p>
+                        <p><strong>Porte:</strong> <?= htmlspecialchars($animal['porte']) ?></p>
+                        <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
+                        <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
+                    </div>
+                    
+                    <div class="div-qadot">
+                        <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
+                    </div>
                 </div>
 
                 <button class="saiba">Saber mais</button>
