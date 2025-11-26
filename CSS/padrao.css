@@ -509,3 +509,73 @@ footer h2 {
         font-size: 11px;
     }
 }
+
+  /* Fundo escuro */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Caixa do popup */
+.popup {
+    background: #fff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    text-align: center;
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+}
+
+.popup p {
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.botoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancelar, .btn-confirmar {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background: #ccc;
+}
+
+.btn-cancelar:hover {
+    background: #b3b3b3;
+}
+
+.btn-confirmar {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background: #449d48;
+}
