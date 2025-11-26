@@ -30,6 +30,14 @@
                     <a href="sobre.php" class="linkSobre">Sobre Nós</a>
                     <a href="adote.php" class="linkAdote">Adote um pet</a>
                     <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 2   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <a href="../PHP/ADM/Usuario/consulta.php">adm</a>
+                    <?php endif; ?>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
                         <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>

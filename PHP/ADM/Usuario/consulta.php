@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+session_start();
 include('../../conexao.php');
 
 $sql = "SELECT * FROM cliente ORDER BY id_cliente DESC";
@@ -21,7 +22,7 @@ if ($result) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesupremo.css">
+  <link rel="stylesheet" href="../padrao.css">
   <script src="../../../JS/deleteAdm.js" defer></script>
   <title>Consulta de Usuários</title>
 </head>
@@ -60,8 +61,12 @@ if ($result) {
                     <td><?= htmlspecialchars($pessoa['whatsapp']) ?></td>
                     <td><?= htmlspecialchars($pessoa['estado']) ?></td>
                     <td><?= htmlspecialchars($pessoa['cidade']) ?></td>
-                    <td><a href="editar.php?id=<?php echo $pessoa['id_cliente']; ?>">Editar</a> |
-                    <a href="#" class="btn-delete" data-id="<?= $pessoa['id_cliente'] ?>">Apagar</a></td>
+                    <td class="acoes">
+                      <div class="acoes">
+                        <a href="editar.php?id=<?php echo $pessoa['id_cliente']; ?>">✏ Editar</a>
+                        <a href="apagar.php?id=<?= $pessoa['id_cliente'] ?>" class="btn-delete">🗑 Apagar</a>
+                      </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>

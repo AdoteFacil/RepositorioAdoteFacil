@@ -165,7 +165,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 <div class="opcao">
                     <h2>&#128722; | Parcerias Locais</h2>
                     <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                    <a class="botao-link" href="Paginas/comoajudar.php">Fazer parceria</a>
+                    <a class="botao-link" href="https://wa.me/5599991148710?text=Ol%C3%A1,%20gostaria%20de%20saber%20como%20podemos%20fazer%20uma%20parceria%20com%20a%20ONG%20Adote%20F%C3%A1cil.
+">Fazer parceria</a>
                 </div>
             </div>
 		</section>
@@ -339,16 +340,16 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
         </div>
     </footer>
         <div id="popup-confirmacao" class="popup-overlay">
-    <div class="popup">
-        <h2>Confirmar Adoção</h2>
-        <p>Você realmente deseja adotar este pet?</p>
+            <div class="popup">
+                <h2>Confirmar Adoção</h2>
+                <p>Você realmente deseja adotar este pet?</p>
 
-        <div class="botoes">
-            <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
-            <button class="btn-confirmar" id="confirmarBtn">Confirmar</button>
+                <div class="botoes">
+                    <button class="btn-cancelar" onclick="fecharPopup()">Cancelar</button>
+                    <button class="btn-confirmar" id="confirmarBtn">Confirmar</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 </body>
 <script>
