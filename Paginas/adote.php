@@ -134,8 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <?php else: ?>
 
         <div class="nenhum-resultado">
-            <p>❌ Nenhum pet encontrado para "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
-            <a href="adote.php" class="limpar-busca">Limpar busca</a>
+            <p>❌ Nenhum pet encontrado "<strong><?= htmlspecialchars($termo) ?></strong>".</p>
         </div>
 
     <?php endif; ?>
