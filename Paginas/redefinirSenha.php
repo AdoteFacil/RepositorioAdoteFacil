@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 require '../PHP/conexao.php';
 
@@ -34,6 +34,7 @@ if (strtotime($user['token_expira']) < time()) {
     <title>Redefinir Senha</title>
     <link rel="stylesheet" href="../CSS/padrao.css">
     <link rel="stylesheet" href="../CSS/entrar.css">
+    <script src="../JS/cadastrar.js" defer></script>
 </head>
 <body>
 
@@ -41,15 +42,17 @@ if (strtotime($user['token_expira']) < time()) {
     <h1>Nova Senha</h1>
     <div class="linha-decorativa"></div>
 
-    <form class="login-form" action="../PHP/Usuario/redefinirSenha.php" method="POST">
+    <form class="login-form" action="../PHP/Usuario/redefinirSenha.php" method="POST" onsubmit="return validar()">
         <input type="hidden" name="token" value="<?= $token ?>">
 
         <label for="senha">Nova Senha:</label>
-        <input type="password" name="senha" required>
+        <input type="password" name="senha" id="senha" required>
+        
+        <label for="Csenha">Confirmar Senha:</label>
+        <input type="password" name="Csenha" id="Csenha" required>
 
         <button class="botao" type="submit">Alterar Senha</button>
     </form>
 </div>
-
 </body>
 </html>

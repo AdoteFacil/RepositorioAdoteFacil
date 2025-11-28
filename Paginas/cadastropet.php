@@ -52,8 +52,8 @@ include ('../PHP/conexao.php');
                                 <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
                             </span>
 
-                            <a href="PHP/Usuario/perfil.php">Perfil</a>
-                            <a href="PHP/Usuario/logout.php">Sair</a>
+                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                            <a href="../PHP/Usuario/logout.php">Sair</a>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -70,7 +70,7 @@ include ('../PHP/conexao.php');
 
           <div class="inputBox">
             <label for="nome" class="labelinput">Nome do Animal</label>
-            <input type="text" name="nome" id="nome" class="inputUser" required />
+            <input type="text" name="nome" id="nome" class="inputUser" maxlength="15" required />
           </div>
 
           <div class="inputBox">

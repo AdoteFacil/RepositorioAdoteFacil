@@ -207,7 +207,7 @@ main {
   bottom: 60px;
   background-color: rgba(255, 255, 255, 0.95);
   padding: 15px;
-  overflow-y: auto;
+  overflow-y: none;
   border-radius: 12px;
   text-align: left;
   opacity: 0;
@@ -225,6 +225,9 @@ main {
 
 .sobre-content{
   height: 250px;
+  word-wrap: break-word;     /* força a quebra */
+  overflow-wrap: break-word; /* alternativa moderna */
+  hyphens: auto;
 }
 
 .div-qadot{

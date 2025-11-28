@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
 
                 <div class="pet-info">
-                    <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                    <h2><?php echo $animal['nome']; ?></h2>
                     <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
                     <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
                     <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                         <p><strong>Espécie:</strong> <?= htmlspecialchars($animal['especie']) ?></p>
                         <p><strong>Porte:</strong> <?= htmlspecialchars($animal['porte']) ?></p>
                         <p><strong>Raça:</strong> <?= htmlspecialchars($animal['raca']) ?></p>
-                        <p><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
+                        <p class="p-sobre-content"><strong>Sobre:</strong> <?= htmlspecialchars($animal['sobrePet']) ?></p>
                     </div>
                     
                     <div class="div-qadot">

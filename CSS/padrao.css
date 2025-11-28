@@ -295,6 +295,14 @@ header {
   border-top: 1px solid #eee;
 }
 
+.pet-info{
+  height: 200px;
+}
+
+.pet-info h2{
+  font-size: 22px;
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .burger {

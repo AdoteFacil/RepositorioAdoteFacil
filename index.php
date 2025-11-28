@@ -180,7 +180,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                                 <img src="IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
                              </div>
                              <div class="pet-info">
-                                <h2>Nome: <?php echo $animal['nome']; ?></h2>
+                                <h2><?php echo $animal['nome']; ?></h2>
                                 <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
                                 <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
                                 <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
@@ -201,7 +201,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                         </div>
                     <?php endforeach; ?>
             <?php else: ?>
-                <p>Nenhum usuario cadastrado.</p>
+                <p>Nenhum pet cadastrado.</p>
             <?php endif; ?>
                 </div>
            <!-- <nav class="vejamais">
