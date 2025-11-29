@@ -227,7 +227,6 @@ main {
   height: 250px;
   word-wrap: break-word;     /* força a quebra */
   overflow-wrap: break-word; /* alternativa moderna */
-  hyphens: auto;
 }
 
 .div-qadot{

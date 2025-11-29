@@ -1,6 +1,18 @@
 <?php
 session_start();
 include ('../PHP/conexao.php');
+
+$id_usuario = $_SESSION['usuario_id'];
+
+$sql = "SELECT * FROM cliente WHERE id_cliente = ?";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    header('location: entrar.html');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

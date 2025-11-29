@@ -303,10 +303,17 @@ header {
   font-size: 22px;
 }
 
+.sobre-content{
+  height: 250px;
+  word-wrap: break-word;     /* força a quebra */
+  overflow-wrap: break-word; /* alternativa moderna */
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .burger {
     display: block;
+    margin: 0 20px;
   }
 
   .dropdown-content {
