@@ -7,7 +7,7 @@ require "../conexao.php";
 
 // Se não estiver logado
 if (!isset($_SESSION['usuario_id'])) {
-    echo "<script>alert('Sessão expirada. Faça login novamente.'); window.location.href='entrar.html';</script>";
+    echo "<script>alert('Sessão expirada. Faça login novamente.'); window.location.href='entrar.php';</script>";
     exit;
 }
 

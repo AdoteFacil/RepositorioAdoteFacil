@@ -4,7 +4,7 @@ require '../conexao.php';
 
 
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: ../../Paginas/entrar.html');
+    header('Location: ../../Paginas/entrar.php');
     exit;
 }
 
@@ -250,7 +250,7 @@ $resultPets = $stmtPets->get_result();
         </div>
         
         <div id="registrar">
-            <a href="../../Paginas/entrar.html" class="btn btn-primary">Sair</a>
+            <a href="../../Paginas/entrar.php" class="btn btn-primary">Sair</a>
             <a href="editar.php" class="btn btn-primary">Editar</a>
             <form action="delete.php" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar sua conta?');">
                 <button type="submit">Deletar</button>

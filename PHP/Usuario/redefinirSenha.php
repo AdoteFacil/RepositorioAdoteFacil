@@ -30,5 +30,10 @@ $stmtUp = $conexao->prepare($sqlUp);
 $stmtUp->bind_param("si", $senha, $id);
 $stmtUp->execute();
 
-echo "Senha alterada com sucesso! <a href='../../Paginas/entrar.php'>Entrar</a>";
+echo "<script>
+    alert('Senha alterada com sucesso!');
+    window.location.href='../../Paginas/entrar.php';
+</script>";
+exit;
+
 ?>

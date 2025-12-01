@@ -35,6 +35,47 @@ if (strtotime($user['token_expira']) < time()) {
     <link rel="stylesheet" href="../CSS/padrao.css">
     <link rel="stylesheet" href="../CSS/entrar.css">
     <script src="../JS/cadastrar.js" defer></script>
+    <style>
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            width: 350px;
+            animation: fadein .3s ease;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .popup-content button {
+            padding: 10px 15px;
+            background: #1E90FF;
+            border: none;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: scale(.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 

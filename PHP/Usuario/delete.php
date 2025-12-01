@@ -3,7 +3,7 @@ session_start();
 require '../conexao.php';
 
 if (!isset($_SESSION['usuario_id'])) {
-    echo "<script>alert('Sessão expirada! Faça login novamente.'); window.location.href='../../Paginas/entrar.html';</script>";
+    echo "<script>alert('Sessão expirada! Faça login novamente.'); window.location.href='../../Paginas/entrar.php';</script>";
     exit;
 }
 
