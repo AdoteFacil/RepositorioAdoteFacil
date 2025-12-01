@@ -311,7 +311,7 @@ $resultPets = $stmtPets->get_result();
             </div>
 
             <div class="footer-coluna" id="cl2">
-                <a href="Paginas/sobre.html"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+                <a href="../../Paginas/sobre.php"><h2>Conheça a História da Peludinhos do Bem</h2></a>
                 
             </div>
 

@@ -21,8 +21,8 @@ if ($result->num_rows === 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adote Fácil - Cadastro de Pet</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../CSS/padrao.css"/>
-  <link rel="stylesheet" href="../CSS/cadastropet.css"/>
+  <link rel="stylesheet" href="../CSS/padrao.css">
+  <link rel="stylesheet" href="../CSS/cadastropet.css">
   <script src="../JS/padrao.js" defer></script>
 </head>
 <body>
@@ -159,40 +159,39 @@ if ($result->num_rows === 0) {
       </form>
     </div>
   </main>
+<footer>
+        <section class="footer">
+            <div class="footer-coluna" id="cl1">
+                <h2>Peludinhos do bem</h2>
+                <p>08989-8989898</p>
+                <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
+                <p>adotefacil@peludinhosdobem.org</p>
+            </div>
 
-    <footer>
-    <div class="footer-coluna" id="cl1">
-        <h2>Peludinhos do bem</h2>
-        <p>08989-8989898</p>
-        <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
-        <p>adotefacil@peludinhosdobem.org</p>
-    </div>
+            <div class="footer-coluna" id="cl2">
+                <a href="sobre.php"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+                
+            </div>
 
-    <div class="footer-coluna" id="cl2">
-        <a href="sobre.html"></a>
-        <h2>Conheça a História da Peludinhos do Bem</h2>
-    </div>
+            <div class="footer-coluna" id="cl3">
+                <h2>Contatos</h2>
 
-    <div class="footer-coluna" id="cl3">
-        <h2>Contatos</h2>
+                <div class="icons-row">
+                    <a href="https://www.instagram.com/">
+                    <img src="../IMG/index/insta.png" alt="Instagram">
+                    </a>
 
-        <div class="icons-row">
-            <a href="https://www.instagram.com/">
-            <img src="IMG/index/insta.png" alt="Instagram">
-            </a>
+                    <a href="https://web.whatsapp.com/">
+                    <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+                    </a>
+                </div>
+                
+            </div>
+        </section>
 
-            <a href="https://web.whatsapp.com/">
-            <img src="IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
-            </a>
+        <div class="footer-rodape">
+            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
-    </div>
-
-
-    <div class="footer-rodape">
-        <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
-    </div>
-    
     </footer>
-
 </body>
 </html>

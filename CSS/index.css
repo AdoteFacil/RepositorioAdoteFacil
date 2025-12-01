@@ -275,7 +275,7 @@ main {
 }
 /* === FORÇANDO 1 COLUNA NO MOBILE === */
 /* Aumentei para 1000px para garantir que tablets também peguem essa regra */
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     
     .opcoes-comunidade {
         /* Desliga o Grid e liga o Flexbox */
@@ -473,6 +473,16 @@ main {
 .vejamais:hover{
   transform: scale(1.05);
   transition: 0.3s;
+}
+
+@media (max-width: 1200px){
+    .vitrine{
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+    .pet-card{
+      width: 350px;
+    } 
 }
 
 /* === RESPONSIVIDADE === */

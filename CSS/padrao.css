@@ -480,10 +480,24 @@ footer h2 {
     }
 
     #cl1, #cl2, #cl3 {
-        width: auto;
+        max-width: 400px;
         margin-left: 0;
         margin-bottom: 20px;
         flex: 1 1 40%;
+    }
+    
+    #cl1{
+      max-width: 300px;
+    }
+
+    #cl3{
+      text-align: center;
+      max-width: 200px;
+      padding: 0 20px;
+    }
+    .icons-row{
+      display: flex;
+      justify-content: center;
     }
 
     footer h2 {
@@ -493,6 +507,26 @@ footer h2 {
     
     #cl1 p, #cl2 a {
         font-size: 14px;
+    }
+}
+
+@media(max-width: 1024px){
+    .footer{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #cl1{
+      text-align: center;
+    }
+    #cl3{
+      text-align: center;
+    }
+
+    .icons-row{
+      display: flex;
+      justify-content: center;
     }
 }
 
