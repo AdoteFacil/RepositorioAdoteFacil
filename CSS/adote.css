@@ -327,9 +327,11 @@ main {
   }
 }
 
-@media (max-width: 480px) {
-  .pet-card {
-    padding: 10px;
+@media (max-width: 516px) {
+    .pet-card {
+    width: 400px;
+    height: 550px;
+    margin: 0 auto;
   }
 
   .sobre {
