@@ -3,7 +3,7 @@ session_start();
 require '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../../Paginas/entrar.html');
+    header('Location: ../../Paginas/entrar.php');
     exit;
 }
 
@@ -30,5 +30,5 @@ $stmtUp = $conexao->prepare($sqlUp);
 $stmtUp->bind_param("si", $senha, $id);
 $stmtUp->execute();
 
-echo "Senha alterada com sucesso! <a href='../../Paginas/entrar.html'>Entrar</a>";
+echo "Senha alterada com sucesso! <a href='../../Paginas/entrar.php'>Entrar</a>";
 ?>

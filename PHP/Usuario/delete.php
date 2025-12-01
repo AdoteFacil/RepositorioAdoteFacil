@@ -45,7 +45,7 @@ $stmtCliente->bind_param("i", $id);
 if ($stmtCliente->execute()) {
     session_unset();
     session_destroy();
-    echo "<script>alert('Conta deletada com sucesso.'); window.location.href='../../Paginas/entrar.html';</script>";
+    echo "<script>alert('Conta deletada com sucesso.'); window.location.href='../../Paginas/entrar.php';</script>";
     exit;
 } else {
     echo "<script>alert('Erro ao deletar conta.'); window.location.href='../Paginas/perfil.php';</script>";

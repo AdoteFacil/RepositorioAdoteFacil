@@ -20,7 +20,7 @@
     </form>
 
     <div class="cadastro-link">
-        <a href="entrar.html">Voltar</a>
+        <a href="entrar.php">Voltar</a>
     </div>
 </div>
 

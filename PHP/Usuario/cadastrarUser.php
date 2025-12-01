@@ -3,7 +3,7 @@ session_start();
 require '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../../Paginas/cadastro.html');
+    header('Location: ../../Paginas/cadastro.php');
     exit;
 }
 

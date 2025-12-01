@@ -3,7 +3,7 @@ session_start();
 require '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../../Paginas/entrar.html');
+    header('Location: ../../Paginas/entrar.php');
     exit;
 }
 

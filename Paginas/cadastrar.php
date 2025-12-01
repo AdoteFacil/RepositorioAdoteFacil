@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,7 +30,7 @@
           <a href="sobre.php">Sobre Nós</a>
           <a href="adote.php">Adote um pet</a>
           <a href="comoajudar.php">Como ajudar</a>
-          <a href="entrar.html">Entrar</a>
+          <a href="entrar.php">Entrar</a>
         </div>
       </div>
     </nav>
@@ -133,7 +136,7 @@
         <p>Ao clicar em "Salvar", você concorda com os nossos <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.</p>
 
         <p class="link-secundario">
-         <a href="entrar.html">Já possui uma conta?</a>
+         <a href="entrar.php">Já possui uma conta?</a>
         </p>
 
       </fieldset>

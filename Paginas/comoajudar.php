@@ -40,7 +40,7 @@
                     <?php endif; ?>
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <a href="entrar.html" id="btn-entrar" class="botao-entrar">Entrar</a>
+                        <a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
                     <?php else: ?>
                     <div class="usuario-box" id="userMenu">
                         <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,7 +31,7 @@
                 <a href="sobre.php">Sobre Nós</a>
                 <a href="adote.php">Adote um pet</a>
                 <a href="comoajudar.php">Como ajudar</a>
-                <a href="entrar.html" id="entrar">Entrar</a>
+                <a href="entrar.php" id="entrar">Entrar</a>
                 </div>
             </div>
         </nav>
@@ -51,7 +54,7 @@
             </form>
 
             <div class="cadastro-link">
-            Ainda não possui uma conta? <a href="cadastrar.html">Cadastre-se</a>
+            Ainda não possui uma conta? <a href="cadastrar.php">Cadastre-se</a>
             </div>
         </div>
     </main>
