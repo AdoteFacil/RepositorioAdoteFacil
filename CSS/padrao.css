@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Wix Madefor Text', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--green-deep);
   background-color: #fff;
   color: #333;
@@ -49,7 +49,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -144,6 +144,8 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 100%;
 }
 /* FOTO 100% limpa */
 .foto-perfil {
@@ -374,12 +376,11 @@ header {
    VERSÃO DESKTOP
    ========================================= */
 footer {
-    background-color: #fff;
+    background-color: var(--cream);
     border-top: 3px solid var(--cinza-medio);
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     font-family: Arial, sans-serif;
     text-align: left;
     width: 100%;
@@ -390,13 +391,13 @@ footer {
 footer h2 {
     color: var(--brown-warm);
     white-space: nowrap;
-    margin-right: 70px;
 }
 
 .footer {
     display: flex;
-    width: 1200px;
+    width: 1500px;
     height: 150px;
+    justify-content: space-between;
 }
 
 .footer-coluna {
@@ -420,11 +421,12 @@ footer h2 {
 
 #cl3 {
     width: 400px;
-    margin-left: 150px;
-    flex: 1 1 200px;
     display: flex;
+    align-items:flex-end;
     flex-direction: column;
-    color: #4b0082;
+}
+#cl3 h2{
+  margin-right: 10px;
 }
 
 #cl1 p {

@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="IMG/LogoAdote2-removebg-preview.png" alt="logo_Adote_Fácil"></a>
             </div>
         <div class="dropdown">
             <input type="checkbox" id="burger-menu">
@@ -169,7 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
             </div>
 		</section>
 		<section class="cards-vitrini">
-            <h1>Conheça pets em buasca de uma familía</h1>
+            <h1>Conheça pets em busca de uma familía</h1>
 			<?php if (count($pet) > 0): ?>
                 <div class="vitrine">
                     <?php foreach ($pet as $animal): ?>
@@ -183,21 +183,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                                 <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
                                 <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
                                 <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
+                                <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
+                                <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
                             </div>
-                            <div class="sobre">
-                                <div class="sobre-content">
-                                    <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
-                                    <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
-                                    
-                                    <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
-                                    <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
-                                </div>
                                 <div class="div-qadot">
                                     <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>
                                 </div>
                             </div>
-                            <button class="saiba">Saber mais</button>
-                        </div>
                     <?php endforeach; ?>
             <?php else: ?>
                 <p>Nenhum pet cadastrado.</p>
@@ -208,105 +200,107 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
             </nav>
 		</section>
 	</main>
-<div class="container-depoimentos">
-    <div class="header-depoimentos">
-        <h2>O que dizem sobre os peludinhos do bem?</h2>
-    </div>
-
-    <div class="carousel-wrapper">
-        <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
-        <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
-        
-        <div class="carousel-container" id="carouselContainer">
-            
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimento1.jpg" class="author-photo">
-                    <div class="author-details">
-                        <h3>Maria S.</h3>
-                        <p>Tutora do Thor</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "Adotar com a Peludinhos do Bem mudou minha vida e a do Thor..."
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimentos.08.png" class="author-photo">
-                    <div class="author-details">
-                        <h3>João, o Gato</h3>
-                        <p>Tutor do Rex</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "Ter adotado aqui foi uma das melhores decisões..."
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimento3.jpg" class="author-photo">
-                    <div class="author-details">
-                        <h3>Marcelo M.</h3>
-                        <p>Voluntário</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "Doar um pouco do meu tempo me fez sentir parte de algo maior..."
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimentos.07.png" class="author-photo">
-                    <div class="author-details">
-                        <h3>Carlos R.</h3>
-                        <p>Apoiador</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "Conhecer o trabalho da Peludinhos do Bem me inspirou muito..."
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimento2.jpg" class="author-photo">
-                    <div class="author-details">
-                        <h3>Ana Paula</h3>
-                        <p>Tutora da Luna</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "A Luna chegou na minha vida e trouxe tanta alegria!"
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="author-info">
-                    <img src="IMG/comoajudar/depoimento4.jpg" class="author-photo">
-                    <div class="author-details">
-                        <h3>Pedro Santos</h3>
-                        <p>Tutor do Bob</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    "Adotar foi fácil, teve acompanhamento e tudo..."
-                </div>
-                <div class="stars"><span class="star">★★★★★</span></div>
-            </div>
-
+    <div class="background-depoimentos">
+        <div class="container-depoimentos">
+        <div class="header-depoimentos">
+            <h2>O que dizem sobre os peludinhos do bem?</h2>
         </div>
 
-        <div class="carousel-dots" id="carouselDots"></div>
-    </div>
+        <div class="carousel-wrapper">
+            <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
+            <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
+            
+            <div class="carousel-container" id="carouselContainer">
+                
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimento1.jpg" class="author-photo">
+                        <div class="author-details">
+                            <h3>Maria S.</h3>
+                            <p>Tutora do Thor</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Adotar com a Peludinhos do Bem mudou minha vida e a do Thor..."
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimentos.08.png" class="author-photo">
+                        <div class="author-details">
+                            <h3>João, o Gato</h3>
+                            <p>Tutor do Rex</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Ter adotado aqui foi uma das melhores decisões..."
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimento3.jpg" class="author-photo">
+                        <div class="author-details">
+                            <h3>Marcelo M.</h3>
+                            <p>Voluntário</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Doar um pouco do meu tempo me fez sentir parte de algo maior..."
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimentos.07.png" class="author-photo">
+                        <div class="author-details">
+                            <h3>Carlos R.</h3>
+                            <p>Apoiador</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Conhecer o trabalho da Peludinhos do Bem me inspirou muito..."
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimento2.jpg" class="author-photo">
+                        <div class="author-details">
+                            <h3>Ana Paula</h3>
+                            <p>Tutora da Luna</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "A Luna chegou na minha vida e trouxe tanta alegria!"
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="author-info">
+                        <img src="IMG/comoajudar/depoimento4.jpg" class="author-photo">
+                        <div class="author-details">
+                            <h3>Pedro Santos</h3>
+                            <p>Tutor do Bob</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Adotar foi fácil, teve acompanhamento e tudo..."
+                    </div>
+                    <div class="stars"><span class="star">★★★★★</span></div>
+                </div>
+
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+        </div>
     </div>
     <footer>
         <section class="footer">

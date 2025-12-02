@@ -132,7 +132,7 @@ main {
 }
 
 .comunidade-content{
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -332,8 +332,8 @@ main {
   padding: 0%;
   border-radius: 12px;
   margin: 10px 5px;/*corrigido*/
-  width: 260px;
-  height: 450px;
+  width: 300px;
+  height: 550px;
 }
 
 .pet-card:hover {
@@ -363,68 +363,8 @@ main {
   word-wrap: break-word;
 }
 
-.saiba {
-  padding:10px;
-  border: none;
-  background-color: var(--green-pastel);
-  color: #646464;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  z-index: 11;
-}
-
-.saiba:hover {
-  transform: scale(1.03);
-  background-color: lightblue;
-}
-
-.sobre {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 60px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 15px;
-  border-radius: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(30px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-  z-index: 10;
-  margin: -15px; /*corrigido*/
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sobre-content{
-  height: 250px;
-}
-
 .div-qadot{
-  display: flex;
-  justify-content: center;
-  width: 200px;
   margin: auto;
-}
-
-.qadot {
-  padding: 10px;
-  width: 1000px;
-  border: none;
-  border-radius: 5px;
-  background-color: #9ddf9f;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  width: 75%;
 }
 
 .pet-card.expandido .pet-imagem {
@@ -440,21 +380,22 @@ main {
 }
 
 .qadot {
-  padding: 8px;
-  margin-top: 35%;
+  padding: 10px 16px;
+ 
   border: none;
-  border-radius: 5px;
-  background-color: #9ddf9f;
+  border-radius: 50px;
+  background-color:rgb(200, 243, 204);
+  color: #504e4e;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  width: 100%;
 }
 
 .qadot:hover {
   transform: scale(1.03);
-  background-color: #8ac88a;
+  transition: 0.3s;
+  background-color: #9ee9a6;
 }
 
 .vejamais{
@@ -611,9 +552,18 @@ main {
 }
 /* === DEPOIMENTOS === */
 /* === DEPOIMENTOS === */
+.background-depoimentos{
+  background-color: #fff;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-depoimentos {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 1800px;
+    margin: 0px auto;
     padding: 40px 20px;
     background-color: #fff ;
     border-radius: 10px;
@@ -733,7 +683,7 @@ main {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--cinza-medio);
+    background: var(--gray-border);
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -744,7 +694,7 @@ main {
 }
 
 .dot.active {
-    background: var(--azul-principal);
+    background: var(--gray-border);
     width: 30px;
     border-radius: 6px;
 }
@@ -771,8 +721,6 @@ main {
 }
 
 .carousel-nav:hover {
-    background: var(--azul-principal);
-    color: white;
     transform: translateY(-50%) scale(1.1);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
