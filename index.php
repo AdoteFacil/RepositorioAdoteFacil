@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="IMG/LOGOAIAI.png" alt="logo_Adote_Fácil"></a>
             </div>
         <div class="dropdown">
             <input type="checkbox" id="burger-menu">
