@@ -6,6 +6,7 @@
     <title>Recuperar Senha</title>
     <link rel="stylesheet" href="../CSS/padrao.css">
     <link rel="stylesheet" href="../CSS/entrar.css">
+    
     <style>
         .modal-bg {
         position: fixed;
@@ -40,9 +41,82 @@
         cursor: pointer;
         border-radius: 6px;
         }
+        .login-container {
+            max-height: 410px;
+            margin-top: 200px;
+        }
+        .login-form button.botao {
+  background-color: #33414d;
+        }
+        .login-form input:focus {
+  border-color: #355c7d;
+        }
+        .login-container h1 {
+          color: #7b909c;
+        }
+        .login-container {
+          background-color: #eaf9ef;
+        }
+        .linha-decorativa{
+            background-color: #2d3242;
+        }
+        body {
+            background: #368659;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+            </div>
+        <div class="dropdown">
+            <input type="checkbox" id="burger-menu">
+            <label class="burger" for="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        <div class="dropdown-content">
+            <a href="index.php" class="linkIndex">Início</a>
+            <a href="Paginas/sobre.php" class="linkSobre">Sobre Nós</a>
+            <a href="Paginas/adote.php" class="linkAdote">Adote um pet</a>
+            <a href="Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a>
+            <?php 
+            if (
+                isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+            ): ?>
+                <a href="PHP/ADM/Usuario/consulta.php">adm</a>
+            <?php endif; ?>
+
+
+
+            <?php if (!isset($_SESSION['usuario_id'])): ?>
+                <a href="Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
+            <?php else: ?>
+                <div class="usuario-box" id="userMenu">
+                    <img src="IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                        class="foto-perfil" alt="Foto">
+
+                    <div class="dropdown-user">
+                        <span class="nome-dropdown">
+                            <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                        </span>
+
+                        <a href="PHP/Usuario/perfil.php">Perfil</a>
+                        <a href="PHP/Usuario/logout.php">Sair</a>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+            </div>
+            </div>
+        </nav>
+    </header>
 
 <div class="login-container">
     <h1>Recuperar Senha</h1>
