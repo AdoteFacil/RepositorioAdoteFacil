@@ -1,13 +1,15 @@
 :root {
-  --roxo: #4b0082;
-  --roxo-claro: #fbe4ff;
-  --azul-principal: #97a2ff;
-  --azul-hover: #7a8ccb;
-  --verde-hover: #2e8b57;
-  --cinza-claro: #f8f9fa;
-  --cinza-medio: #ccc;
-  --cinza-escuro: #444;
-  --cinza-rodape: #777;
+  --green-deep: #1E5F3A;
+  --green-primary: #4CAF50;
+  --green-pastel: #E9F4EA;
+
+  --cream: #F7F5F2;
+  --brown-warm: #C89F7E;
+  --accent-purple: #A88CCD;
+
+  --gray-bg: #ECEAE8;
+  --gray-border: #D8D6D2;
+  --gray-text: #646464;
 }
 
 * {
@@ -18,6 +20,7 @@
 
 body {
   font-family: 'Wix Madefor Text', sans-serif;
+  background-color: var(--green-deep);
   background-color: #fff;
   color: #333;
   line-height: 1.6;
@@ -29,15 +32,15 @@ img {
 }
 
 main {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+
 header {
   top: 0;
   z-index: 999;
-  background-color: var(--roxo-claro);
+  background-color: var(--cream);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -122,6 +125,7 @@ header {
 
 .dropdown-content a {
   background-color: var(--azul-principal);
+  background-color: #333;
   color: white;
   padding: 10px 20px;
   border-radius: 9px;
@@ -370,7 +374,7 @@ header {
    VERSÃO DESKTOP
    ========================================= */
 footer {
-    background-color: var(--cinza-claro);
+    background-color: #fff;
     border-top: 3px solid var(--cinza-medio);
     display: flex;
     flex-wrap: wrap;
@@ -384,7 +388,7 @@ footer {
 }
 
 footer h2 {
-    color: #4b0082;
+    color: var(--brown-warm);
     white-space: nowrap;
     margin-right: 70px;
 }

@@ -49,15 +49,15 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/padrao.css">
   <link rel="stylesheet" href="CSS/index.css">
-  <script src="JS/index.js" defer></script>
   <script src="JS/padrao.js" defer></script>
+  <script src="JS/index.js" defer></script>
   <script src="JS/depoimentos.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
             </div>
         <div class="dropdown">
             <input type="checkbox" id="burger-menu">
@@ -105,12 +105,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
         </nav>
     </header>
 
-
-	<main>
-		<section class="carrossel">
+    	<section class="carrossel">
             <div class="slides-container">
                 <div class="slide ativo">
-                <img src="IMG/index/adocao-de-caes3.jpg" alt="Slide 1">
+                <img src="IMG/index/imgi_5_Blurry-backgroundsDSC00458-Edit.jpg" alt="Slide 1">
                 <div class="slide-texto">
                     <h2>Bem-vindo ao Adote Fácil</h2>
                     <p>Transforme a vida de um pet com amor e cuidado.</p>
@@ -118,7 +116,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
                 <div class="slide">
-                <img src="IMG/index/pexels-photo-141496.jpg" alt="Slide 2">
+                <img src="IMG/index/imgi_78_DSC07404-Edit.jpg" alt="Slide 2">
                 <div class="slide-texto">
                     <h2>Ajude a nossa causa</h2>
                     <p>Doe, compartilhe ou seja voluntário. Toda ajuda importa!</p>
@@ -126,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
                 <div class="slide">
-                <img src="IMG/index/golden.jpg" alt="Slide 3">
+                <img src="IMG/index/imgi_7_DSC01244-Pano-2-Edit.jpg" alt="Slide 3">
                 <div class="slide-texto">
                     <h2>Conheça nossos parceiros</h2>
                     <p>Petshops, clínicas e apoiadores que fazem a diferença.</p>
@@ -137,41 +135,41 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
             <img src="IMG/index/Seta-esquerda.png" alt="" class="seta esquerda">
             <img src="IMG/index/setas.png" alt="" class="seta direita">
         </section>
-
-
-
+	<main class="main">
 		<section class="comunidade">
-			<h1>Junte-se à Nossa Comunidade</h1>
-			<p>Todos podem fazer parte dessa transformação. Seja voluntário, apoie com doações ou ajude compartilhando nossos animais. Sua atitude pode mudar uma vida.</p>
-			<div class="opcoes-comunidade">
-                <div class="opcao">
-                    <h2>Seja Voluntário</h2>
-                    <p>Ajude nas feirinhas, lares temporários ou redes sociais.</p>
-                    <a href="Paginas/comoajudar.php" class="botao-link">Seja um Voluntário</a>
-                </div>
+            <div class="comunidade-content">
+                <h1>Junte-se à Nossa Comunidade</h1>
+                <p>Todos podem fazer parte dessa transformação. Seja voluntário, apoie com doações ou ajude compartilhando nossos animais. Sua atitude pode mudar uma vida.</p>
+                <div class="opcoes-comunidade">
+                    <div class="opcao">
+                        <h2>Seja Voluntário</h2>
+                        <p>Ajude nas feirinhas, lares temporários ou redes sociais.</p>
+                        <a href="Paginas/comoajudar.php" class="botao-link">Seja um Voluntário</a>
+                    </div>
 
-                <div class="opcao">
-                    <h2>&#128176; | Apoie com Doações</h2>
-                    <p>Sua atitude pode mudar uma vida</p>
-                    <a href="Paginas/comoajudar.php" class="botao-link">Doe Agora</a>
-                </div>
+                    <div class="opcao">
+                        <h2>Apoie com Doações</h2>
+                        <p>Sua atitude pode mudar uma vida</p>
+                        <a href="Paginas/comoajudar.php" class="botao-link">Doe Agora</a>
+                    </div>
 
-                <div class="opcao">
-                    <h2>&#128227; | Compartilhe nas Redes</h2>
-                    <p>Divulgue um pet e aumente as chances de adoção.</p>
-                    <button class="botao-link">Divulgue</button>
-                </div>
+                    <div class="opcao">
+                        <h2>Compartilhe nas Redes</h2>
+                        <p>Divulgue um pet e aumente as chances de adoção.</p>
+                        <button class="botao-link">Divulgue</button>
+                    </div>
 
-                <div class="opcao">
-                    <h2>&#128722; | Parcerias Locais</h2>
-                    <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
-                    <a class="botao-link" href="https://wa.me/5599991148710?text=Ol%C3%A1,%20gostaria%20de%20saber%20como%20podemos%20fazer%20uma%20parceria%20com%20a%20ONG%20Adote%20F%C3%A1cil.
-">Fazer parceria</a>
+                    <div class="opcao">
+                        <h2>Parcerias Locais</h2>
+                        <p>Tem um petshop ou clínica? Torne-se parceiro da causa.</p>
+                        <a class="botao-link" href="https://wa.me/5599991148710?text=Ol%C3%A1,%20gostaria%20de%20saber%20como%20podemos%20fazer%20uma%20parceria%20com%20a%20ONG%20Adote%20F%C3%A1cil.
+    ">Fazer parceria</a>
+                    </div>
                 </div>
             </div>
 		</section>
 		<section class="cards-vitrini">
-            <h1>Conheça alguns dos animais disponiveis</h1>
+            <h1>Conheça pets em buasca de uma familía</h1>
 			<?php if (count($pet) > 0): ?>
                 <div class="vitrine">
                     <?php foreach ($pet as $animal): ?>
@@ -183,13 +181,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                                 <h2><?php echo $animal['nome']; ?></h2>
                                 <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
                                 <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
+                                <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
                                 <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
                             </div>
                             <div class="sobre">
                                 <div class="sobre-content">
                                     <p><strong>Peso:</strong> <?php echo $animal['peso']; ?>kg</p>
                                     <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
-                                    <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
+                                    
                                     <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
                                     <p><strong>Sobre pet:</strong> <?php echo $animal['sobrePet']; ?></p>
                                 </div>
@@ -204,9 +203,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 <p>Nenhum pet cadastrado.</p>
             <?php endif; ?>
                 </div>
-           <!-- <nav class="vejamais">
+           <nav class="vejamais">
                 <a href="Paginas/adote.php">Veja mais <br><img src="IMG/index/Seta-cinza.png" alt=""></a>
-            </nav>-->
+            </nav>
 		</section>
 	</main>
 <div class="container-depoimentos">
