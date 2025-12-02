@@ -15,31 +15,6 @@ if ($result) {
     echo "Erro na consulta: " . mysqli_error($conexao);
     $pets = array();
 }
-
-//PESQUISA PET
-$resultados = [];
-$termo = '';
-
-if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
-    $termo = trim($_GET['busca']);
-
-    $sql = "SELECT * FROM pet 
-        WHERE statusPet = 'disponivel' 
-        AND (porte LIKE ? 
-        OR raca LIKE ?
-        OR nome LIKE ?
-        OR especie LIKE ?)";
-
-    $stmt = mysqli_prepare($conexao, $sql);
-    $like = "%" . $termo . "%";
-    mysqli_stmt_bind_param($stmt, "ssss", $like, $like, $like, $like);
-    mysqli_stmt_execute($stmt);
-    $resultado = mysqli_stmt_get_result($stmt);
-    $resultados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-    mysqli_stmt_close($stmt);
-
-    $pet = $resultados;
-}
 ?>
 
 <!DOCTYPE html>
@@ -48,116 +23,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../padrao.css">
-  <link rel="stylesheet" href="../consulta.css">
   <script src="../../../JS/deleteAdm.js" defer></script>
   <title>Consulta de PETs</title>
-  <style>
-    .subir {
-    width: 100%;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    gap: 15px; 
-    margin-bottom: 20px;
-    }
-
-    .subir a {
-        text-decoration: none;
-        background: #5669FF;
-        color: white;
-        padding: 8px 16px; 
-        border-radius: 8px;
-        font-weight: 600;
-        transition: .2s;
-        white-space: nowrap; 
-    }
-
-    .subir a:hover {
-        background: #3543d1;
-    }
-    
-    .back-button {
-    width: 100%;
-    height: 38px;
-    display: flex;
-    justify-content: space-between; 
-    
-    gap: 15px; 
-    margin-bottom: 20px;
-    }
-
-    .back-button a {
-        text-decoration: none;
-        background: #5669FF;
-        color: white;
-        padding: 8px 16px; 
-        border-radius: 8px;
-        font-weight: 600;
-        transition: .2s;
-        white-space: nowrap; 
-    }
-
-    .back-button a:hover {
-        background: #3543d1;
-    }
-
-    .search-box {
-    width: 300px;
-    max-width: 480px;
-    background: #ffffff;
-    border-radius: 12px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0px 15px rgba(0,0,0,0.08);
-    }
-
-    .search-box input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-    }
-
-    .search-box input:focus {
-    border-color: #5669FF;
-    box-shadow: 0 0 0 2px rgba(86,105,255,0.2);
-    }
-
-    .search-box button {
-    background: #5669FF;
-    color: white;
-    padding: 10px 18px;
-    font-size: 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .2s;
-    }
-
-    .search-box button:hover {
-    background: #3543d1;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container" id="container">
-    <div class="back-button">
-        <a href="../../../index.php" style="margin-right: -145px;">⬅ Voltar</a>
-        <a href="../Usuario/consulta.php">Consultar Humano</a>
-    
-        <h1>PETs Cadastrados</h1>
-        <form class="search-box" method="GET">
-            <input type="text" name="busca" placeholder="Buscar por nome"
-                value="<?php echo htmlspecialchars($termo ?? ''); ?>">
-            <button type="submit">Pesquisar</button>
-        </form> 
-    </div>
-     <br>
+  <div class="container">
+    <h1>PETs Cadastrados</h1>
+
     <table>
       <thead>
         <tr>
@@ -177,15 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
       </thead>
 
       <tbody>
-      <tbody>
-        <?php 
-            // Decide se mostra todos ou só os pesquisados
-            $lista = (!empty($termo)) ? $resultados : $pets;
-        ?>
-
-        <?php if (count($lista) > 0): ?>
-            <?php foreach ($lista as $pet): ?>
-
+      <?php if (count($pets) > 0): ?>
+          <?php foreach ($pets as $pet): ?>
               <tr>
                   <td><?= $pet['id_pet'] ?></td>
 
@@ -248,8 +114,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
       </tbody>
     </table>
 
-    <div class="subir">
-      <a href="#container">⭡ Subir</a>
+    <div class="back-button">
+      <a href="../../../index.php">Voltar</a>
+      <a href="../Usuario/consulta.php">Consultar Humano</a>
     </div>
 
   </div>
