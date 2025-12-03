@@ -228,7 +228,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <div class="author-info">
                         <img src="IMG/comoajudar/depoimentos.08.png" class="author-photo">
                         <div class="author-details">
-                            <h3>João, o Gato</h3>
+                            <h3>João</h3>
                             <p>Tutor do Rex</p>
                         </div>
                     </div>
