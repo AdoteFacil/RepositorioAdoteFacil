@@ -11,11 +11,11 @@
   background-color: #7a8ccb;
 }
 main h1, h2, h3, h4 {
-    color: #4169e1;
+    color: #5e8a60;
 }
 
 main h1 {
-    color: #4169e1;
+    color: #5e8a60;
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-align: center;
@@ -54,7 +54,7 @@ main ul li {
 
 .titulo-ajuda h1 {
   font-size: 2.8rem;
-  color: #4169e1; /* azul principal da paleta */
+  color: #5e8a60; /* azul principal da paleta */
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -62,7 +62,7 @@ main ul li {
 .linha-decorativa {
   width: 100px;
   height: 4px;
-  background-color: #4169e1;;
+  background-color: #5e8a60;;
   margin: 0 auto;
   border-radius: 2px;
 }

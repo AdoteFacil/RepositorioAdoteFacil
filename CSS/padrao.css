@@ -48,7 +48,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
+  padding: 0px 0px;
   max-width: 1500px;
   margin: 0 auto;
   display: flex;
@@ -120,23 +120,54 @@ header {
 .dropdown-content {
   display: flex;
   gap: 10px;
- z-index: 1000; 
+  z-index: 1000; 
+  list-style-position: outside;
+  list-style-type: none;
 }
 
-.dropdown-content a {
-  background-color: var(--azul-principal);
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
+.li-dropdown{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 90px;
+}
+
+.navbar .dropdown-content li a {
+  position: relative;
+  display: inline-block;
+  color: #646262;
+  padding: 32px 20px;
   border-radius: 9px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   transition: 0.3s;
   text-decoration: none;
+
+  margin: 0 auto;
+  text-align: center;
 }
 
-.dropdown-content a:hover {
-  background-color: var(--azul-hover);
+.navbar .dropdown-content li a::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: #333;
+    transition: 0.4s ease;
+
+}
+
+.navbar .dropdown-content li a:hover::after,
+.navbar .dropdown-content li a.active::after {
+    width: 100%;
+}
+
+.navbar .dropdown-content li a:hover,
+.navbar .dropdown-content li a.active {
+    color: #333;
 }
 
 .usuario-box {
@@ -160,6 +191,11 @@ header {
 
     -webkit-appearance: none;
     appearance: none;
+}
+
+.foto-perfil img{
+  width: 42px;
+  height: 42px;
 }
 
 /* FOTO NÃO MUDA NO HOVER */

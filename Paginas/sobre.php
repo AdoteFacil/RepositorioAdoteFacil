@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -26,44 +26,44 @@
                     <span></span>
                     <span></span>
                 </label>
-                <div class="dropdown-content">
-                    <a href="../index.php"class="linkIndex">Início</a>
-                    <a href="sobre.php" class="linkSobre">Sobre Nós</a>
-                    <a href="adote.php" class="linkAdote">Adote um pet</a>
-                    <a href="comoajudar.php" class="linkCajudar">Como ajudar</a>
+                <ul class="dropdown-content">
+                    <li class="li-dropdown "><a href="../index.php" class="linkIndex">Início</a></li>
+                    <li class="li-dropdown "><a href="sobre.php" class="linkSobre active">Sobre Nós</a></li>
+                    <li class="li-dropdown "><a href="adote.php" class="linkAdote">Adote um pet</a></li>
+                    <li class="li-dropdown "><a href="comoajudar.php" class="linkCajudar">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
-                        $_SESSION['usuario_id'] == 2   // <-- coloque o ID correto aqui
+                        $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <a href="../PHP/ADM/Usuario/consulta.php">adm</a>
+                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">adm</a></li>
                     <?php endif; ?>
+
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
+                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
-                    <div class="usuario-box" id="userMenu">
-                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                            class="foto-perfil" alt="Foto">
+                        <div class="usuario-box" id="userMenu">
+                            <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                                class="foto-perfil" alt="Foto">
 
-                        <div class="dropdown-user">
-                            <span class="nome-dropdown">
-                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
-                            </span>
+                            <div class="dropdown-user">
+                                <span class="nome-dropdown">
+                                    <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                                </span>
 
-                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
-                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                                <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                                <a href="../PHP/Usuario/logout.php">Sair</a>
+                            </div>
                         </div>
-                    </div>
                     <?php endif; ?>
-                </div>
+                </ul>
             </div>
         </nav>
     </header>
 
     <div class="container">
-        
         <h1>Quem somos</h1>
         <p>Adote Fácil é uma ONG que nasceu do amor pelos animais e do desejo de fazer a diferença na vida de cães e gatos abandonados. Atuamos com responsabilidade, carinho e dedicação para resgatar, cuidar e encaminhar animais para lares cheios de amor.
         </p>
@@ -90,9 +90,6 @@
        <h2> Por que Existimos</h2>
 
         <p>Porque acreditamos que todo animal merece respeito, amor e uma família. Enquanto houver um animal sofrendo nas ruas, estaremos aqui para acolher, cuidar e lutar por ele.</p>
-
-        
-
     </div>
     <footer>
         <section class="footer">

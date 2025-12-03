@@ -16,23 +16,48 @@ session_start();
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil" /></a>
+                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
                 <label class="burger" for="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </label>
+                <ul class="dropdown-content">
+                    <li class="li-dropdown "><a href="../index.php" class="linkIndex">Início</a></li>
+                    <li class="li-dropdown "><a href="sobre.php" class="linkSobre">Sobre Nós</a></li>
+                    <li class="li-dropdown "><a href="adote.php" class="linkAdote">Adote um pet</a></li>
+                    <li class="li-dropdown "><a href="comoajudar.php" class="linkCajudar">Como ajudar</a></li>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                    <?php endif; ?>
 
-                <div class="dropdown-content">
-                <a href="../index.php">Início</a>
-                <a href="sobre.php">Sobre Nós</a>
-                <a href="adote.php">Adote um pet</a>
-                <a href="comoajudar.php">Como ajudar</a>
-                <a href="entrar.php" id="entrar">Entrar</a>
-                </div>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar active">Entrar</a></li>
+                    <?php else: ?>
+                        <div class="usuario-box" id="userMenu">
+                            <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                                class="foto-perfil" alt="Foto">
+
+                            <div class="dropdown-user">
+                                <span class="nome-dropdown">
+                                    <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                                </span>
+
+                                <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                                <a href="../PHP/Usuario/logout.php">Sair</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </ul>
             </div>
         </nav>
     </header>

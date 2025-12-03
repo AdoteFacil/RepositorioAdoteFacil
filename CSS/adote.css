@@ -1,3 +1,17 @@
+/* === RESET === */
+:root {
+  --green-deep: #1E5F3A;
+  --green-primary: #4CAF50;
+  --green-pastel: #E9F4EA;
+
+  --cream: #F7F5F2;
+  --brown-warm: #C89F7E;
+  --accent-purple: #A88CCD;
+
+  --gray-bg: #ECEAE8;
+  --gray-border: #D8D6D2;
+  --gray-text: #646464;
+}
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +41,7 @@ main {
 
 .intro-adote h1 {
   font-size: 2.4rem;
-  color: #4169e1;
+  color:#5e8a60;
   margin-bottom: 10px;
 }
 
@@ -37,59 +51,6 @@ main {
   max-width: 700px;
   margin: 0 auto;
 }
-.search-box {
-  margin: 20px auto 35px;
-  padding: 12px 18px;
-  width: 100%;
-  max-width: 480px;
-
-  background: #ffffff;
-  border-radius: 12px;
-
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 0px 15px rgba(0,0,0,0.08);
-}
-
-.search-box input {
-  flex: 1;
-  padding: 10px 14px;
-  border: 1px solid #d3d3d3;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-}
-
-.search-box input:focus {
-  border-color: #5669FF;
-  box-shadow: 0 0 0 2px rgba(86,105,255,0.2);
-}
-
-.search-box button {
-  background: #5669FF;
-  color: white;
-  padding: 10px 18px;
-  font-size: 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.search-box button:hover {
-  background: #3543d1;
-}
-.vitrine {
-  display: flex;
-  gap: 25px;
-  padding: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 .search-box {
     margin: 20px auto 35px;
     padding: 12px 18px;
@@ -122,7 +83,7 @@ main {
 }
 
 .search-box button {
-    background: #5669FF;
+    background: #5e8a60;
     color: white;
     padding: 10px 18px;
     font-size: 15px;
@@ -136,21 +97,43 @@ main {
     background: #3543d1;
 }
 
+.cards-vitrini {
+  padding: 40px 20px;
+  text-align: center;
+  overflow-x: hidden; /* <- Corrigido */
+  background-color: #f7f5f2;
+  border-radius: 10px;
+  margin: 0px 0 40px;
+}
+
+.cards-vitrini h1{
+  font-size: 40px;
+  color:#c89f7e;
+}
+
+.vitrine {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px ;
+}
+
 .pet-card {
   background-color: #f4f4f4;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  border: 1px solid #ccc;
   text-align: center;
   transition: transform 0.2s;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   padding: 0%;
   border-radius: 12px;
-  margin: 10px 0px 10px 10px;/*corrigido*/
-  width: 260px;
-  height: 430px;
+  margin: 10px 5px;/*corrigido*/
+  width: 300px;
+  height: 550px;
 }
 
 .pet-card:hover {
@@ -180,72 +163,8 @@ main {
   word-wrap: break-word;
 }
 
-.saiba {
-  padding:10px;
-  margin-top: 10px;
-  border: none;
-  background-color: lightsteelblue;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  width: 100%;
-  z-index: 11;
-}
-
-.saiba:hover {
-  transform: scale(1.03);
-  background-color: lightblue;
-}
-
-.sobre {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 60px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 15px;
-  overflow-y: none;
-  border-radius: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(30px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-  z-index: 10;
-  margin: -15px; /*corrigido*/
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sobre-content{
-  height: 250px;
-  word-wrap: break-word;     /* força a quebra */
-  overflow-wrap: break-word; /* alternativa moderna */
-}
-
 .div-qadot{
-  display: flex;
-  justify-content: center;
-  width: 200px;
   margin: auto;
-}
-
-.qadot {
-  padding: 10px;
-  width: 1000px;
-  border: none;
-  border-radius: 5px;
-  background-color: #9ddf9f;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  width: 75%;
 }
 
 .pet-card.expandido .pet-imagem {
@@ -260,9 +179,50 @@ main {
   transform: translateY(0);
 }
 
+.qadot {
+  padding: 10px 16px;
+ 
+  border: none;
+  border-radius: 50px;
+  background-color:rgb(200, 243, 204);
+  color: #504e4e;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
 .qadot:hover {
   transform: scale(1.03);
-  background-color: #8ac88a;
+  transition: 0.3s;
+  background-color: #9ee9a6;
+}
+
+.vejamais{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.vejamais a{
+  border: none;
+  color: #696969;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vejamais img{
+  display: block;
+  width: 15px;
+  height: 12px;
+
+  margin: 0 30px;
+}
+
+.vejamais:hover{
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
 .cadastro-pet-container {
@@ -272,7 +232,7 @@ main {
 }
 
 .cadastro-pet-btn {
-  background-color: #4169e1;
+  background-color: var(--brown-warm);
   color: white;
   padding: 12px 24px;
   border-radius: 30px;

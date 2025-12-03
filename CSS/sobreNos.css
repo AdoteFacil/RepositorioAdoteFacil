@@ -18,7 +18,7 @@ body {
 .container h1 {
   text-align: center;
   font-size: 2.5rem;
-  color: #4169e1;
+  color: #5e8a60;
   margin-bottom: 10px;
   position: relative;
 }
@@ -27,14 +27,14 @@ body {
   display: block;
   width: 60px;
   height: 4px;
-  background-color:  #4169e1;
+  background-color:  #5e8a60;
   margin: 10px auto 20px;
   border-radius: 2px;
 }
 
 .container h2 {
   font-size: 1.6rem;
-  color: #4169e1;
+  color: #5e8a60;
   margin-top: 30px;
   margin-bottom: 10px;
 }
