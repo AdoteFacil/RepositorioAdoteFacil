@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="IMG/LogoFundoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -93,8 +93,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                                     <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
                                 </span>
 
-                                <a href="PHP/Usuario/perfil.php">Perfil</a>
-                                <a href="PHP/Usuario/logout.php">Sair</a>
+                                <a href="PHP/Usuario/perfil.php" class="link-perfil">Perfil</a>
+                                <a href="PHP/Usuario/logout.php" class="link-perfil">Sair</a>
                             </div>
                         </div>
                     <?php endif; ?>

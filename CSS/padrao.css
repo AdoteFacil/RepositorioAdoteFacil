@@ -57,8 +57,8 @@ header {
 }
 
 .logo img {
-  width: 210px;
-  height: 90px;
+  height: 100px;
+  width: 200px;
   margin-left: -25px;
 }
 
@@ -137,7 +137,7 @@ header {
   position: relative;
   display: inline-block;
   color: #646262;
-  padding: 32px 20px;
+  padding: 10px 16px;
   border-radius: 9px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
@@ -160,8 +160,8 @@ header {
 
 }
 
-.navbar .dropdown-content li a:hover::after,
-.navbar .dropdown-content li a.active::after {
+.navbar .dropdown-content  li a:hover::after,
+.navbar .dropdown-content  li a.active::after {
     width: 100%;
 }
 
@@ -171,6 +171,9 @@ header {
 }
 
 .usuario-box {
+    margin: 23px 0;
+    width: 50px;
+    height: 50px;
     position: relative;
     display: flex;
     align-items: center;
@@ -180,8 +183,8 @@ header {
 }
 /* FOTO 100% limpa */
 .foto-perfil {
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
 
@@ -210,8 +213,9 @@ header {
     position: absolute;
     top: 55px;
     right: 0;
-    background: white;
+    background: var(--cream);
     width: 180px;
+    height: 168px;
     gap: 5px;
     padding: 10px 2px 5px 2px;
     border-radius: 12px;
@@ -250,13 +254,17 @@ header {
     cursor: pointer;
     padding: 10px 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: #333;
     transition: all .2s;
+
+    text-align: left;
+    border-radius: 0px;
+    border-bottom: 1px solid #ccc;
 }
 
 .dropdown-user a:hover {
     color: #333;
-    background: #f5f5f5;
+    background: rgba(0,0,0,0.1);
 }
 
 /* ===== MENU HAMBURGUER DO PERFIL ===== */
@@ -364,7 +372,7 @@ header {
     top: 60px;
     right: 0;
     width: 200px;
-    background: var(--azul-principal);
+    background: var(--cream);
     display: none;
     padding: 10px;
     border-radius: 8px;
@@ -383,22 +391,27 @@ header {
   .dropdown-content #userMenu{
     order: 0;
   }
-  .dropdown-content .linkIndex{
+  .dropdown-content li .linkIndex{
     order: 1;
   }
-  .dropdown-content .linkSobre{
+  .dropdown-content li .linkSobre{
     order: 2;
   }
-  .dropdown-content .linkAdote{
+  .dropdown-content li .linkAdote{
     order: 3;
   }
-  .dropdown-content .linkCajudar{
+  .dropdown-content li .linkCajudar{
     order: 4;
   }
 
-  .foto-perfil{
-    margin: 0 70px;
+  .usuario-box{
+    margin: 0 auto;
   }
+
+  .foto-perfil img{
+  width: 42px;
+  height: 42px;
+}
 
   .foto-perfil:hover{
     opacity: 0.6;
