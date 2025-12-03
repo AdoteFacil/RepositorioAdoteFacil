@@ -64,7 +64,11 @@
     </header>
 
     <div class="container">
-        <h1>Quem somos</h1>
+        <section class="titulo">
+            <h1>Quem somos</h1>
+            <div class="linha-decorativa"></div>
+        </section>
+        
         <p>Adote Fácil é uma ONG que nasceu do amor pelos animais e do desejo de fazer a diferença na vida de cães e gatos abandonados. Atuamos com responsabilidade, carinho e dedicação para resgatar, cuidar e encaminhar animais para lares cheios de amor.
         </p>
         <H2>Nossa Missão</H2>

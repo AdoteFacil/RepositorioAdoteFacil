@@ -63,7 +63,7 @@
     </header>
 
     <main>
-        <section class="titulo-ajuda">
+        <section class="titulo">
             <h1>Como Ajudar</h1>
             <div class="linha-decorativa"></div>
         </section>

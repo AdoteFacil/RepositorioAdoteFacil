@@ -51,13 +51,33 @@ main {
   max-width: 700px;
   margin: 0 auto;
 }
+.titulo {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.titulo-ajuda h1 {
+  font-size: 2.8rem;
+  color: #5e8a60;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.linha-decorativa {
+  width: 100px;
+  height: 4px;
+  background-color: #5e8a60;;
+  margin: 0 auto;
+  border-radius: 2px;
+  margin-bottom: 25px;
+}
 .search-box {
-    margin: 20px auto 35px;
+    margin: 25px auto 5px auto;
     padding: 12px 18px;
     width: 100%;
     max-width: 480px;
 
-    background: #ffffff;
+    background: #ffffff00;
     border-radius: 12px;
 
     display: flex;

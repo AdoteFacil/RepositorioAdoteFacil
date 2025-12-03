@@ -102,7 +102,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
 
     <main>
         <section class="intro-adote">
-            <h1>Encontre seu novo melhor amigo</h1>
+            <section class="titulo">
+                <h1>Encontre seu novo melhor amigo</h1>
+                <div class="linha-decorativa"></div>
+            </section>
             <p>Adotar é um gesto de amor. Veja os pets disponíveis e transforme uma vida.</p>
             <form class="search-box" method="GET">
                 <input type="text" name="busca" placeholder="Buscar por nome, raça, porte..."
