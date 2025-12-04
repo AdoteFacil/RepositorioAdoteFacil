@@ -46,6 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adote Fácil</title>
+  <link rel="icon" href="IMG/icones/favicon.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/padrao.css">
   <link rel="stylesheet" href="CSS/index.css">
@@ -130,8 +131,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
             </div>
-            <img src="IMG/index/Seta-esquerda.png" alt="" class="seta esquerda">
-            <img src="IMG/index/setas.png" alt="" class="seta direita">
+            <p class="seta esquerda"><</p>
+            <p class="seta direita">></p>
         </section>
 	<main class="main">
 		<section class="comunidade">
@@ -177,12 +178,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                              </div>
                              <div class="pet-info">
                                 <h2><?php echo $animal['nome']; ?></h2>
-                                <p><strong>Idade:</strong> <?php echo $animal['idade']; ?> anos</p>
-                                <p><strong>Gênero:</strong> <?php echo $animal['genero']; ?></p>
-                                <p><strong>Porte:</strong> <?php echo $animal['porte']; ?></p>
-                                <p><strong>Situação:</strong> <?php echo $animal['situacao']; ?></p>
-                                <p><strong>Espécie:</strong> <?php echo $animal['especie']; ?></p>
-                                <p><strong>Raça:</strong> <?php echo $animal['raca']; ?></p>
+                                <p><img src="IMG/icones/idadeicon.png" alt="idade_icone" class="iconpet"><?php echo $animal['idade']; ?> anos</p>
+                                <p><img src="IMG/icones/generoicon.png" alt="genero_icone" class="iconpet"><?php echo $animal['genero']; ?></p>
+                                <p><img src="IMG/icones/porteicon.png" alt="porte_icone" class="iconpet"><?php echo $animal['porte']; ?></p>
+                                <p><img src="IMG/icones/situacaoicon.png" alt="situacao_icone" class="iconpet"><?php echo $animal['situacao']; ?></p>
+                                <p><img src="IMG/icones/especieicon.png" alt="especie_icone" class="iconpet"><?php echo $animal['especie']; ?></p>
+                                <p><img src="IMG/icones/racaicon.png" alt="raca_icone" class="iconpet"><?php echo $animal['raca']; ?></p>
                             </div>
                                 <div class="div-qadot">
                                     <button class="qadot" onclick="abrirPopup('https://wa.me/5599991148710?text=Ol%C3%A1%2C%20me%20interessei%20em%20um%20pet%2C%20gostaria%20de%20saber%20mais%20sobre.')">Quero adotar</button>

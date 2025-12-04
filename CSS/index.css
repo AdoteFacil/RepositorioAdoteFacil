@@ -107,14 +107,19 @@ main {
   border: none;
   cursor: pointer;
   border-radius: 50%;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 2;
-  transition: background-color 0.3s;
-
+  transition: all 0.3s;
   width: 50px;
   height: 50px;
 }
 
 .seta:hover {
+  border: none;
+  color: rgb(85, 85, 85);
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -315,7 +320,10 @@ main {
   gap: 20px;
   padding: 20px ;
 }
-
+.iconpet{
+  width: 50px;
+  height: 50px;
+}
 .pet-card {
   background-color: #f4f4f4;
 
