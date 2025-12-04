@@ -14,19 +14,64 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-image: url(../IMG/SobrenosBackgroundLeftCopia2.jpg) ;
+
   background-repeat: no-repeat;
   background-size: cover;
-  background-position:center top;
+  background-position: center left;
   color: #333;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
+main {
+    background-image: url(../IMG/BackgroundEntrar.png);
+}
+
+@media (max-width: 1200px){
+  body{
+     background-position: right bottom; 
+  }
+}
+
+@media (max-width: 1024px){
+
+  main{
+    background-image: url(../IMG/GatinhoTablet2.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  main{
+    background-position: center;
+  }
+  /*.div-invisivel{
+    display: none;
+  }*/ 
+}
+
+@media (max-width: 526px) {
+  main{
+    background-position: left;
+  }
+  .login-container{
+    max-width: 500px;
+  }
+  .div-invisivel{
+    display: none;
+  }
+}
+
 main{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.div-invisivel{
+  opacity: 0;
 }
 
 .login-container {

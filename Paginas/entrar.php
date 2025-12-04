@@ -16,7 +16,7 @@ session_start();
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php"><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -63,7 +63,7 @@ session_start();
     </header>
 
     <main>
-        <div class="div-invisivel"> </div>
+        <div class="login-container div-invisivel"> </div>
         <div class="login-container">
             <h1>Entrar</h1>
             <div class="linha-decorativa"></div>
