@@ -1,3 +1,18 @@
+:root {
+  --green-deep: #1E5F3A;
+  --green-primary: #4CAF50;
+  --green-pastel: #E9F4EA;
+
+  --cream: #F7F5F2;
+  --brown-warm: #C89F7E;
+  --accent-purple: #A88CCD;
+
+  --gray-bg: #ECEAE8;
+  --gray-border: #D8D6D2;
+  --gray-text: #646464;
+}
+
+
 header {
     width: 100%;
     margin: 0 auto;
@@ -35,7 +50,7 @@ body {
 }
 
 .container h1 {
-    color: #7a8ccb;
+    color: #5e8a60;
     font-weight: 700;
     margin-bottom: 25px;
 }
@@ -45,12 +60,12 @@ body {
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #7a8ccb;
+    border: 4px solid #5e8a60;
     margin-bottom: 25px;
 }
 
 .info {
-    background-color: #e9ebff;
+    background-color: var(--green-pastel);
     padding: 12px 16px;
     border-radius: 10px;
     margin-bottom: 12px;
@@ -64,7 +79,7 @@ body {
 }
 
 .info:hover {
-    background-color: #d7dbff;
+    background-color: rgba(233, 244, 234, 0.4);
 }
 
 .numeros, .locais {
@@ -107,13 +122,13 @@ body {
 }
 
 #registrar a.btn {
-    background-color: #7a8ccb;
+    background-color: #5e8a60;
     color: #fff;
     text-decoration: none;
 }
 
 #registrar a.btn:hover {
-    background-color: #6577c2;
+    background-color: rgba(94, 138, 96, 0.8);
     transform: scale(1.02);
 }
 
@@ -270,4 +285,132 @@ input[type="file"].input-info {
                 width: 100%;
             }
         }
+        /* --- CONTAINER PRINCIPAL (A GRADE) --- */
+.pets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
+.pets-container h2 {
+    grid-column: 1 / -1;
+    color: #444;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+/* --- ESTILO DO CARD --- */
+.pet-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efeito ao passar o mouse */
+.pet-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- IMAGEM DO PET --- */
+.pet-img {
+    width: 100%;
+    height: 160px; 
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- TEXTOS (Nome, Raça, Status) --- */
+.pet-card h3 {
+    margin: 10px 10px 4px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.pet-card p {
+    margin: 3px 10px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Destaque para o texto do Status */
+.pet-card p strong {
+    color: #333;
+}
+
+/* --- FORMULÁRIOS E BOTÕES --- */
+.pet-card form {
+    padding: 0 10px 8px; 
+    display: flex;
+    gap: 8px; 
+    margin-top: auto;
+}
+
+/* Select (Menu suspenso) */
+.pet-card select {
+    flex: 1; 
+    padding: 6px; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 0.85rem; 
+    cursor: pointer;
+}
+
+/* Botões Gerais */
+.pet-card button {
+    padding: 7px 10px; 
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.85rem; 
+    color: white;
+}
+
+/* Botão de Atualizar (Primeiro form) */
+.pet-card form:first-of-type button {
+  background-color:#c8f3cc;
+  color: #333;
+}
+
+.pet-card form:first-of-type button:hover {
+  background-color: #9ee9a6;
+}
+
+/* Botão de Deletar (Segundo form) */
+.pet-card form:last-of-type {
+    padding-bottom: 10px; 
+}
+
+.pet-card form:last-of-type button {
+    background-color: #fff;
+    color: #dc3545; 
+    border: 1px solid #dc3545;
+    width: 100%; 
+}
+
+.pet-card form:last-of-type button:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Mensagem de "Nenhum pet" */
+.pets-container > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 15px;
+}
   

@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php"><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -26,10 +26,10 @@
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown "><a href="../index.php" class="linkIndex">Início</a></li>
-                    <li class="li-dropdown "><a href="sobre.php" class="linkSobre">Sobre Nós</a></li>
-                    <li class="li-dropdown "><a href="adote.php" class="linkAdote">Adote um pet</a></li>
-                    <li class="li-dropdown "><a href="comoajudar.php" class="linkCajudar active">Como ajudar</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar "><a href="comoajudar.php" class="active">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
@@ -74,7 +74,7 @@
                 Todos os dias, animais são abandonados e ignorados. Mas com a sua ajuda, podemos mudar essas histórias. Ao doar, adotar ou divulgar, você oferece uma nova chance para um ser que só precisa de amor.
             </p>
 
-            <h2>Formas de Ajudar</h2>
+            <h2>Formas de ajudar</h2>
 
             <ul>
                 <li><strong>Adoção responsável:</strong> Dar um lar a um animal muda o mundo dele para sempre.</li>

@@ -41,140 +41,14 @@ $resultPets = $stmtPets->get_result();
     <script src="../../JS/padrao.js" defer></script>
     <title>Perfil</title>
     <style>
-        /* --- CONTAINER PRINCIPAL (A GRADE) --- */
-.pets-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
-    padding: 15px;
-    width: 100%;
-}
 
-.pets-container h2 {
-    grid-column: 1 / -1;
-    color: #444;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 8px;
-}
-
-/* --- ESTILO DO CARD --- */
-.pet-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Efeito ao passar o mouse */
-.pet-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* --- IMAGEM DO PET --- */
-.pet-img {
-    width: 100%;
-    height: 160px; 
-    object-fit: cover;
-    border-bottom: 1px solid #eee;
-}
-
-/* --- TEXTOS (Nome, Raça, Status) --- */
-.pet-card h3 {
-    margin: 10px 10px 4px;
-    color: #333;
-    font-size: 1.1rem;
-}
-
-.pet-card p {
-    margin: 3px 10px;
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.3;
-}
-
-/* Destaque para o texto do Status */
-.pet-card p strong {
-    color: #333;
-}
-
-/* --- FORMULÁRIOS E BOTÕES --- */
-.pet-card form {
-    padding: 0 10px 8px; 
-    display: flex;
-    gap: 8px; 
-    margin-top: auto;
-}
-
-/* Select (Menu suspenso) */
-.pet-card select {
-    flex: 1; 
-    padding: 6px; 
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    font-size: 0.85rem; 
-    cursor: pointer;
-}
-
-/* Botões Gerais */
-.pet-card button {
-    padding: 7px 10px; 
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-size: 0.85rem; 
-    color: white;
-}
-
-/* Botão de Atualizar (Primeiro form) */
-.pet-card form:first-of-type button {
-    background-color: #007bff;
-}
-
-.pet-card form:first-of-type button:hover {
-    background-color: #0056b3;
-}
-
-/* Botão de Deletar (Segundo form) */
-.pet-card form:last-of-type {
-    padding-bottom: 10px; 
-}
-
-.pet-card form:last-of-type button {
-    background-color: #fff;
-    color: #dc3545; 
-    border: 1px solid #dc3545;
-    width: 100%; 
-}
-
-.pet-card form:last-of-type button:hover {
-    background-color: #dc3545;
-    color: white;
-}
-
-/* Mensagem de "Nenhum pet" */
-.pets-container > p {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: #777;
-    font-style: italic;
-    margin-top: 15px;
-}
     </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../../index.php"><img src="../../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
+                <a href="../../index.php"><img src="../../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -183,14 +57,23 @@ $resultPets = $stmtPets->get_result();
                     <span></span>
                     <span></span>
                 </label>
-                <div class="dropdown-content">
-                    <a href="../../index.php">Início</a>
-                    <a href="../../Paginas/sobre.php">Sobre Nós</a>
-                    <a href="../../Paginas/adote.php">Adote um pet</a>
-                    <a href="../../Paginas/comoajudar.php">Como ajudar</a>
+                <ul class="dropdown-content">
+                    <li class="li-dropdown linkIndex"><a href="../../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="../../Paginas/sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="../../Paginas/adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="../../Paginas/comoajudar.php">Como ajudar</a></li>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <li class="li-dropdown "><a href="PHP/ADM/Usuario/consulta.php">adm</a></li>
+                    <?php endif; ?>
+
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <a href="Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
+                        <li class=" li-dropdown "><a href="../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
                             <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
@@ -201,12 +84,12 @@ $resultPets = $stmtPets->get_result();
                                     <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
                                 </span>
 
-                                <a href="../../PHP/Usuario/perfil.php">Perfil</a>
-                                <a href="../../PHP/Usuario/logout.php">Sair</a>
+                                <a href="perfil.php" class="link-perfil">Perfil</a>
+                                <a href="logout.php" class="link-perfil">Sair</a>
                             </div>
                         </div>
                     <?php endif; ?>
-                </div>
+                </ul>
             </div>
         </nav>
     </header>

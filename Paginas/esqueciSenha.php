@@ -70,7 +70,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php"><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -80,10 +80,10 @@
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown "><a href="../index.php" class="linkIndex">Início</a></li>
-                    <li class="li-dropdown "><a href="sobre.php" class="linkSobre">Sobre Nós</a></li>
-                    <li class="li-dropdown "><a href="adote.php" class="linkAdote">Adote um pet</a></li>
-                    <li class="li-dropdown "><a href="comoajudar.php" class="linkCajudar active">Como ajudar</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="comoajudar.php">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
@@ -130,6 +130,40 @@
         <a href="entrar.php">Voltar</a>
     </div>
 </div>
+
+    <footer>
+        <section class="footer">
+            <div class="footer-coluna" id="cl1">
+                <h2>Peludinhos do bem</h2>
+                <p>08989-8989898</p>
+                <p>Rua Santa Helena, 21, Parque Alvorada,<br> Imperatriz-MA, CEP 65919-505</p>
+                <p>adotefacil@peludinhosdobem.org</p>
+            </div>
+
+            <div class="footer-coluna" id="cl2">
+                <a href="sobre.php"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+                
+            </div>
+
+            <div class="footer-coluna" id="cl3">
+                <h2>Contatos</h2>
+
+                <div class="icons-row">
+                    <a href="https://www.instagram.com/">
+                    <img src="../IMG/index/insta.png" alt="Instagram">
+                    </a>
+
+                    <a href="https://web.whatsapp.com/">
+                    <img src="../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-rodape">
+            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
 <div id="popup" style="display:none;
 position:fixed;top:0;left:0;width:100%;height:100%;

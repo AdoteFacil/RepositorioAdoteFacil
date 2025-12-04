@@ -20,7 +20,7 @@ fieldset {
 
 legend {
   font-size: 2rem;
-  color: #355c7d;
+  color: #5e8a60;
   font-weight: 600;
   text-align: center;
   margin-bottom: 20px;
@@ -64,7 +64,7 @@ p {
 }
 
 button, .botao-salvar {
-  background-color: #355c7d;
+  background-color: #5e8a60;
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -77,13 +77,13 @@ button, .botao-salvar {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #2d4d66;
+.botao-salvar:hover{
+  background-color: rgba(94, 138, 96, 0.8);
   transform: scale(1.03);
 }
 
 a {
-  color: #355c7d;
+  color: #5e8a60;
   font-weight: 600;
   text-decoration: none;
 }

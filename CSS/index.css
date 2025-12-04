@@ -80,6 +80,7 @@ main {
 }
 
 .btn-slide {
+  display: inline-block;
   background-color: var(--brown-warm);
   color: white;
   padding: 12px 24px;
@@ -90,7 +91,10 @@ main {
 }
 
 .btn-slide:hover {
-  background-color: var(--azul-hover);
+  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #fff;
+  color: #333;
+  transition: 0.8s;
 }
 
 .seta {
@@ -199,15 +203,9 @@ main {
 
 .botao-link:hover,
 .botao-link:focus {
-  background-color: rgb(51, 51, 143);
-  outline: none;
+  background-color: rgb(80, 78, 78, 0.8);
 }
 
-.opcao button:hover,
-.opcao button:focus {
-  background-color: rgb(51, 51, 143);
-  outline: none;
-}
 
 .popup-overlay {
     position: fixed;
@@ -384,7 +382,7 @@ main {
  
   border: none;
   border-radius: 50px;
-  background-color:rgb(200, 243, 204);
+  background-color:#c8f3cc;
   color: #504e4e;
   font-size: 1.1rem;
   font-weight: bold;
@@ -437,35 +435,10 @@ main {
 
 /* === RESPONSIVIDADE === */
 @media (max-width: 768px) {
-  main {
-    padding: 0 !important;
-  }
-
-  .conteudo,
-  .comunidade,
-  .cards-vitrini {
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    width: 100%;
-    padding: 30px !important;
-    box-sizing: border-box;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .vitrine,
-  .opcoes-comunidade {
-    padding: 10px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
   .carrossel {
     max-width: 100%;
-    width: 100%;
     border-radius: 0 !important;
     box-shadow: none !important;
-    margin: 20px 0;
   }
 
   .opcao {
@@ -480,11 +453,7 @@ main {
   }
 
   .slide {
-    height: 280px;
-  }
-
-  .slide img {
-    border-radius: 0 !important;
+    height: 600px;
   }
 
   .slide-texto h2 {
@@ -497,17 +466,21 @@ main {
 
   .vitrine{
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 25px;  
+  }
+
+  .cards-vitrini h1{
+    font-size: 35px;
+    margin-bottom: 10px;
   }
 
   .pet-card {
     width: 400px;
-    height: 500px;
-    max-width: 100%;
+    height: 600px;
     margin: 0 auto;
   }
   .pet-imagem{
-    height: 400px;
+    height: 310px;
   }
 
   .pet-imagem img{
@@ -555,15 +528,12 @@ main {
 .background-depoimentos{
   background-color: #fff;
   height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 1px;
 }
 
 .container-depoimentos {
-    max-width: 1800px;
-    margin: 0px auto;
+    max-width: 1400px;
+    margin: 40px auto;
     padding: 40px 20px;
     background-color: #fff ;
     border-radius: 10px;
@@ -574,8 +544,8 @@ main {
     text-align: center;
 }
 
-.header-depoimentos h1 {
-    font-size: 2rem;
+.header-depoimentos h2 {
+    font-size: 34px;
     color: #333;
     margin-bottom: 15px;
     font-weight: 600;

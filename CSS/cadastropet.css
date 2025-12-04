@@ -20,7 +20,7 @@ fieldset {
 
 legend {
   font-size: 2rem;
-  color: #355c7d;
+  color: #5e8a60;
   font-weight: 600;
   text-align: center;
   margin-bottom: 25px;
@@ -51,10 +51,27 @@ legend {
   outline: none;
 }
 
+.inputBox{
+  height: 90px;
+}
+
 #duo{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   gap: 10px;
+}
+
+#duo input{
+  width: 230px;
+}
+
+#duo select{
+  width: 230px;
+}
+
+#idade{
+  max-width: 230px;
 }
 
 p {
@@ -63,18 +80,18 @@ p {
   margin-bottom: 18px;
 }
 
-a {
-  color: #355c7d;
+.link a {
+  color: #5e8a60;
   font-weight: 600;
   text-decoration: none;
 }
 
-a:hover {
+.link a:hover {
   text-decoration: underline;
 }
 
 button {
-  background-color: #355c7d;
+  background-color: #5e8a60;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -87,7 +104,7 @@ button {
 }
 
 button:hover {
-  background-color: #2d4d66;
+  background-color: rgba(94, 138, 96, 0.8);
   transform: scale(1.03);
 }
 

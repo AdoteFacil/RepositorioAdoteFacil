@@ -29,48 +29,49 @@ if ($result->num_rows === 0) {
   <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="../index.php"><img src="../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php"><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
-        <div class="dropdown">
-            <input type="checkbox" id="burger-menu">
-            <label class="burger" for="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <div class="dropdown-content">
-                <a href="../index.php">Início</a>
-                <a href="sobre.php">Sobre Nós</a>
-                <a href="adote.php" id="adote">Adote um pet</a>
-                <a href="comoajudar.php">Como ajudar</a>
-                <?php 
-                if (
-                    isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
-                    $_SESSION['usuario_email'] === "admadote@gmail.com" &&
-                    $_SESSION['usuario_id'] == 2   // <-- coloque o ID correto aqui
-                ): ?>
-                    <a href="../PHP/ADM/Usuario/consulta.php">adm</a>
-                <?php endif; ?>
+            <div class="dropdown">
+                <input type="checkbox" id="burger-menu">
+                <label class="burger" for="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="dropdown-content">
+                    <li class="li-dropdown linkIndex"><a href="../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="sobre.php" >Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="adote.php" class="active">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="comoajudar.php">Como ajudar</a></li>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                    <?php endif; ?>
 
-                <?php if (!isset($_SESSION['usuario_id'])): ?>
-                    <a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
-                <?php else: ?>
-                    <div class="usuario-box" id="userMenu">
-                        <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                            class="foto-perfil" alt="Foto">
 
-                        <div class="dropdown-user">
-                            <span class="nome-dropdown">
-                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
-                            </span>
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
+                    <?php else: ?>
+                        <div class="usuario-box" id="userMenu">
+                            <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                                class="foto-perfil" alt="Foto">
 
-                            <a href="../PHP/Usuario/perfil.php">Perfil</a>
-                            <a href="../PHP/Usuario/logout.php">Sair</a>
+                            <div class="dropdown-user">
+                                <span class="nome-dropdown">
+                                    <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                                </span>
+
+                                <a href="../PHP/Usuario/perfil.php">Perfil</a>
+                                <a href="../PHP/Usuario/logout.php">Sair</a>
+                            </div>
                         </div>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </ul>
             </div>
-        </div>
         </nav>
     </header>
 
@@ -85,8 +86,9 @@ if ($result->num_rows === 0) {
             <input type="text" name="nome" id="nome" class="inputUser" maxlength="15" required />
           </div>
 
+          <div id="duo">
           <div class="inputBox">
-            <label for="genero" class="labelinput">Informe o gênero do seu animal</label>
+            <label for="genero" class="labelinput">Gênero</label>
             <select name="genero" id="genero" required>
               <option value="">Selecione o gênero</option>
               <option value="Macho">Macho</option>
@@ -94,11 +96,10 @@ if ($result->num_rows === 0) {
             </select>
           </div>
 
-            <div id="duo">
-            <div class="inputBox">
-            <label for="peso">Peso (Kg)</label>
-            <input type="number" name="peso" id="peso" class="inputUser" step="0.1" min="0"/>
-            </div>
+              <!--<div class="inputBox">
+              <label for="peso">Peso (Kg)</label>
+              <input type="number" name="peso" id="peso" class="inputUser" step="0.1" min="0"/>
+            </div>-->
             
             <div class="inputBox">
             <label for="idade">Idade (Anos)</label>
@@ -109,7 +110,10 @@ if ($result->num_rows === 0) {
             <div id="duo">
           <div class="inputBox">
             <label for="especie" class="labelinput">Espécie</label>
-            <input type="text" name="especie" id="especie" class="inputUser" required />
+            <select name="especie" id="especie">
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+            </select>
           </div>
           
           <div class="inputBox">
@@ -139,17 +143,17 @@ if ($result->num_rows === 0) {
           </div>
           </div>
 
-          <div class="inputBox">
+          <!--<div class="inputBox">
             <label for="sobre" class="labelinput">Sobre o Pet</label>
             <textarea name="sobre" id="sobre" class="inputUser" maxlength="144" rows="4" placeholder="Conte um pouco sobre seu pet..."></textarea>
-          </div>
+          </div>-->
 
           <div class="inputBox">
             <label for="imagem" class="labelinput">Insira uma foto do Animal</label>
             <input type="file" name="foto" id="foto" class="inputUser" accept="image/*" required>
           </div>
 
-          <p>
+          <p class="link">
             Ao clicar no botão você estará automaticamente concordando com os nossos
             <a href="#">Termo de Uso e Política de Privacidade</a> do site Adote Fácil
           </p>

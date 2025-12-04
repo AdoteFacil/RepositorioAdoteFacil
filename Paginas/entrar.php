@@ -16,7 +16,7 @@ session_start();
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="../IMG/LogoAdote2.png" alt="logo_Adote_Fácil"></a>
+                <a href="../index.php><img src="../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -26,10 +26,10 @@ session_start();
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown "><a href="../index.php" class="linkIndex">Início</a></li>
-                    <li class="li-dropdown "><a href="sobre.php" class="linkSobre">Sobre Nós</a></li>
-                    <li class="li-dropdown "><a href="adote.php" class="linkAdote">Adote um pet</a></li>
-                    <li class="li-dropdown "><a href="comoajudar.php" class="linkCajudar">Como ajudar</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="comoajudar.php">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
@@ -63,6 +63,7 @@ session_start();
     </header>
 
     <main>
+        <div class="div-invisivel"> </div>
         <div class="login-container">
             <h1>Entrar</h1>
             <div class="linha-decorativa"></div>
@@ -82,6 +83,7 @@ session_start();
             Ainda não possui uma conta? <a href="cadastrar.php">Cadastre-se</a>
             </div>
         </div>
+
     </main>
 
     

@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.php"><img src="IMG/LogoFundoTransparente.png" alt="logo_Adote_Fácil"></a>
+                <a href="index.php"><img src="IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -67,10 +67,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown "><a href="index.php" class="linkIndex active">Início</a></li>
-                    <li class="li-dropdown "><a href="Paginas/sobre.php" class="linkSobre">Sobre Nós</a></li>
-                    <li class="li-dropdown "><a href="Paginas/adote.php" class="linkAdote">Adote um pet</a></li>
-                    <li class="li-dropdown "><a href="Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a></li>
+                    <li class="li-dropdown linkIndex"><a href="index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="Paginas/sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="Paginas/adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="Paginas/comoajudar.php">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
