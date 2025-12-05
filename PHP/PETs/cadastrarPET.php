@@ -78,7 +78,7 @@ if ($stmt->execute()) {
     $stmtH->bind_param("ii", $id_pet, $id_cliente);
     $stmtH->execute();
 
-    header("Location: ../../index.php");
+    header("Location: ../../Paginas/adote.php");
     exit;
 }
 }};

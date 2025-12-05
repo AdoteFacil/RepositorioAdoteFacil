@@ -91,10 +91,17 @@ body {
 }
 
 .tel, .zap, .estado, .cidade {
-    flex: 1;
-    width: auto;
+    width: 248px;
     white-space: nowrap;
     min-width: 0;
+}
+
+.estado{
+    width: 150px;
+}
+
+.cidade{
+    width: 100%; 
 }
 
 #registrar {

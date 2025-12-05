@@ -206,13 +206,6 @@ $usuario = $res->fetch_assoc();
             <input class="input-info" type="text" name="nome" 
                    value="<?= htmlspecialchars($usuario['nome']) ?>" >
         </div>
-
-        <div class="info">
-            <label>CPF:</label>
-            <input class="input-info" type="text" name="cpf" 
-                   value="<?= htmlspecialchars($usuario['cpf']) ?>" 
-                   readonly disabled>
-        </div>
         
         <div class="info">
             <label>Data de Nascimento:</label>

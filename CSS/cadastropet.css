@@ -14,16 +14,17 @@ main{
 }
 
 .boxpet {
-  max-width: 670px;
+  max-width: 630px;
   margin: 60px auto;
   background-color: #fff;
-  padding: 40px 30px;
+  padding: 20px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 
 }
 
 fieldset {
+  max-width: 600px;
   border: none;
   padding: 0;
 
@@ -33,6 +34,7 @@ fieldset {
 }
 
 legend {
+  width: 100%;
   font-size: 2rem;
   text-align: center;
   color: #5e8a60;
@@ -50,14 +52,14 @@ legend {
 }
 
 .inputUser, textarea, select {
+  background-color: #fff;
   width: 540px;
   padding: 12px 14px;
   font-size: 1rem;
   border: 1.5px solid #ccc;
   border-radius: 8px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
-  resize: vertical;
+  margin-bottom: 20px;  
 }
 
 .inputUser:focus, textarea:focus, select:focus {
@@ -67,11 +69,10 @@ legend {
 }
 
 .form-content{
-  width: 620px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .inputBox{
@@ -83,10 +84,11 @@ legend {
 }
 
 #duo{
-    width: 620px;
+    width: 540px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 80px;
 }
 
 #duo input{
@@ -137,9 +139,60 @@ button:hover {
   transform: scale(1.03);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .boxpet {
-    margin: 40px 20px;
-    padding: 30px 20px;
+    max-width: 400px;
+  }
+
+  .iboxNome{
+    width: 100%;
+  }
+  fieldset{
+    max-width: 400px;
+  }
+  .form-content{
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+  #duo{
+    width: 360px;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .inputBox{
+    width: 360px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .inputUser, textarea, select {
+    width: 100%;
+  }
+
+  
+#duo input{
+  width: 100%;
+}
+
+#duo select{
+  width: 100%;
+}
+
+#idade{
+  max-width: 100%;
+}
+  
+  .link{
+    width: 100%;
+  }
+  button{
+    max-width: 200px;
   }
 }

@@ -98,14 +98,15 @@ if ($result->num_rows === 0) {
             </div>
             <div class="inputBox">
               <label for="idade" class="labelinput"><b>Idade</b></label>
-              <input type="number" name="idade" id="idade" class="inputUser" min="0"/>
+              <input type="number" name="idade" id="idade" class="inputUser" min="0"/ required>
             </div>
           </div>
           
             <div id="duo">
           <div class="inputBox">
             <label for="especie" class="labelinput">Espécie</label>
-            <select name="especie" id="especie">
+            <select name="especie" id="especie" required>
+              <option value="">Selecione a espécie</option>
               <option value="Cachorro">Cachorro</option>
               <option value="Gato">Gato</option>
             </select>
@@ -120,7 +121,8 @@ if ($result->num_rows === 0) {
           <div id="duo">
           <div class="inputBox">
             <label for="porte" class="labelinput">Porte</label>
-            <select name="porte" id="porte">
+            <select name="porte" id="porte" required>
+              <option value="">Selecione o porte</option>
               <option value="Pequeno">Pequeno</option>
               <option value="Médio">Médio</option>
               <option value="Grande">Grande</option>
