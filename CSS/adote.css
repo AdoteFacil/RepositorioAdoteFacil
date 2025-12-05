@@ -30,7 +30,7 @@ html, body {
 main {
   padding: 0;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 .intro-adote {
@@ -148,12 +148,12 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: end;
   padding: 0%;
   border-radius: 12px;
   margin: 10px 5px;/*corrigido*/
   width: 300px;
-  height: 550px;
+  height: 580px;
 }
 
 .pet-card:hover {
@@ -183,8 +183,19 @@ main {
   word-wrap: break-word;
 }
 
+.pet-info p{
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.iconpet{
+  width: 24px;
+  height: 24px;
+}
+
 .div-qadot{
-  margin: auto;
+  margin: 80px auto 40px;
 }
 
 .pet-card.expandido .pet-imagem {

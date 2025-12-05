@@ -128,7 +128,7 @@ $resultPets = $stmtPets->get_result();
                 <strong>Estado:</strong> <?= htmlspecialchars($usuario['estado']) ?>
             </div>
             <div class="info cidade">
-                <strong>Cidade:</strong> <?= htmlspecialchars($usuario['cidade']) ?>
+                <strong>Cidade:</strong> <p><?= htmlspecialchars($usuario['cidade']) ?></p>
             </div>
         </div>
         

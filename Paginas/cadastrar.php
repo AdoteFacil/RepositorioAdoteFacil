@@ -62,112 +62,114 @@ session_start();
         </nav>
   </header>
 
-  <div class="box">
-    <form action="../PHP/Usuario/cadastrarUser.php" method="post" enctype="multipart/form-data" onsubmit="return validar()">
-      <fieldset>
-        <legend><b>Cadastre-se</b></legend>
+  <main>
+    <div class="box">
+      <form action="../PHP/Usuario/cadastrarUser.php" method="post" enctype="multipart/form-data" onsubmit="return validar()">
+        <fieldset>
+          <legend><b>Cadastre-se</b></legend>
 
-        <div class="inputBox">
-          <label for="nome" class="labelinput">Nome completo</label>
-          <input type="text" name="nome" id="nome" class="inputUser" required>
-        </div>
-
-        <div class="inputBox">
-          <label for="email" class="labelinput">E-mail</label>
-          <input type="email" name="email" id="email" class="inputUser" required>
-          <p>Coloque um e-mail ativo.</p>
-        </div>
-        
-        <div class="inputBox">
-          <label for="cpf" class="labelinput">CPF</label>
-          <input type="text" name="cpf" id="cpf" class="inputUser" maxlength="14" required 
-       oninput="mascaraCPF(this)">
-        </div>
-        
-        <div class="inputBox">
-          <label for="dataNasc" class="labelinput">Data de Nascimento</label>
-          <input type="date" name="dataNascimento" id="dataNasc" class="inputUser" required>
-        </div>
-
-        <div class="inputBox">
-          <label for="telefone" class="labelinput">Telefone</label>
-          <input type="tel" name="telefone" id="telefone" class="inputUser" required oninput="mascaraTel(this)">
-        </div>
-
-        <div class="inputBox">
-          <label for="whats" class="labelinput">WhatsApp</label>
-          <input type="tel" name="whats" id="whats" class="inputUser" required oninput="mascaraTel(this)">
-        </div>
-
-        <div class="scroll">
           <div class="inputBox">
-            <label for="estado" class="labelinput">Estado</label>
-            <select name="estado" id="estado" onchange="carregarCidades()" required>
-              <option value="">Selecione um Estado</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AM">Amazonas</option>
-              <option value="AP">Amapá</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="PR">Paraná</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SE">Sergipe</option>
-              <option value="SP">São Paulo</option>
-              <option value="TO">Tocantins</option>
-            </select>
+            <label for="nome" class="labelinput">Nome completo</label>
+            <input type="text" name="nome" id="nome" class="inputUser" required>
           </div>
 
           <div class="inputBox">
-            <label for="cidade" class="labelinput">Cidade</label>
-            <select name="cidade" id="cidade" disabled required>
-              <option value="">Selecione uma Cidade</option>
-            </select>
+            <label for="email" class="labelinput">E-mail</label>
+            <input type="email" name="email" id="email" class="inputUser" required>
+            <p>Coloque um e-mail ativo.</p>
           </div>
-        </div>
+          
+          <div class="inputBox">
+            <label for="cpf" class="labelinput">CPF</label>
+            <input type="text" name="cpf" id="cpf" class="inputUser" maxlength="14" required 
+        oninput="mascaraCPF(this)">
+          </div>
+          
+          <div class="inputBox">
+            <label for="dataNasc" class="labelinput">Data de Nascimento</label>
+            <input type="date" name="dataNascimento" id="dataNasc" class="inputUser" required>
+          </div>
 
-        <div class="inputBox">
-          <label for="senha" class="labelinput">Senha</label>
-          <input type="password" name="senha" id="senha" class="inputUser" required>
-          <p>Deve ter pelo menos 8 caracteres, incluindo letras e números.</p>
-        </div>
+          <div class="inputBox">
+            <label for="telefone" class="labelinput">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" class="inputUser" required oninput="mascaraTel(this)">
+          </div>
 
-        <div class="inputBox">
-          <label for="Csenha" class="labelinput">Confirme sua Senha</label>
-          <input type="password" name="Csenha" id="Csenha" class="inputUser" required>
-        </div>
+          <div class="inputBox">
+            <label for="whats" class="labelinput">WhatsApp</label>
+            <input type="tel" name="whats" id="whats" class="inputUser" required oninput="mascaraTel(this)">
+          </div>
 
-        <div class="inputBox">
-          <label for="foto" class="labelinput">Foto de Perfil</label>
-          <input type="file" name="foto" id="foto" accept="imagem/*" required>
-        </div>
+          <div class="scroll">
+            <div class="inputBox">
+              <label for="estado" class="labelinput">Estado</label>
+              <select name="estado" id="estado" onchange="carregarCidades()" required>
+                <option value="">Selecione um Estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AM">Amazonas</option>
+                <option value="AP">Amapá</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="PR">Paraná</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SE">Sergipe</option>
+                <option value="SP">São Paulo</option>
+                <option value="TO">Tocantins</option>
+              </select>
+            </div>
 
-        <input type="submit" value="Enviar" class="botao-salvar">
-        <p>Ao clicar em "Salvar", você concorda com os nossos <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.</p>
+            <div class="inputBox">
+              <label for="cidade" class="labelinput">Cidade</label>
+              <select name="cidade" id="cidade" disabled required>
+                <option value="">Selecione uma Cidade</option>
+              </select>
+            </div>
+          </div>
 
-        <p class="link-secundario">
-         <a href="entrar.php">Já possui uma conta?</a>
-        </p>
+          <div class="inputBox">
+            <label for="senha" class="labelinput">Senha</label>
+            <input type="password" name="senha" id="senha" class="inputUser" required>
+            <p>Deve ter pelo menos 8 caracteres, incluindo letras e números.</p>
+          </div>
 
-      </fieldset>
-    </form>
-  </div>
+          <div class="inputBox">
+            <label for="Csenha" class="labelinput">Confirme sua Senha</label>
+            <input type="password" name="Csenha" id="Csenha" class="inputUser" required>
+          </div>
+
+          <div class="inputBox">
+            <label for="foto" class="labelinput">Foto de Perfil</label>
+            <input type="file" name="foto" id="foto" accept="imagem/*" required>
+          </div>
+
+          <input type="submit" value="Enviar" class="botao-salvar">
+          <p>Ao clicar em "Salvar", você concorda com os nossos <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.</p>
+
+          <p class="link-secundario">
+          <a href="entrar.php">Já possui uma conta?</a>
+          </p>
+
+        </fieldset>
+      </form>
+    </div>
+  </main>
 
     <footer>
         <section class="footer">

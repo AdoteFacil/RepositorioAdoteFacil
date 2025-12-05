@@ -4,22 +4,37 @@ body {
   color: #333;
 }
 
+main{
+  background-image: url(../IMG/Backgrounds/BackGroundAtote.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+
 .boxpet {
-  max-width: 600px;
+  max-width: 670px;
   margin: 60px auto;
   background-color: #fff;
   padding: 40px 30px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
 }
 
 fieldset {
   border: none;
   padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 legend {
   font-size: 2rem;
+  text-align: center;
   color: #5e8a60;
   font-weight: 600;
   text-align: center;
@@ -35,7 +50,7 @@ legend {
 }
 
 .inputUser, textarea, select {
-  width: 100%;
+  width: 540px;
   padding: 12px 14px;
   font-size: 1rem;
   border: 1.5px solid #ccc;
@@ -51,15 +66,27 @@ legend {
   outline: none;
 }
 
+.form-content{
+  width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .inputBox{
   height: 90px;
 }
 
+.iboxNome{
+  width: 540px;
+}
+
 #duo{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 10px;
+    width: 620px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #duo input{
@@ -74,8 +101,10 @@ legend {
   max-width: 230px;
 }
 
-p {
-  font-size: 0.95rem;
+.link {
+  text-align: center;
+  width: 554px;
+  font-size: 14px;
   color: #555;
   margin-bottom: 18px;
 }
@@ -96,7 +125,7 @@ button {
   font-size: 1.1rem;
   font-weight: 600;
   padding: 14px 0;
-  width: 100%;
+  width: 542px;
   border: none;
   border-radius: 8px;
   cursor: pointer;

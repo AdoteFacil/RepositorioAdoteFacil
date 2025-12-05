@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
                 <div class="slide">
-                <img src="IMG/index/imgi_7_DSC01244-Pano-2-Edit.jpg" alt="Slide 3">
+                <img src="IMG/index/baby_animal_cat_is_standing_on_green_grass_with_staring_eyes_in_a_blur_background_4k_5k_hd_animals.jpg" alt="Slide 3">
                 <div class="slide-texto">
                     <h2>Conheça nossos parceiros</h2>
                     <p>Petshops, clínicas e apoiadores que fazem a diferença.</p>
@@ -179,10 +179,27 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                              <div class="pet-info">
                                 <h2><?php echo $animal['nome']; ?></h2>
                                 <p><img src="IMG/icones/idadeicon.png" alt="idade_icone" class="iconpet"><?php echo $animal['idade']; ?> anos</p>
-                                <p><img src="IMG/icones/generoicon.png" alt="genero_icone" class="iconpet"><?php echo $animal['genero']; ?></p>
+                                <?php 
+                                    $generoIcon = $animal['genero'] === 'Macho' 
+                                        ? 'machoicon.png' 
+                                        : 'femeaicon.png';
+                                ?>
+                                <p>
+                                    <img src="IMG/icones/<?= $generoIcon ?>" alt="genero_icone" class="iconpet">
+                                    <?php echo $animal['genero']; ?>
+                                </p>
                                 <p><img src="IMG/icones/porteicon.png" alt="porte_icone" class="iconpet"><?php echo $animal['porte']; ?></p>
                                 <p><img src="IMG/icones/situacaoicon.png" alt="situacao_icone" class="iconpet"><?php echo $animal['situacao']; ?></p>
-                                <p><img src="IMG/icones/especieicon.png" alt="especie_icone" class="iconpet"><?php echo $animal['especie']; ?></p>
+                                <?php 
+                                    $especieIcon = $animal['especie'] === 'Cachorro' 
+                                        ? 'cachorroicon.png'
+                                        : 'gatoicon.png';
+                                ?>
+                                <p>
+                                    <img src="IMG/icones/<?= $especieIcon ?>" alt="especie_icone" class="iconpet">
+                                    <?php echo $animal['especie']; ?>
+                                </p>
+
                                 <p><img src="IMG/icones/racaicon.png" alt="raca_icone" class="iconpet"><?php echo $animal['raca']; ?></p>
                             </div>
                                 <div class="div-qadot">

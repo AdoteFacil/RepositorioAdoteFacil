@@ -146,43 +146,52 @@ $usuario = $res->fetch_assoc();
 </head>
 <body>
 <header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="../../index.php"><img src="../../IMG/Logotipo.jpg" alt="logo_Adote_Fácil"></a>
-        </div>
-        <div class="dropdown">
-            <input type="checkbox" id="burger-menu">
-            <label class="burger" for="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <div class="dropdown-content">
-                <a href="../../index.php" class="linkIndex">Início</a>
-                <a href="../../Paginas/sobre.php" class="linkSobre">Sobre Nós</a>
-                <a href="../../Paginas/adote.php" class="linkAdote">Adote um pet</a>
-                <a href="../../Paginas/comoajudar.php" class="linkCajudar">Como ajudar</a>
-
-                <?php if (!isset($_SESSION['usuario_id'])): ?>
-                    <a href="../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a>
-                <?php else: ?>
-                    <div class="usuario-box" id="userMenu">
-                        <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                            class="foto-perfil" alt="Foto">
-
-                        <div class="dropdown-user">
-                            <span class="nome-dropdown">
-                                <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
-                            </span>
-
-                            <a href="../../PHP/Usuario/perfil.php">Perfil</a>
-                            <a href="../../PHP/Usuario/logout.php">Sair</a>
-                        </div>
-                    </div>
-                <?php endif; ?>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="../../index.php"><img src="../../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
-        </div>
-    </nav>
+            <div class="dropdown">
+                <input type="checkbox" id="burger-menu">
+                <label class="burger" for="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="dropdown-content">
+                    <li class="li-dropdown linkIndex"><a href="../../index.php">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="../../Paginas/sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="../../Paginas/adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="../../Paginas/comoajudar.php">Como ajudar</a></li>
+                    <?php 
+                    if (
+                        isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
+                        $_SESSION['usuario_email'] === "admadote@gmail.com" &&
+                        $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
+                    ): ?>
+                        <li class="li-dropdown "><a href="PHP/ADM/Usuario/consulta.php">adm</a></li>
+                    <?php endif; ?>
+
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                        <li class=" li-dropdown "><a href="../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
+                    <?php else: ?>
+                        <div class="usuario-box" id="userMenu">
+                            <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                                class="foto-perfil" alt="Foto">
+
+                            <div class="dropdown-user">
+                                <span class="nome-dropdown">
+                                    <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
+                                </span>
+
+                                <a href="perfil.php" class="link-perfil">Perfil</a>
+                                <a href="logout.php" class="link-perfil">Sair</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </nav>
 </header>
 <div class="container">
     <h1>Editar Perfil</h1>

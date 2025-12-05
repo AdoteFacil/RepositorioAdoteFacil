@@ -321,8 +321,12 @@ main {
   padding: 20px ;
 }
 .iconpet{
-  width: 50px;
-  height: 50px;
+  width: 24px;
+  height: 24px;
+}
+
+.select-icone {
+    background-repeat: no-repeat;
 }
 .pet-card {
   background-color: #f4f4f4;
@@ -334,12 +338,12 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: end;
   padding: 0%;
   border-radius: 12px;
   margin: 10px 5px;/*corrigido*/
   width: 300px;
-  height: 550px;
+  height: 580px;
 }
 
 .pet-card:hover {
@@ -366,11 +370,16 @@ main {
   padding: 15px;
   margin-top: 10px;
   text-align: left;
-  word-wrap: break-word;
+}
+
+.pet-info p{
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
 }
 
 .div-qadot{
-  margin: auto;
+  margin: 80px auto 40px;
 }
 
 .pet-card.expandido .pet-imagem {

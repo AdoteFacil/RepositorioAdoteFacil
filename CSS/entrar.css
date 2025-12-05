@@ -24,65 +24,28 @@ body {
   min-height: 100vh;
 }
 
-main {
-    background-image: url(../IMG/BackgroundEntrar.png);
-}
-
-@media (max-width: 1200px){
-  body{
-     background-position: right bottom; 
-  }
-}
-
-@media (max-width: 1024px){
-
-  main{
-    background-image: url(../IMG/GatinhoTablet2.png);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-}
-
-@media (max-width: 768px) {
-  main{
-    background-position: center;
-  }
-  /*.div-invisivel{
-    display: none;
-  }*/ 
-}
-
-@media (max-width: 526px) {
-  main{
-    background-position: left;
-  }
-  .login-container{
-    max-width: 500px;
-  }
-  .div-invisivel{
-    display: none;
-  }
-}
-
 main{
+  background-image: url(../IMG/Backgrounds/BackgroundEntrar2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: space-between;
-}
-
-.div-invisivel{
-  opacity: 0;
+  justify-content: center;
 }
 
 .login-container {
   max-width: 420px;
-  margin: 125px auto;
+  margin: 125px 0;
   background-color: #fff;
   padding: 40px 30px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   text-align: left;
   flex: 1;
+}
+
+.div-invisivel{
+  width: 200px; 
+  opacity: 0;
 }
 
 .login-container h1 {
@@ -193,5 +156,39 @@ main{
     width: 32px;
     height: 32px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1200px){
+  body{
+     background-position: right bottom; 
+  }
+}
+
+@media (max-width: 1024px){
+
+  main{
+    background-image: url(../IMG/Backgrounds/GatinhoTablet2.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  main{
+    background-position: center;
+  }
+}
+
+@media (max-width: 526px) {
+  main{
+    background-position: left;
+  }
+  .login-container{
+    max-width: 500px;
+  }
+  .div-invisivel{
+    display: none;
   }
 }

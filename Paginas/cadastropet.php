@@ -81,31 +81,26 @@ if ($result->num_rows === 0) {
         <fieldset>
           <legend><b>Cadastre seu Pet</b></legend>
 
-          <div class="inputBox">
-            <label for="nome" class="labelinput">Nome do Animal</label>
+          <div class="inputBox iboxNome">
+            <label for="nome" class="labelinput labelNome">Nome do Animal</label>
             <input type="text" name="nome" id="nome" class="inputUser" maxlength="15" required />
           </div>
 
+          <div class="form-content">
           <div id="duo">
-          <div class="inputBox">
-            <label for="genero" class="labelinput">Gênero</label>
-            <select name="genero" id="genero" required>
-              <option value="">Selecione o gênero</option>
-              <option value="Macho">Macho</option>
-              <option value="Fêmea">Fêmea</option>
-            </select>
-          </div>
-
-              <!--<div class="inputBox">
-              <label for="peso">Peso (Kg)</label>
-              <input type="number" name="peso" id="peso" class="inputUser" step="0.1" min="0"/>
-            </div>-->
-            
             <div class="inputBox">
-            <label for="idade">Idade (Anos)</label>
-            <input type="number" name="idade" id="idade" class="inputUser" min="0"/>
+              <label for="genero" class="labelinput">Gênero</label>
+              <select name="genero" id="genero" required>
+                <option value="">Selecione o gênero</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
+              </select>
             </div>
+            <div class="inputBox">
+              <label for="idade" class="labelinput"><b>Idade</b></label>
+              <input type="number" name="idade" id="idade" class="inputUser" min="0"/>
             </div>
+          </div>
           
             <div id="duo">
           <div class="inputBox">
@@ -140,6 +135,7 @@ if ($result->num_rows === 0) {
               <option value="Vacinado e Castrado">Vacinado e Castrado</option>
               <option value="Castrado">Castrado</option>
             </select>
+          </div>
           </div>
           </div>
 
