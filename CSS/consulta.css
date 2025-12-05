@@ -283,7 +283,21 @@ td a[href*="editar"]:hover {
     color: white;
     transition: 0.25s;
 }
+html, body {
+  height: 100%; /* Garante que o corpo ocupe a altura total */
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  display: flex;
+  flex-direction: column; /* Empilha os itens verticalmente */
+  min-height: 100vh; /* Altura mínima igual à viewport */
+}
+
+.container {
+  flex-grow: 1; /* Faz o conteúdo principal ocupar todo o espaço restante */
+}
 /* Editar */
 .btn-editar {
     background: var(--azul-principal);
