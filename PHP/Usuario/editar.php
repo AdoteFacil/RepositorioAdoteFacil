@@ -139,6 +139,7 @@ $usuario = $res->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
+    <link rel="icon" href="../../IMG/icones/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../CSS/padrao.css">
     <link rel="stylesheet" href="../../CSS/perfil.css">
     <script src="../../JS/padrao.js" defer></script>
@@ -168,7 +169,7 @@ $usuario = $res->fetch_assoc();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
                     <?php endif; ?>
 
 

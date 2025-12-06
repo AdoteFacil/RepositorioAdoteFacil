@@ -20,6 +20,7 @@ if ($result->num_rows === 0) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adote Fácil - Cadastro de Pet</title>
+  <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS/padrao.css">
   <link rel="stylesheet" href="../CSS/cadastropet.css">

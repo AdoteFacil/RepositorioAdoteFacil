@@ -1,13 +1,16 @@
 :root {
-  --roxo: #4b0082;
-  --roxo-claro: #fbe4ff;
-  --azul-principal: #97a2ff;
-  --azul-hover: #7a8ccb;
-  --verde-hover: #2e8b57;
-  --cinza-claro: #f8f9fa;
-  --cinza-medio: #ccc;
-  --cinza-escuro: #444;
-  --cinza-rodape: #777;
+  --green-deep: #1E5F3A;
+  --green-primary: #4CAF50;
+  --green-pastel: #E9F4EA;
+  --green-olive: #5e8a60;
+
+  --cream: #F7F5F2;
+  --brown-warm: #C89F7E;
+  --accent-purple: #A88CCD;
+
+  --gray-bg: #ECEAE8;
+  --gray-border: #D8D6D2;
+  --gray-text: #646464;
 }
 
 /* RESET */
@@ -19,7 +22,7 @@
 
 body {
   font-family: 'Wix Madefor Text', sans-serif;
-  background: var(--cinza-claro);
+  background: #fff;
   color: #333;
 }
 
@@ -35,7 +38,7 @@ body {
 .container h1 {
   text-align: center;
   margin-bottom: 25px;
-  color: var(--roxo);
+  color: var(--green-olive);
 }
 
 /* ========== TABELA ========== */
@@ -49,16 +52,16 @@ table {
 }
 
 thead {
-  background: var(--roxo-claro);
+  background: var(--green-pastel);
 }
 
 thead th {
   padding: 12px;
   font-size: 15px;
   font-weight: bold;
-  color: var(--roxo);
+  color: #333;
   text-align: center;
-  border-bottom: 2px solid var(--azul-principal);
+  border-bottom: 2px solid #333;
 }
 
 tbody tr {
@@ -79,7 +82,7 @@ tbody td {
 
 /* Hover na linha */
 tbody tr:hover {
-  background: #f1f0ff;
+  background: rgba(204, 204, 204, 0.2);
 }
 
 /* Foto do usuário */
@@ -88,7 +91,7 @@ table img {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--roxo);
+  border: 2px solid var(--green-olive );
 }
 
 /* ========== LINKS DE AÇÃO ========== */
@@ -114,17 +117,17 @@ td a {
 
 /* Editar */
 td a[href*="editar"] {
-  background: var(--azul-principal);
+  background: var(--green-olive);
   color: white;
 }
 
 td a[href*="editar"]:hover {
-  background: var(--azul-hover);
+  background: rgba(94, 138, 96, 0.8);
 }
 
 /* Apagar */
 .btn-delete {
-  background: #d9534f;
+  background: #ca5b57;
   color: white;
 }
 
@@ -144,7 +147,7 @@ td a[href*="editar"]:hover {
   padding: 12px 20px;
   font-size: 15px;
   font-weight: bold;
-  background: var(--azul-principal);
+  background: var(--green-olive);
   color: white;
   border-radius: 8px;
   text-decoration: none;
@@ -152,10 +155,35 @@ td a[href*="editar"]:hover {
 }
 
 .back-button a:hover {
-  background: var(--azul-hover);
+  background: rgba(94, 138, 96, 0.8);
 }
 
 /* ========== RESPONSIVO ========== */
+
+@media (max-width: 1264px){
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  thead {
+    font-size: 13px;
+  }
+
+  tbody td {
+    font-size: 12px;
+  }
+
+  .container {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .container h1 {
+    font-size: 22px;
+  }
+}
 
 @media (max-width: 900px) {
   table {
@@ -241,7 +269,7 @@ td a[href*="editar"]:hover {
 
 /* Salvar */
 .btn-salvar {
-    background: var(--azul-principal);
+    background: var(--brown-warm);
 }
 .btn-salvar:hover {
     background: var(--azul-hover);
@@ -290,14 +318,9 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column; /* Empilha os itens verticalmente */
   min-height: 100vh; /* Altura mínima igual à viewport */
 }
 
-.container {
-  flex-grow: 1; /* Faz o conteúdo principal ocupar todo o espaço restante */
-}
 /* Editar */
 .btn-editar {
     background: var(--azul-principal);
@@ -327,10 +350,11 @@ body {
 
 /* Salvar */
 .btn-salvar {
-    background: var(--azul-principal);
+    background: var(--gray-bg);
+    color: var(--gray-text);
 }
 .btn-salvar:hover {
-    background: var(--azul-hover);
+    background: rgba(216, 214, 210, 0.8);
 }
 
 /* Agrupamentos */
@@ -352,3 +376,4 @@ body {
 }
 
 /* Mantém o resto do seu CSS intacto */
+

@@ -36,6 +36,7 @@ $resultPets = $stmtPets->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../JS/delete.js" defer></script>
+    <link rel="icon" href="../../IMG/icones/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../CSS/perfil.css">
     <link rel="stylesheet" href="../../CSS/padrao.css">
     <script src="../../JS/padrao.js" defer></script>
@@ -68,7 +69,7 @@ $resultPets = $stmtPets->get_result();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
                     <?php endif; ?>
 
 
@@ -171,7 +172,11 @@ $resultPets = $stmtPets->get_result();
                         </select>
                         
                         <button type="submit">Atualizar</button>
+                        
                     </form>
+                    
+                    <a href="../Pets/editarPet.php?id=<?= $pet['id_pet']  ?>" class="buttonEditarpet"><button>Editar</button></a>
+                    
                     <form action="../PETs/deletePet.php" method="POST"
                         onsubmit="return confirm('Tem certeza que deseja deletar seu pet?');">
                         <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">

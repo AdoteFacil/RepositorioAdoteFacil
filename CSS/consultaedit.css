@@ -1,12 +1,16 @@
 :root {
-    --roxo: #4b0082;
-    --roxo-claro: #fbe4ff;
-    --azul-principal: #97a2ff;
-    --azul-hover: #7a8ccb;
-    --verde-hover: #2e8b57;
-    --cinza-claro: #f8f9fa;
-    --cinza-medio: #ccc;
-    --cinza-escuro: #444;
+  --green-deep: #1E5F3A;
+  --green-primary: #4CAF50;
+  --green-pastel: #E9F4EA;
+  --green-olive: #5e8a60;
+
+  --cream: #F7F5F2;
+  --brown-warm: #C89F7E;
+  --accent-purple: #A88CCD;
+
+  --gray-bg: #ECEAE8;
+  --gray-border: #D8D6D2;
+  --gray-text: #646464;
 }
 
 /* ===== CONTAINER ===== */
@@ -22,7 +26,7 @@
 
 h1 {
     text-align: center;
-    color: var(--roxo);
+    color: var(--green-olive);
     margin-bottom: 25px;
     font-size: 26px;
 }
@@ -36,7 +40,7 @@ form {
 
 label {
     font-weight: 600;
-    color: var(--cinza-escuro);
+    color:  #333;
 }
 
 input[type="text"],
@@ -45,7 +49,7 @@ input[type="date"],
 input[type="file"] {
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid var(--cinza-medio);
+    border: 1px solid var(--gray-border);
     font-size: 15px;
     transition: all 0.2s ease;
 }
@@ -54,6 +58,14 @@ input:focus {
     outline: none;
     border-color: var(--azul-principal);
     box-shadow: 0 0 6px rgba(151, 162, 255, 0.4);
+}
+.form-img{
+    height: 170px;
+    padding: 0;
+}
+
+.form-img img{
+    margin: auto;
 }
 
 /* ===== PRÉVIA DA FOTO ===== */
@@ -125,7 +137,8 @@ input:focus {
 
 /* ===== BOTÕES ===== */
 button {
-    background-color: var(--azul-principal);
+    width: 100%;
+    background-color: var(--green-olive);
     color: white;
     padding: 12px;
     border: none;
@@ -138,16 +151,17 @@ button {
 }
 
 button:hover {
-    background-color: var(--azul-hover);
+    background-color: rgba(94, 138, 96, 0.8);
 }
 
 .btn-voltar {
     display: block;
     text-align: center;
     margin-top: 10px;
-    background-color: var(--roxo-claro);
-    color: var(--roxo);
+    background-color: var(--gray-bg);
+    color: var(--gray-text);
     padding: 10px;
+    border: 1px solid var(--gray-border);
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
@@ -155,7 +169,7 @@ button:hover {
 }
 
 .btn-voltar:hover {
-    background-color: #e2caee;
+    background-color: rgba(236, 234, 232, 0.3);
 }
 
 /* ===== RESPONSIVIDADE ===== */

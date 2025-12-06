@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-include('../../conexao.php');
+include('../conexao.php');
 
 if (!isset($_GET['id'])) {
     die("ID do pet não informado.");
@@ -26,19 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome = $_POST['nome'];
     $genero = $_POST['genero'];
-    $peso = $_POST['peso'];
     $idade = $_POST['idade'];
     $especie = $_POST['especie'];
     $porte = $_POST['porte'];
     $raca = $_POST['raca'];
     $situacao = $_POST['situacao'];
-    $sobre = $_POST['sobrePet'];
+
 
     // Verifica se enviou nova foto
     if (!empty($_FILES['foto']['name'])) {
 
         $imagem = $_FILES['foto']['name'];
-        $destino = "../../../IMG/adote/" . $imagem;
+        $destino = "../../IMG/adote/" . $imagem;
 
         move_uploaded_file($_FILES['foto']['tmp_name'], $destino);
 
@@ -61,18 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sqlUpdate = "UPDATE pet SET 
                         nome='$nome',
                         genero='$genero',
-                        peso='$peso',
                         idade='$idade',
                         especie='$especie',
                         porte='$porte',
                         raca='$raca',
                         situacao='$situacao',
-                        sobrePet='$sobre'
                       WHERE id_pet=$id";
     }
 
     if (mysqli_query($conexao, $sqlUpdate)) {
-        header("Location: consulta.php?msg=editado");
+        header("Location: editarPet.php?msg=editado");
         exit();
     } else {
         echo "Erro ao atualizar: " . mysqli_error($conexao);
@@ -85,16 +82,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Editar Pet</title>
-<link rel="stylesheet" href="../../../CSS/padrao.css">
-<link rel="stylesheet" href="../../../CSS/consultaedit.css">
-<link rel="stylesheet" href="../../../CSS/consulta.css">
-<script src="../../../JS/padrao.js" defer></script>
+<link rel="stylesheet" href="../../CSS/padrao.css">
+<link rel="stylesheet" href="../../CSS/consultaedit.css">
+<link rel="stylesheet" href="../../CSS/consulta.css">
+<script src="../../JS/padrao.js" defer></script>
 </head>
 <body>
 <header>
     <nav class="navbar">
             <div class="logo">
-                <a href="../../../index.php"><img src="../../../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
+                <a href="../../index.php"><img src="../../IMG/LogoTransparente.png" alt="logo_Adote_Fácil"></a>
             </div>
             <div class="dropdown">
                 <input type="checkbox" id="burger-menu">
@@ -104,25 +101,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown linkIndex"><a href="../../../index.php" class="active">Início</a></li>
-                    <li class="li-dropdown linkSobre"><a href="../../../Paginas/sobre.php">Sobre Nós</a></li>
-                    <li class="li-dropdown linkAdote"><a href="../../../Paginas/adote.php">Adote um pet</a></li>
-                    <li class="li-dropdown linkCajudar"><a href="../../../Paginas/comoajudar.php">Como ajudar</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../../index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkSobre"><a href="../../Paginas/sobre.php">Sobre Nós</a></li>
+                    <li class="li-dropdown linkAdote"><a href="../../Paginas/adote.php">Adote um pet</a></li>
+                    <li class="li-dropdown linkCajudar"><a href="../../Paginas/comoajudar.php">Como ajudar</a></li>
                     <?php 
                     if (
                         isset($_SESSION['usuario_email'], $_SESSION['usuario_id']) &&
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
                     <?php endif; ?>
 
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <li class=" li-dropdown "><a href="../../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
+                        <li class=" li-dropdown "><a href="../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
-                            <img src="../../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
+                            <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
                                 class="foto-perfil" alt="Foto">
 
                             <div class="dropdown-user">
@@ -130,8 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <?php echo explode(" ", $_SESSION['usuario_nome'])[0]; ?>
                                 </span>
 
-                                <a href="../../../PHP/Usuario/perfil.php" class="link-perfil">Perfil</a>
-                                <a href="../../../PHP/Usuario/logout.php" class="link-perfil">Sair</a>
+                                <a href="../Usuario/perfil.php" class="link-perfil">Perfil</a>
+                                <a href="../Usuario/logout.php" class="link-perfil">Sair</a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -167,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="form-img">                
             <label>Foto Atual:</label><br>
-            <img src="../../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="150"><br><br>
+            <img src="../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="150"><br><br>
         </div>
         
         <label>Mudar Foto:</label>
@@ -190,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="footer-coluna" id="cl2">
-            <a href="Paginas/sobre.php"><h2>Conheça a História da Peludinhos do Bem</h2></a>
+            <a href="../../Paginas/sobre.php"><h2>Conheça a História da Peludinhos do Bem</h2></a>
             
         </div>
 
@@ -199,11 +196,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="icons-row">
                 <a href="https://www.instagram.com/">
-                <img src="../../../IMG/index/insta.png" alt="Instagram">
+                <img src="../../IMG/index/insta.png" alt="Instagram">
                 </a>
 
                 <a href="https://web.whatsapp.com/">
-                <img src="../../../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
+                <img src="../../IMG/index/—Pngtree—whatsapp icon whatsapp logo whatsapp_3584845.png" alt="Whatsapp">
                 </a>
             </div>
             

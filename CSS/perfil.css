@@ -316,6 +316,7 @@ input[type="file"].input-info {
 
 /* --- ESTILO DO CARD --- */
 .pet-card {
+    height: 430px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -397,6 +398,22 @@ input[type="file"].input-info {
 
 .pet-card form:first-of-type button:hover {
   background-color: #9ee9a6;
+}
+
+.buttonEditarpet button{
+    background-color: #fff;
+    color: #333;
+    border: 1px solid var(--gray-border);
+
+    width: 176px;
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 600;
+
+}
+
+.buttonEditarpet button:hover{
+    background-color: rgba(236, 234, 232, 0.6);
 }
 
 /* Botão de Deletar (Segundo form) */

@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
     	<section class="carrossel">
             <div class="slides-container">
                 <div class="slide ativo">
-                <img src="IMG/index/imgi_5_Blurry-backgroundsDSC00458-Edit.jpg" alt="Slide 1">
+                <img src="IMG/index/veja-os-melhores-lugares-para-passear-com-pet-em-sao-paulo-tutora-e-o-cao-conexao123.webp" alt="Slide 1">
                 <div class="slide-texto">
                     <h2>Bem-vindo ao Adote Fácil</h2>
                     <p>Transforme a vida de um pet com amor e cuidado.</p>
@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
                 <div class="slide">
-                <img src="IMG/index/imgi_78_DSC07404-Edit.jpg" alt="Slide 2">
+                <img src="IMG/index/filhote1.png" alt="Slide 2">
                 <div class="slide-texto">
                     <h2>Ajude a nossa causa</h2>
                     <p>Doe, compartilhe ou seja voluntário. Toda ajuda importa!</p>
@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                 </div>
                 </div>
                 <div class="slide">
-                <img src="IMG/index/baby_animal_cat_is_standing_on_green_grass_with_staring_eyes_in_a_blur_background_4k_5k_hd_animals.jpg" alt="Slide 3">
+                <img src="IMG/index/enriquecimento-gato3.jpg" alt="Slide 3">
                 <div class="slide-texto">
                     <h2>Conheça nossos parceiros</h2>
                     <p>Petshops, clínicas e apoiadores que fazem a diferença.</p>

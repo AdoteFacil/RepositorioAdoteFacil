@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Recuperar Senha</title>
+    <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/padrao.css">
     <link rel="stylesheet" href="../CSS/entrar.css">
     
     <style>
+        body{
+            margin: auto;
+        }
+        main{
+            background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
+            background-position: center;
+            margin: auto;
+        }
         .modal-bg {
         position: fixed;
         top: 0;
@@ -40,25 +49,6 @@
         color: #fff;
         cursor: pointer;
         border-radius: 6px;
-        }
-        .login-container {
-            max-height: 410px;
-            margin-top: 200px;
-        }
-        .login-form button.botao {
-  background-color: #33414d;
-        }
-        .login-form input:focus {
-  border-color: #355c7d;
-        }
-        .login-container h1 {
-          color: #7b909c;
-        }
-        .login-container {
-          background-color: #eaf9ef;
-        }
-        .linha-decorativa{
-            background-color: #2d3242;
         }
         body {
             background: #368659;
@@ -115,21 +105,22 @@
             </div>
         </nav>
     </header>
+    <main>
+        <div class="login-container">
+            <h1>Recuperar Senha</h1>
+            <div class="linha-decorativa"></div>
 
-<div class="login-container">
-    <h1>Recuperar Senha</h1>
-    <div class="linha-decorativa"></div>
+            <form class="login-form" method="POST" id="formRecuperar">
+                <label for="email">Digite seu e-mail cadastrado:</label>
+                <input type="email" id="email" name="email" required placeholder="Seu e-mail">
+                <button class="botao" type="submit">Enviar link de recuperação</button>
+            </form>
 
-    <form class="login-form" method="POST" id="formRecuperar">
-        <label for="email">Digite seu e-mail cadastrado:</label>
-        <input type="email" id="email" name="email" required placeholder="Seu e-mail">
-        <button class="botao" type="submit">Enviar link de recuperação</button>
-    </form>
-
-    <div class="cadastro-link">
-        <a href="entrar.php">Voltar</a>
-    </div>
-</div>
+            <div class="cadastro-link">
+                <a href="entrar.php">Voltar</a>
+            </div>
+        </div>
+    </main> 
 
     <footer>
         <section class="footer">

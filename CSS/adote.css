@@ -134,6 +134,7 @@ main {
 .vitrine {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
   padding: 20px ;
 }
@@ -296,7 +297,7 @@ main {
 
   .pet-card {
     width: 500px;
-    height: 550px;
+    height: 650px;
     margin: 0 auto;
   }
 
@@ -320,7 +321,7 @@ main {
 @media (max-width: 516px) {
     .pet-card {
     width: 400px;
-    height: 550px;
+    height: 650px;
     margin: 0 auto;
   }
 

@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Editar Usuário</title>
 <link rel="stylesheet" href="../../../css/consultaedit.css">
 <link rel="stylesheet" href="../../../CSS/padrao.css">
+<script src="../../../JS/padrao.js" defer></script>
 </head>
 <body>
     <header>
@@ -160,15 +161,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label>Cidade</label>
         <input type="text" name="cidade" value="<?= htmlspecialchars($cliente['cidade']) ?>">
 
-        <label>Foto Atual:</label><br>
-        <img src="../../../IMG/usuario/<?= htmlspecialchars($cliente['foto']) ?>" class="preview-foto" width="120"><br><br>
+        <div class="form-img">
+            <label>Foto Atual:</label><br>
+            <img src="../../../IMG/usuario/<?= htmlspecialchars($cliente['foto']) ?>" class="preview-foto" width="120"><br><br>
+        </div>
 
         <label>Mudar Foto:</label>
         <input type="file" name="foto">
 
-        <button type="submit">Salvar Alterações</button>
-        <br><br>
-        <a href="consulta.php" class="btn-voltar">Voltar</a>
+        <div class="links">
+            <button type="submit">Salvar Alterações</button>
+            <br><br>
+            <a href="consulta.php" class="btn-voltar">Voltar</a>
+        </div>
     </form>
 
 </div>

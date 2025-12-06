@@ -25,6 +25,7 @@ if ($result) {
   <link rel="stylesheet" href="../../../CSS/consulta.css">
   <link rel="stylesheet" href="../../../CSS/padrao.css">
   <script src="../../../JS/deleteAdm.js" defer></script>
+  <script src="../../../JS/padrao.js" defer></script>
   <title>Consulta de Usuários</title>
 </head>
 <body>
