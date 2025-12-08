@@ -88,7 +88,6 @@ if ($result) {
           <th>Foto</th>
           <th>Nome</th>
           <th>Gênero</th>
-          <th>Peso</th>
           <th>Idade</th>
           <th>Espécie</th>
           <th>Porte</th>
@@ -110,14 +109,13 @@ if ($result) {
 
                   <td><?= htmlspecialchars($pet['nome'] ?? '') ?></td>
                   <td><?= htmlspecialchars($pet['genero'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['peso'] ?? '') ?> kg</td>
                   <td><?= htmlspecialchars($pet['idade'] ?? '') ?></td>
                   <td><?= htmlspecialchars($pet['especie'] ?? '') ?></td>
                   <td><?= htmlspecialchars($pet['porte'] ?? '') ?></td>
                   <td><?= htmlspecialchars($pet['raca'] ?? '') ?></td>
 
                   <td>
-                      <?= $pet['situacao'] == 'adotado' ? '🐾 Adotado' : '🟢 Disponível' ?>
+                      <?= $pet['statusPet'] == 'adotado' ? '🐾 Adotado' : '🟢 Disponível' ?>
                   </td>
 
                   <!-- AÇÕES 2x2 -->
@@ -137,10 +135,10 @@ if ($result) {
                               <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
 
                               <select name="status" class="select-status">
-                                  <option value="disponivel" <?= $pet['situacao']=='disponivel'?'selected':'' ?>>
+                                  <option value="disponivel" <?= $pet['statusPet']=='disponivel'?'selected':'' ?>>
                                       🟢 Disponível
                                   </option>
-                                  <option value="adotado" <?= $pet['situacao']=='adotado'?'selected':'' ?>>
+                                  <option value="adotado" <?= $pet['statusPet']=='adotado'?'selected':'' ?>>
                                       🐾 Adotado
                                   </option>
                               </select>
@@ -196,7 +194,7 @@ if ($result) {
     </section>
 
     <div class="footer-rodape">
-        <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
+        <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
     </div>
 </footer>
 </body>

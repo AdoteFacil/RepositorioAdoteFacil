@@ -142,11 +142,6 @@ if ($result->num_rows === 0) {
           </div>
           </div>
 
-          <!--<div class="inputBox">
-            <label for="sobre" class="labelinput">Sobre o Pet</label>
-            <textarea name="sobre" id="sobre" class="inputUser" maxlength="144" rows="4" placeholder="Conte um pouco sobre seu pet..."></textarea>
-          </div>-->
-
           <div class="inputBox">
             <label for="imagem" class="labelinput">Insira uma foto do Animal</label>
             <input type="file" name="foto" id="foto" class="inputUser" accept="image/*" required>
@@ -193,7 +188,7 @@ if ($result->num_rows === 0) {
         </section>
 
         <div class="footer-rodape">
-            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
+            <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
 </body>

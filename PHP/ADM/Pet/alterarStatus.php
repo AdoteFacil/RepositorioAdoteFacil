@@ -4,7 +4,7 @@ include('../../conexao.php');
 $id_pet = $_POST['id_pet'];
 $status = $_POST['status'];
 
-$sql = "UPDATE pet SET situacao = '$status' WHERE id_pet = $id_pet";
+$sql = "UPDATE pet SET statusPet = '$status' WHERE id_pet = $id_pet";
 
 if (mysqli_query($conexao, $sql)) {
     header("Location: consulta.php");

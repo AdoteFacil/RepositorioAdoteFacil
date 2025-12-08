@@ -12,13 +12,11 @@ $id_cliente = $_SESSION['usuario_id'];
 // Recebe os dados do formulário
 $nome = $_POST['nome'];
 $genero = $_POST['genero'];
-$peso = $_POST['peso'];
 $idade = $_POST['idade'];
 $especie = $_POST['especie'];
 $porte = $_POST['porte'];
 $raca = $_POST['raca'];
 $situacao = $_POST['situacao'];
-$sobre = $_POST['sobre'];
 
 //------------------------------PROCESSANDO IMAGEM-------------------------------------------
 // Pasta onde as imagens serão salvas
@@ -51,22 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $caminhoImagem = $caminhoFinal;
 //---------------------FIM PROCESSO IMAGEM---------------------------------------------------------------------------------------
 $sql = "INSERT INTO pet 
-(id_cliente, nome, genero, peso, idade, especie, porte, raca, situacao, sobrePet, foto, statusPet)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'disponivel')";
+(id_cliente, nome, genero, idade, especie, porte, raca, situacao, foto, statusPet)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'disponivel')";
 
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param(
-    "isssissssss",
+    "issssssss",
     $id_cliente,
     $nome,
     $genero,
-    $peso,
     $idade,
     $especie,
     $porte,
     $raca,
     $situacao,
-    $sobre,
     $caminhoImagem
 );
 if ($stmt->execute()) {

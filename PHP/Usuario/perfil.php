@@ -149,7 +149,7 @@ $resultPets = $stmtPets->get_result();
         <?php if ($resultPets->num_rows > 0): ?>
             <?php while ($pet = $resultPets->fetch_assoc()): ?>
                 <div class="pet-card">
-                    <img src="../../IMG<?= htmlspecialchars($pet['foto']) ?>" class="pet-img">
+                    <img src="../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" class="pet-img">
  
                     <h3><?= htmlspecialchars($pet['nome']) ?></h3>
                     <p><strong>Raça:</strong> <?= htmlspecialchars($pet['raca']) ?></p>
@@ -174,9 +174,7 @@ $resultPets = $stmtPets->get_result();
                         <button type="submit">Atualizar</button>
                         
                     </form>
-                    
-                    <a href="../Pets/editarPet.php?id=<?= $pet['id_pet']  ?>" class="buttonEditarpet"><button>Editar</button></a>
-                    
+                    <a href="../PETs/editarPet.php?id=<?= $pet['id_pet'] ?>" class="buttonEditarpet"><button>Editar</button></a>
                     <form action="../PETs/deletePet.php" method="POST"
                         onsubmit="return confirm('Tem certeza que deseja deletar seu pet?');">
                         <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
@@ -219,7 +217,7 @@ $resultPets = $stmtPets->get_result();
         </section>
 
         <div class="footer-rodape">
-            <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
+            <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
 

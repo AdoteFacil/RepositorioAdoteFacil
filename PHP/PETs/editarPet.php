@@ -4,13 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 include('../conexao.php');
-
 if (!isset($_GET['id'])) {
     die("ID do pet não informado.");
 }
 
 $id = intval($_GET['id']);
-
 // Buscar dados do pet
 $sql = "SELECT * FROM pet WHERE id_pet = $id LIMIT 1";
 $result = mysqli_query($conexao, $sql);
@@ -45,31 +43,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sqlUpdate = "UPDATE pet SET 
                         nome='$nome',
                         genero='$genero',
-                        peso='$peso',
                         idade='$idade',
                         especie='$especie',
                         porte='$porte',
                         raca='$raca',
                         situacao='$situacao',
-                        sobrePet='$sobre',
                         foto='$imagem'
-                      WHERE id_pet=$id";
+                    WHERE id_pet=$id";
     } else {
 
         // Atualizar sem mexer na foto
-        $sqlUpdate = "UPDATE pet SET 
-                        nome='$nome',
-                        genero='$genero',
-                        idade='$idade',
-                        especie='$especie',
-                        porte='$porte',
-                        raca='$raca',
-                        situacao='$situacao',
-                      WHERE id_pet=$id";
+            $sqlUpdate = "UPDATE pet SET 
+                nome='$nome',
+                genero='$genero',
+                idade='$idade',
+                especie='$especie',
+                porte='$porte',
+                raca='$raca',
+                situacao='$situacao'
+              WHERE id_pet=$id";
+
     }
 
     if (mysqli_query($conexao, $sqlUpdate)) {
-        header("Location: editarPet.php?msg=editado");
+        header("Location: editarPet.php?id=$id&msg=editado");
         exit();
     } else {
         echo "Erro ao atualizar: " . mysqli_error($conexao);
@@ -145,22 +142,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required>
 
         <label>Gênero</label>
-        <input type="text" name="genero" value="<?= htmlspecialchars($pet['genero']) ?>" required>
+        <select type="text" name="genero" value="<?= htmlspecialchars($pet['genero']) ?>" required  >
+            <option value="">Selecione o gênero</option>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
+        </select>
 
         <label>Idade</label>
-        <input type="text" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>">
+        <input type="text" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>"required>
 
         <label>Espécie</label>
-        <input type="text" name="especie" value="<?= htmlspecialchars($pet['especie']) ?>">
+        <select type="text" name="especie" value="<?= htmlspecialchars($pet['especie']) ?>"required>
+            <option value="">Selecione o gênero</option>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
+        </select>
 
         <label>Porte</label>
-        <input type="text" name="porte" value="<?= htmlspecialchars($pet['porte']) ?>">
+        <select type="text" name="porte" value="<?= htmlspecialchars($pet['porte']) ?>"required>
+            <option value="">Selecione o porte</option>
+            <option value="Pequeno">Pequeno</option>
+            <option value="Médio">Médio</option>
+            <option value="Grande">Grande</option>
+        </select>
 
         <label>Raça</label>
-        <input type="text" name="raca" value="<?= htmlspecialchars($pet['raca']) ?>">
+        <input type="text" name="raca" value="<?= htmlspecialchars($pet['raca']) ?>"required>
 
         <label>Situação</label>
-        <input type="text" name="situacao" value="<?= htmlspecialchars($pet['situacao']) ?>">
+        <select type="text" name="situacao" value="<?= htmlspecialchars($pet['situacao']) ?>"required>
+            <option value="Nenhum">Nenhum</option>
+            <option value="Vacinado">Vacinado</option>
+            <option value="Vacinado e Castrado">Vacinado e Castrado</option>
+            <option value="Castrado">Castrado</option>
+        </select>
 
         <div class="form-img">                
             <label>Foto Atual:</label><br>
@@ -208,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <div class="footer-rodape">
-        <p>Desenvolvido pela Turma-20 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
+        <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
     </div>
 </footer> 
 </body>
