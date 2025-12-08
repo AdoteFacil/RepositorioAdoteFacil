@@ -121,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                             <div class="pet-imagem">
                                 <img src="../IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
                              </div>
-                             <h2 style="text-align: left; padding: 0 0 0 10px; margin-bottom: -25px;"><?php echo $animal['nome']; ?></h2>
+                             <h2 style="text-align: left; padding: 0 0 0 40px; margin-bottom: -25px;"><?php echo $animal['nome']; ?></h2>
                              <div class="pet-info">
                                 
                                 <div class="coluna1">
