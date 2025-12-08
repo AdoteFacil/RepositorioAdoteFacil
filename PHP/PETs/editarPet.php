@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Editar Pet</title>
 <link rel="stylesheet" href="../../CSS/padrao.css">
 <link rel="stylesheet" href="../../CSS/consultaedit.css">
-<link rel="stylesheet" href="../../CSS/consulta.css">
+
 <script src="../../JS/padrao.js" defer></script>
 </head>
 <body>

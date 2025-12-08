@@ -141,7 +141,6 @@ main {
 
 .pet-card {
   background-color: #f4f4f4;
-
   border: 1px solid #ccc;
   text-align: center;
   transition: transform 0.2s;
@@ -152,20 +151,20 @@ main {
   justify-content: end;
   padding: 0%;
   border-radius: 12px;
-  margin: 10px 5px;/*corrigido*/
+  margin: 10px 5px;
   width: 300px;
-  height: 580px;
+  height: 520px;
 }
 
 .pet-card:hover {
-  transform: scale(1.02); /*corrigido*/
+  transform: scale(1.02);
 }
 
 .pet-imagem {
   position: relative;
   width: 100%;
   height: 225px;
-  border-radius: 10px 10px 0 0;/*corrigido*/
+  border-radius: 10px 10px 0 0;
   overflow: hidden;
   transition: opacity 0.3s ease;
 }
@@ -181,7 +180,11 @@ main {
   padding: 15px;
   margin-top: 10px;
   text-align: left;
-  word-wrap: break-word;
+  display: flex;
+  padding-bottom: 5px;
+}
+.pet-info > h2{
+  display: 100%;
 }
 
 .pet-info p{
@@ -189,7 +192,10 @@ main {
   margin: 10px 0;
   gap: 10px;
 }
-
+.coluna1, .coluna2{
+  width: 136px;
+  height: 130px;
+}
 .iconpet{
   width: 24px;
   height: 24px;
@@ -197,6 +203,7 @@ main {
 
 .div-qadot{
   margin: 80px auto 40px;
+  margin-top: 10px !important;
 }
 
 .pet-card.expandido .pet-imagem {
@@ -213,7 +220,9 @@ main {
 
 .qadot {
   padding: 10px 16px;
- 
+  width: 200px;
+  height: 40px;
+  margin-bottom: -50px;
   border: none;
   border-radius: 50px;
   background-color:rgb(200, 243, 204);

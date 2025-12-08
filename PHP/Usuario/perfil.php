@@ -178,7 +178,7 @@ $resultPets = $stmtPets->get_result();
                     <form action="../PETs/deletePet.php" method="POST"
                         onsubmit="return confirm('Tem certeza que deseja deletar seu pet?');">
                         <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
-                        <button type="submit">Deletar</button>
+                        <button type="submit" style="max-width: 176px; margin: auto;">Deletar</button>
                     </form>
                 </div>
             <?php endwhile; ?>
