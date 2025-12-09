@@ -123,8 +123,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_foto'] = $novoNomeFoto;
     }
 
-    echo "<script>alert('Perfil atualizado com sucesso!'); window.location.href='editar.php';</script>";
+    echo "<script>alert('Perfil atualizado com sucesso!'); window.location.href='perfil.php';</script>";
     exit;
+
+    function formatarCPF($cpf) {
+    $cpf = preg_replace('/\D/', '', $cpf);
+    if (strlen($cpf) === 11) {
+        return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+    }
+    return $cpf;
+}
+function formatarTelefone($tel) {
+    $tel = preg_replace('/\D/', '', $tel); // remove tudo que não é número
+    
+    if (strlen($tel) === 10) {
+        // Formato: (99) 9999-9999
+        return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $tel);
+    } 
+    
+    if (strlen($tel) === 11) {
+        // Formato: (99) 9 9999-9999
+        return preg_replace('/(\d{2})(\d{1})(\d{4})(\d{4})/', '($1) $2 $3-$4', $tel);
+    }
+
+    return $tel; // retorna como está se for diferente
+}
 }
 
 // --------------------------- //
@@ -228,13 +251,13 @@ $usuario = $res->fetch_assoc();
             <div class="info tel">
                 <label>Telefone:</label> <br>
                 <input class="input-info" type="tel" name="telefone" 
-                    value="<?= htmlspecialchars($usuario['telefone']) ?>">
+                    value="<?= htmlspecialchars($usuario['telefone']) ?>" maxlength="11">
             </div>
 
             <div class="info zap">
                 <label>WhatsApp:</label> <br>
                 <input class="input-info" type="tel" name="whats" 
-                    value="<?= htmlspecialchars($usuario['whatsapp']) ?>">
+                    value="<?= htmlspecialchars($usuario['whatsapp']) ?>" maxlength="11">
             </div>
         </div>
 
@@ -340,6 +363,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     carregarCidades(cidadeDoBanco);
 });
+
+    // Máscara CPF
+    const cpf = document.getElementById('cpf');
+    if (cpf) {
+        IMask(cpf, { mask: '000.000.000-00' });
+    }
+
+    // Máscara Telefone
+    const telefone = document.getElementById('telefone');
+    if (telefone) {
+        IMask(telefone, {
+            mask: '(00) 00000-0000'
+        });
+    }
+
+    // Máscara CEP
+    const cep = document.getElementById('cep');
+    if (cep) {
+        IMask(cep, { mask: '00000-000' });
+    }
 </script>
 
 </body>
