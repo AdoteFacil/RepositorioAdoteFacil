@@ -5,58 +5,18 @@
     <meta charset="UTF-8">
     <title>Recuperar Senha</title>
     <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/padrao.css">
+    <link rel="stylesheet" href="../CSS/padrao.css"> 
     <link rel="stylesheet" href="../CSS/entrar.css">
-    
+    <script src="../JS/padrao.js" defer></script>
     <style>
-        body{
-            margin: auto;
-        }
         main{
             background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
             background-position: center;
             margin: auto;
         }
-        .modal-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,.4);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-        }
-
-        .modal-box {
-        background: #fff;
-        padding: 20px 30px;
-        border-radius: 10px;
-        text-align: center;
-        max-width: 350px;
-        font-family: sans-serif;
-        }
-        .modal-box h3 {
-        color: #222;
-        }
-        .modal-box button {
-        margin-top: 15px;
-        padding: 8px 16px;
-        border: none;
-        background: #1385ff;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 6px;
-        }
-        body {
-            background: #368659;
-        }
     </style>
 </head>
 <body>
-
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -85,7 +45,7 @@
 
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
+                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar active">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
                             <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
