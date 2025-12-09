@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <link rel="stylesheet" href="../../../css/consultaedit.css">
 <link rel="stylesheet" href="../../../CSS/padrao.css">
 <script src="../../../JS/padrao.js" defer></script>
+<script src="../../../JS/cadastrar.js" defer></script>
 </head>
 <body>
     <header>
@@ -107,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -210,6 +211,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="footer-rodape">
         <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
     </div>
-</footer>   
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cidadeDoBanco = "<?= htmlspecialchars($usuario['cidade']) ?>";
+    const estadoDoBanco = "<?= htmlspecialchars($usuario['estado']) ?>";
+
+    document.getElementById('estado').value = estadoDoBanco;
+
+    carregarCidades(cidadeDoBanco);
+});
+</script>   
 </body>
 </html>

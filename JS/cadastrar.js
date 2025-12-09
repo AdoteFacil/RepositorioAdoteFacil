@@ -1,4 +1,5 @@
 function carregarCidades(cidadePreSelecionada = null) {
+  console.log("Cidade recebida pelo carregarCidades:", cidadePreSelecionada);
     const estado = document.getElementById('estado').value;
     const selectCidade = document.getElementById('cidade');
     
@@ -39,14 +40,6 @@ function carregarCidades(cidadePreSelecionada = null) {
             selectCidade.innerHTML = '<option value="">Erro ao carregar</option>';
         });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const estadoInicial = document.getElementById('estado').value;
-    const cidadeDoBanco = "<?= $usuario['cidade'] ?>"; 
-    if (estadoInicial) {
-        carregarCidades(cidadeDoBanco);
-    }
-});
 
 function mascaraCPF(input) {
   let value = input.value.replace(/\D/g, "");

@@ -69,7 +69,7 @@ $resultPets = $stmtPets->get_result();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 

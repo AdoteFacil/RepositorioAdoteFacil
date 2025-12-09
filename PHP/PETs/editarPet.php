@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (mysqli_query($conexao, $sqlUpdate)) {
-        header("Location: editarPet.php?id=$id&msg=editado");
+        header("Location: ../Usuario/perfil.php?id=$id&msg=editado");
         exit();
     } else {
         echo "Erro ao atualizar: " . mysqli_error($conexao);
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -142,40 +142,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required>
 
         <label>Gênero</label>
-        <select type="text" name="genero" value="<?= htmlspecialchars($pet['genero']) ?>" required  >
+        <select name="genero" required>
             <option value="">Selecione o gênero</option>
-            <option value="Macho">Macho</option>
-            <option value="Fêmea">Fêmea</option>
+            <option value="Macho" <?= $pet['genero'] == 'Macho' ? 'selected' : '' ?>>Macho</option>
+            <option value="Fêmea" <?= $pet['genero'] == 'Fêmea' ? 'selected' : '' ?>>Fêmea</option>
         </select>
 
         <label>Idade</label>
         <input type="text" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>"required>
 
         <label>Espécie</label>
-        <select type="text" name="especie" value="<?= htmlspecialchars($pet['especie']) ?>"required>
-            <option value="">Selecione o gênero</option>
-            <option value="Macho">Macho</option>
-            <option value="Fêmea">Fêmea</option>
+        <select name="especie" required>
+            <option value="">Selecione a espécie</option>
+            <option value="Cachorro" <?= $pet['especie'] == 'Cachorro' ? 'selected' : '' ?>>Cachorro</option>
+            <option value="Gato" <?= $pet['especie'] == 'Gato' ? 'selected' : '' ?>>Gato</option>
         </select>
 
+
         <label>Porte</label>
-        <select type="text" name="porte" value="<?= htmlspecialchars($pet['porte']) ?>"required>
+        <select name="porte" required>
             <option value="">Selecione o porte</option>
-            <option value="Pequeno">Pequeno</option>
-            <option value="Médio">Médio</option>
-            <option value="Grande">Grande</option>
+            <option value="Pequeno"  <?= $pet['porte'] == 'Pequeno' ? 'selected' : '' ?>>Pequeno</option>
+            <option value="Médio"    <?= $pet['porte'] == 'Médio' ? 'selected' : '' ?>>Médio</option>
+            <option value="Grande"   <?= $pet['porte'] == 'Grande' ? 'selected' : '' ?>>Grande</option>
         </select>
+
 
         <label>Raça</label>
         <input type="text" name="raca" value="<?= htmlspecialchars($pet['raca']) ?>"required>
 
         <label>Situação</label>
-        <select type="text" name="situacao" value="<?= htmlspecialchars($pet['situacao']) ?>"required>
-            <option value="Nenhum">Nenhum</option>
-            <option value="Vacinado">Vacinado</option>
-            <option value="Vacinado e Castrado">Vacinado e Castrado</option>
-            <option value="Castrado">Castrado</option>
+        <select name="situacao" required>
+            <option value="Nenhum"                <?= $pet['situacao'] == 'Nenhum' ? 'selected' : '' ?>>Nenhum</option>
+            <option value="Vacinado"              <?= $pet['situacao'] == 'Vacinado' ? 'selected' : '' ?>>Vacinado</option>
+            <option value="Castrado"              <?= $pet['situacao'] == 'Castrado' ? 'selected' : '' ?>>Castrado</option>
+            <option value="Vacinado e Castrado"   <?= $pet['situacao'] == 'Vacinado e Castrado' ? 'selected' : '' ?>>Vacinado e Castrado</option>
         </select>
+
 
         <div class="form-img">                
             <label>Foto Atual:</label><br>
@@ -188,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="links">
             <button type="submit">Salvar Alterações</button>
             <br><br>
-            <a href="consulta.php" class="btn-voltar">Voltar</a>
+            <a href="../Usuario/perfil.php" class="btn-voltar">Voltar</a>
         </div>
     </form>
 </div>

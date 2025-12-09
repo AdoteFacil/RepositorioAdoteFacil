@@ -1,4 +1,8 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -169,7 +173,7 @@ $usuario = $res->fetch_assoc();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -260,9 +264,11 @@ $usuario = $res->fetch_assoc();
             </div>
 
             <div class="info cidade">
-                <label>Cidade:</label> <br>
-                <select name="cidade" id="cidade" class="input-info" disabled required>
-                    <option value="">Selecione um estado...</option>
+               <label>Cidade:</label><br>
+                <select name="cidade" id="cidade" class="input-info" required>
+                    <option value="<?= htmlspecialchars($usuario['cidade']) ?>" selected>
+                        <?= htmlspecialchars($usuario['cidade']) ?>
+                    </option>
                 </select>
             </div>
         </div>
@@ -325,5 +331,16 @@ $usuario = $res->fetch_assoc();
             <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cidadeDoBanco = "<?= htmlspecialchars($usuario['cidade']) ?>";
+    const estadoDoBanco = "<?= htmlspecialchars($usuario['estado']) ?>";
+
+    document.getElementById('estado').value = estadoDoBanco;
+
+    carregarCidades(cidadeDoBanco);
+});
+</script>
+
 </body>
 </html>
