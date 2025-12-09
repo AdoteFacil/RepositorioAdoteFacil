@@ -1,62 +1,30 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Recuperar Senha</title>
-    <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/padrao.css">
-    <link rel="stylesheet" href="../CSS/entrar.css">
-    
-    <style>
-        body{
-            margin: auto;
-        }
-        main{
-            background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
-            background-position: center;
-            margin: auto;
-        }
-        .modal-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,.4);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adote Fácil</title>
+  <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/padrao.css" />
+  <link rel="stylesheet" href="../CSS/entrar.css" />
+  <script src="../JS/entrar.js" defer></script>
+  <style>
+    main{
+        background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    .login-container{
+        margin: 200px auto;
+    }
 
-        .modal-box {
-        background: #fff;
-        padding: 20px 30px;
-        border-radius: 10px;
-        text-align: center;
-        max-width: 350px;
-        font-family: sans-serif;
-        }
-        .modal-box h3 {
-        color: #222;
-        }
-        .modal-box button {
-        margin-top: 15px;
-        padding: 8px 16px;
-        border: none;
-        background: #1385ff;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 6px;
-        }
-        body {
-            background: #368659;
-        }
-    </style>
+  </style>
 </head>
 <body>
-
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -80,12 +48,12 @@
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 
                     <?php if (!isset($_SESSION['usuario_id'])): ?>
-                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
+                        <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar active">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
                             <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
@@ -122,6 +90,7 @@
         </div>
     </main> 
 
+    
     <footer>
         <section class="footer">
             <div class="footer-coluna" id="cl1">
@@ -156,7 +125,7 @@
         </div>
     </footer>
 
-<div id="popup" style="display:none;
+    <div id="popup" style="display:none;
 position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
     <div style="background:#fff;padding:20px;border-radius:10px;text-align:center;">
@@ -194,5 +163,6 @@ form.addEventListener("submit", async (e) => {
     else abrirPopup("Erro ao enviar o e-mail 😕");
 });
 </script>
+
 </body>
 </html>

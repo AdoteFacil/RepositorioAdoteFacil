@@ -1,4 +1,8 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -119,8 +123,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuario_foto'] = $novoNomeFoto;
     }
 
-    echo "<script>alert('Perfil atualizado com sucesso!'); window.location.href='editar.php';</script>";
+    echo "<script>alert('Perfil atualizado com sucesso!'); window.location.href='perfil.php';</script>";
     exit;
+
+    function formatarCPF($cpf) {
+    $cpf = preg_replace('/\D/', '', $cpf);
+    if (strlen($cpf) === 11) {
+        return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+    }
+    return $cpf;
+}
+function formatarTelefone($tel) {
+    $tel = preg_replace('/\D/', '', $tel); // remove tudo que não é número
+    
+    if (strlen($tel) === 10) {
+        // Formato: (99) 9999-9999
+        return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $tel);
+    } 
+    
+    if (strlen($tel) === 11) {
+        // Formato: (99) 9 9999-9999
+        return preg_replace('/(\d{2})(\d{1})(\d{4})(\d{4})/', '($1) $2 $3-$4', $tel);
+    }
+
+    return $tel; // retorna como está se for diferente
+}
 }
 
 // --------------------------- //
@@ -169,7 +196,7 @@ $usuario = $res->fetch_assoc();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -224,13 +251,13 @@ $usuario = $res->fetch_assoc();
             <div class="info tel">
                 <label>Telefone:</label> <br>
                 <input class="input-info" type="tel" name="telefone" 
-                    value="<?= htmlspecialchars($usuario['telefone']) ?>">
+                    value="<?= htmlspecialchars($usuario['telefone']) ?>" maxlength="11">
             </div>
 
             <div class="info zap">
                 <label>WhatsApp:</label> <br>
                 <input class="input-info" type="tel" name="whats" 
-                    value="<?= htmlspecialchars($usuario['whatsapp']) ?>">
+                    value="<?= htmlspecialchars($usuario['whatsapp']) ?>" maxlength="11">
             </div>
         </div>
 
@@ -260,9 +287,11 @@ $usuario = $res->fetch_assoc();
             </div>
 
             <div class="info cidade">
-                <label>Cidade:</label> <br>
-                <select name="cidade" id="cidade" class="input-info" disabled required>
-                    <option value="">Selecione um estado...</option>
+               <label>Cidade:</label><br>
+                <select name="cidade" id="cidade" class="input-info" required>
+                    <option value="<?= htmlspecialchars($usuario['cidade']) ?>" selected>
+                        <?= htmlspecialchars($usuario['cidade']) ?>
+                    </option>
                 </select>
             </div>
         </div>
@@ -325,5 +354,36 @@ $usuario = $res->fetch_assoc();
             <p>Desenvolvido pela Turma - 20.8.2025 Tecnico de Informatica para Internet (Peludinhos do Bem). 2025 &copy;Todos os direitos reservados.</p>
         </div>
     </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cidadeDoBanco = "<?= htmlspecialchars($usuario['cidade']) ?>";
+    const estadoDoBanco = "<?= htmlspecialchars($usuario['estado']) ?>";
+
+    document.getElementById('estado').value = estadoDoBanco;
+
+    carregarCidades(cidadeDoBanco);
+});
+
+    // Máscara CPF
+    const cpf = document.getElementById('cpf');
+    if (cpf) {
+        IMask(cpf, { mask: '000.000.000-00' });
+    }
+
+    // Máscara Telefone
+    const telefone = document.getElementById('telefone');
+    if (telefone) {
+        IMask(telefone, {
+            mask: '(00) 00000-0000'
+        });
+    }
+
+    // Máscara CEP
+    const cep = document.getElementById('cep');
+    if (cep) {
+        IMask(cep, { mask: '00000-000' });
+    }
+</script>
+
 </body>
 </html>

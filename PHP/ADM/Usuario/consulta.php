@@ -15,6 +15,29 @@ if ($result) {
     echo "Erro na consulta: " . mysqli_error($conexao);
     $cliente = array(); // Array vazio em caso de erro
 }
+
+function formatarCPF($cpf) {
+    $cpf = preg_replace('/\D/', '', $cpf);
+    if (strlen($cpf) === 11) {
+        return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+    }
+    return $cpf;
+}
+function formatarTelefone($tel) {
+    $tel = preg_replace('/\D/', '', $tel); // remove tudo que não é número
+    
+    if (strlen($tel) === 10) {
+        // Formato: (99) 9999-9999
+        return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $tel);
+    } 
+    
+    if (strlen($tel) === 11) {
+        // Formato: (99) 9 9999-9999
+        return preg_replace('/(\d{2})(\d{1})(\d{4})(\d{4})/', '($1) $2 $3-$4', $tel);
+    }
+
+    return $tel; // retorna como está se for diferente
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +75,7 @@ if ($result) {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php">adm</a></li>
+                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
