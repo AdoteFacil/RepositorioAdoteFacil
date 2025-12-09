@@ -1,20 +1,28 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Recuperar Senha</title>
-    <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/padrao.css"> 
-    <link rel="stylesheet" href="../CSS/entrar.css">
-    <script src="../JS/padrao.js" defer></script>
-    <style>
-        main{
-            background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
-            background-position: center;
-            margin: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adote Fácil</title>
+  <link rel="icon" href="../IMG/icones/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/padrao.css" />
+  <link rel="stylesheet" href="../CSS/entrar.css" />
+  <script src="../JS/entrar.js" defer></script>
+  <style>
+    main{
+        background-image: url(../IMG/index/filhotes-de-golden-retriever-fslbs3tert4zvcbd.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    .login-container{
+        margin: 200px auto;
+    }
+
+  </style>
 </head>
 <body>
     <header>
@@ -82,6 +90,7 @@
         </div>
     </main> 
 
+    
     <footer>
         <section class="footer">
             <div class="footer-coluna" id="cl1">
@@ -116,7 +125,7 @@
         </div>
     </footer>
 
-<div id="popup" style="display:none;
+    <div id="popup" style="display:none;
 position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
     <div style="background:#fff;padding:20px;border-radius:10px;text-align:center;">
@@ -154,5 +163,6 @@ form.addEventListener("submit", async (e) => {
     else abrirPopup("Erro ao enviar o e-mail 😕");
 });
 </script>
+
 </body>
 </html>
