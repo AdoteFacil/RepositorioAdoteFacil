@@ -180,7 +180,7 @@ main {
   padding: 15px;
   margin-top: 10px;
   text-align: left;
-  display: flex;
+  display: block;
   padding-bottom: 5px;
 }
 .pet-info > h2{
@@ -192,22 +192,21 @@ main {
   margin: 10px 0;
   gap: 10px;
 }
-.coluna1, .coluna2{
-  width: 136px;
-  height: 130px;
-}
+
 .iconpet{
   width: 24px;
   height: 24px;
 }
 
 .div-qadot{
-  margin: 80px auto 40px;
-  margin-top: 10px !important;
- 
-  
+  margin-inline: auto;
+  margin-block: 40px 20px;
 }
-
+.pet-card > h2{
+   text-align: left;
+   padding: 0 0 0 40px;
+   margin-bottom: -25px;
+}
 .pet-card.expandido .pet-imagem {
   opacity: 0;
   pointer-events: none;
