@@ -82,6 +82,7 @@ main {
 .btn-slide {
   display: inline-block;
   background-color: var(--brown-warm);
+  background-color: #f2d16b;
   color: white;
   padding: 12px 24px;
   border-radius: 30px;
@@ -133,7 +134,7 @@ main {
 
 /* === SEÇÃO COMUNIDADE === */
 .comunidade {
-  background-color: #5E8A60;
+  background-color: #54ac59;
   width: 100%;
   padding: 40px 0;
   color: rgb(255, 255, 255);

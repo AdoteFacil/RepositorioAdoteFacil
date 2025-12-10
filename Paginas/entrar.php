@@ -45,8 +45,19 @@ session_start();
                         <li class=" li-dropdown "><a href="entrar.php" id="btn-entrar" class="botao-entrar active">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
-                            <img src="../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                                class="foto-perfil" alt="Foto">
+                            <?php
+                                $foto = $_SESSION['usuario_foto'] ?? '';
+                                $nome = $_SESSION['usuario_nome'] ?? 'Usuário';
+
+                                $partes = explode(' ', trim($nome));
+                                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                                ?>
+                                                        
+                                <?php if (!empty($foto)): ?>
+                                    <img src="../IMG/usuario/<?php echo $foto; ?>" class="foto-perfil" alt="Foto">
+                                <?php else: ?>
+                                    <div class="foto-inicial"><?php echo $iniciais; ?></div>
+                            <?php endif; ?>
 
                             <div class="dropdown-user">
                                 <span class="nome-dropdown">

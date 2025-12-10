@@ -204,8 +204,19 @@ $usuario = $res->fetch_assoc();
                         <li class=" li-dropdown "><a href="../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
-                            <img src="../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                                class="foto-perfil" alt="Foto">
+                            <?php
+                                $foto = $_SESSION['usuario_foto'] ?? '';
+                                $nome = $_SESSION['usuario_nome'] ?? 'Usuário';
+
+                                $partes = explode(' ', trim($nome));
+                                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                                ?>
+                                                        
+                                <?php if (!empty($foto)): ?>
+                                    <img src="../../IMG/usuario/<?php echo $foto; ?>" class="foto-perfil" alt="Foto">
+                                <?php else: ?>
+                                    <div class="foto-inicial"><?php echo $iniciais; ?></div>
+                            <?php endif; ?>
 
                             <div class="dropdown-user">
                                 <span class="nome-dropdown">
@@ -224,8 +235,21 @@ $usuario = $res->fetch_assoc();
 <div class="container">
     <h1>Editar Perfil</h1>
 
-    <img src="../../IMG/usuario/<?= htmlspecialchars($usuario['foto']) ?>" 
-         class="fotoPerfil" alt="Foto do perfil">
+    <?php
+                $foto = $usuario['foto'] ?? '';
+                $nome = $usuario['nome'] ?? 'Usuário';
+
+                // gerar iniciais
+                $partes = explode(' ', trim($nome));
+                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                ?>
+
+                <?php if (!empty($foto)): ?>
+                    <img src="../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
+                        alt="Foto do perfil" class="fotoPerfil">
+                <?php else: ?>
+                    <div class="foto-inicial-perfil"><?= $iniciais ?></div>
+                <?php endif; ?>
 
     <form method="POST" enctype="multipart/form-data" class="formEditar">
 
