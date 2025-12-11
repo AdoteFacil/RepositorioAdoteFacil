@@ -254,11 +254,23 @@ function formatarTelefone($tel) {
         </select>
 
         <div class="form-img">
-            <label>Foto Atual:</label><br>
-            <img src="../../../IMG/usuario/<?= htmlspecialchars($cliente['foto']) ?>" class="preview-foto" width="120"><br><br>
-        </div>
+            <label>Mudar Foto:</label>
+            <?php
+                $foto = $cliente['foto'] ?? '';
+                $nome = $cliente['nome'] ?? 'Usuário';
 
-        <label>Mudar Foto:</label>
+                // gerar iniciais
+                $partes = explode(' ', trim($nome));
+                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                ?>
+
+                <?php if (!empty($foto)): ?>
+                    <img src="../../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
+                        alt="Foto do perfil" class="fotoPerfil">
+                <?php else: ?>
+                    <div class="foto-inicial-perfil"><?= $iniciais ?></div>
+                <?php endif; ?>
+        </div>
         <input type="file" name="foto">
 
         <div class="links">

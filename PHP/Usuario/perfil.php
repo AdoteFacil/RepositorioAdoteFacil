@@ -143,7 +143,7 @@ function formatarTelefone($tel) {
 
                 <?php if (!empty($foto)): ?>
                     <img src="../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
-                        alt="Foto do perfil" class="fotoPerfil">
+                        alt="Foto do perfil" class="fotoPerfil preview-foto" >
                 <?php else: ?>
                     <div class="foto-inicial-perfil"><?= $iniciais ?></div>
                 <?php endif; ?>

@@ -87,6 +87,26 @@ input:focus {
     box-shadow: none !important;
     filter: none !important;
 }
+
+.foto-inicial-perfil{
+    width: 140px;        /* Ajuste como quiser */
+    height: 140px;       /* Ajuste como quiser */
+    object-fit: cover;   /* Mantém a imagem proporcional */
+    border-radius: 12px; /* Só pra ficar bonitinho */
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    
+    /* Impede clicar, arrastar e qualquer interação */
+    pointer-events: none;
+    user-select: none;
+
+    /* Remove qualquer efeito vindo do padrao.css */
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+
 .user-sample-container {
     background-color: var(--cream);
     padding: 25px;
