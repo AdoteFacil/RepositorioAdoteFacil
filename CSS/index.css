@@ -330,21 +330,20 @@ main {
     background-repeat: no-repeat;
 }
 .pet-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #f4f4f4;
-
   border: 1px solid #ccc;
   text-align: center;
   transition: transform 0.2s;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
   padding: 0%;
   border-radius: 12px;
-  margin: 10px 5px;/*corrigido*/
+  margin: 15px 5px;
   width: 300px;
-  height: 580px;
+  height: 600px;
 }
 
 .pet-card:hover {
@@ -368,9 +367,11 @@ main {
 }
 
 .pet-info {
+  height: 320px;
   padding: 15px;
-  margin-top: 10px;
   text-align: left;
+  display: block;
+  padding-bottom: 5px;
 }
 
 .pet-info p{
@@ -379,8 +380,16 @@ main {
   gap: 10px;
 }
 
+.pet-info h2{
+  font-size: 28px;
+  border-bottom: 1px solid #ccc;
+}
+
 .div-qadot{
-  margin: 80px auto 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
 }
 
 .pet-card.expandido .pet-imagem {
@@ -396,10 +405,10 @@ main {
 }
 
 .qadot {
-  padding: 10px 16px;
- 
+  padding: 10px 60px;
+
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   background-color:#c8f3cc;
   color: #504e4e;
   font-size: 1.1rem;
@@ -411,7 +420,7 @@ main {
 .qadot:hover {
   transform: scale(1.03);
   transition: 0.3s;
-  background-color: #9ee9a6;
+  background-color: rgba(200, 243, 204, 0.7);
 }
 
 .vejamais{

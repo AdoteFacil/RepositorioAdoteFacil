@@ -132,8 +132,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busca'])) {
                             <div class="pet-imagem">
                                 <img src="../IMG/adote/<?= htmlspecialchars($animal['foto'])?>" alt="cachorrinho fofo" />
                              </div>
-                             <h2><?php echo $animal['nome']; ?></h2>
                              <div class="pet-info">
+                                    <h2><?php echo $animal['nome']; ?></h2>
                                     <p><img src="../IMG/icones/idadeicon.png" alt="idade_icone" class="iconpet"><?php echo $animal['idade']; ?> anos</p>
                                     <?php 
                                         $generoIcon = $animal['genero'] === 'Macho' 

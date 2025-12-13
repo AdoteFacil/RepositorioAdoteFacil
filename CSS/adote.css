@@ -140,20 +140,20 @@ main {
 }
 
 .pet-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   text-align: center;
   transition: transform 0.2s;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
   padding: 0%;
   border-radius: 12px;
   margin: 15px 5px;
   width: 300px;
-  height: 500px;
+  height: 600px;
 }
 
 .pet-card:hover {
@@ -177,14 +177,16 @@ main {
 }
 
 .pet-info {
+  height: 320px;
   padding: 15px;
-  margin-top: 10px;
   text-align: left;
   display: block;
   padding-bottom: 5px;
 }
-.pet-info > h2{
-  display: 100%;
+
+.pet-info h2{
+  font-size: 28px;
+  border-bottom: 1px solid #ccc;
 }
 
 .pet-info p{
@@ -198,15 +200,6 @@ main {
   height: 24px;
 }
 
-.div-qadot{
-  margin-inline: auto;
-  margin-block: 40px 20px;
-}
-.pet-card > h2{
-   text-align: left;
-   padding: 0 0 0 40px;
-   margin-bottom: -25px;
-}
 .pet-card.expandido .pet-imagem {
   opacity: 0;
   pointer-events: none;
@@ -219,14 +212,19 @@ main {
   transform: translateY(0);
 }
 
+.div-qadot{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
 .qadot {
-  padding: 10px 16px;
-  width: 200px;
-  height: 40px;
-  margin-bottom: -50px;
+  padding: 10px 60px;
+
   border: none;
-  border-radius: 50px;
-  background-color:rgb(200, 243, 204);
+  border-radius: 10px;
+  background-color:#c8f3cc;
   color: #504e4e;
   font-size: 1.1rem;
   font-weight: bold;
@@ -237,34 +235,7 @@ main {
 .qadot:hover {
   transform: scale(1.03);
   transition: 0.3s;
-  background-color: #9ee9a6;
-}
-
-.vejamais{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.vejamais a{
-  border: none;
-  color: #696969;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.vejamais img{
-  display: block;
-  width: 15px;
-  height: 12px;
-
-  margin: 0 30px;
-}
-
-.vejamais:hover{
-  transform: scale(1.05);
-  transition: 0.3s;
+  background-color: rgba(200, 243, 204, 0.7);
 }
 
 .cadastro-pet-container {
@@ -307,12 +278,8 @@ main {
 
   .pet-card {
     width: 500px;
-    height: 650px;
+    height: 615px;
     margin: 0 auto;
-  }
-
-  .pet-info h2{
-    font-size: 100px;
   }
 
   .pet-imagem{
