@@ -69,6 +69,10 @@ input:focus {
     margin: auto;
 }
 
+.form-img .foto-inicial-perfil{
+    margin: auto;
+}
+
 /* ===== PRÉVIA DA FOTO ===== */
 .preview-foto {
     width: 140px;        /* Ajuste como quiser */
@@ -89,21 +93,18 @@ input:focus {
 }
 
 .foto-inicial-perfil{
-    width: 140px;        /* Ajuste como quiser */
-    height: 140px;       /* Ajuste como quiser */
-    object-fit: cover;   /* Mantém a imagem proporcional */
-    border-radius: 12px; /* Só pra ficar bonitinho */
-    border: none !important;
-    outline: none !important;
-    background: transparent !important;
-    
-    /* Impede clicar, arrastar e qualquer interação */
+    background-color: #54ac59;
+    color: #fff;
+    font-size: 50px;
+    width: 140px;        
+    height: 140px;       
+    border-radius: 50%; 
     pointer-events: none;
     user-select: none;
 
-    /* Remove qualquer efeito vindo do padrao.css */
-    box-shadow: none !important;
-    filter: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
