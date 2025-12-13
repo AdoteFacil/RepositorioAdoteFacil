@@ -1,6 +1,13 @@
 <?php
 session_start();
+
+if (!isset($_GET['token']) || empty($_GET['token'])) {
+    die("Token ausente ou inválido.");
+}
+
+$token = $_GET['token'];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -89,7 +96,8 @@ session_start();
         <div class="linha-decorativa"></div>
 
         <form class="login-form" action="../PHP/Usuario/redefinirSenha.php" method="POST" onsubmit="return validar()">
-            <input type="hidden" name="token" value="<?= $token ?>">
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+
 
             <label for="senha">Nova Senha:</label>
             <input type="password" name="senha" id="senha" required>

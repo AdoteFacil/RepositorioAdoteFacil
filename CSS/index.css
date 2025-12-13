@@ -410,7 +410,8 @@ main {
   border: none;
   border-radius: 10px;
   background-color:#c8f3cc;
-  color: #504e4e;
+  background-color: #f2d16b;
+  color: #5c5c5c;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
@@ -421,6 +422,7 @@ main {
   transform: scale(1.03);
   transition: 0.3s;
   background-color: rgba(200, 243, 204, 0.7);
+  background-color: rgba(242, 209, 107, 0.8);
 }
 
 .vejamais{
