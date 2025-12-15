@@ -291,9 +291,6 @@ main {
   .pet-imagem img{
     height: 300px;
   }
-  .sobre {
-    bottom: 70px;
-  }
 }
 
 @media (max-width: 516px) {
@@ -303,13 +300,4 @@ main {
     margin: 0 auto;
   }
 
-  .sobre {
-    bottom: 60px;
-    padding: 10px;
-  }
-
-  .saiba, .qadot {
-    font-size: 1rem;
-    padding: 15px;
-  }
 }
