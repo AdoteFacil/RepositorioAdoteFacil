@@ -76,6 +76,7 @@ main {
     padding: 12px 18px;
     width: 100%;
     max-width: 480px;
+    border: 1px solid rgba(0,0,0,0.08);
 
     background: #ffffff00;
     border-radius: 12px;
@@ -120,7 +121,7 @@ main {
 .cards-vitrini {
   padding: 40px 20px;
   text-align: center;
-  overflow-x: hidden; /* <- Corrigido */
+  overflow-x: hidden;
   border-radius: 10px;
   margin: 0px 0 40px;
 }
@@ -272,9 +273,15 @@ main {
 
 /* Responsividade */
 @media (max-width: 768px) {
+  .intro-adote {
+  text-align: center;
+  padding: 0 20px;
+  color: #333;
+}
+
   .vitrine {
     grid-template-columns: 1fr;
-    padding: 10px;
+    padding: 20px;
   }
 
   .pet-card {
@@ -290,7 +297,7 @@ main {
 
   .pet-imagem img{
     height: 300px;
-  }
+  } 
 }
 
 @media (max-width: 516px) {
@@ -300,4 +307,25 @@ main {
     margin: 0 auto;
   }
 
+    .search-box{
+      max-width: 400px;
+    }
+
+    .search-box input {
+      max-width: 225px;
+    }
+
+}
+
+@media(max-width: 436px){
+  .search-box{
+    justify-content: space-between;
+  }
+  .search-box input{
+    max-width: 180px;
+  }
+
+  .search-box button{
+    text-align: center;
+  }
 }

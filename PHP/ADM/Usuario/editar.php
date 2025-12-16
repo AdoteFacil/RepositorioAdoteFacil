@@ -149,7 +149,7 @@ function formatarTelefone($tel) {
 <head>
 <meta charset="UTF-8">
 <title>Editar Usuário</title>
-<link rel="stylesheet" href="../../../css/consultaedit.css">
+<link rel="stylesheet" href="../../../CSS/consultaedit.css">
 <link rel="stylesheet" href="../../../CSS/padrao.css">
 <script src="../../../JS/padrao.js" defer></script>
 <script src="../../../JS/cadastrar.js" defer></script>
@@ -168,7 +168,7 @@ function formatarTelefone($tel) {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown linkIndex"><a href="../../../index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../../../index.php">Início</a></li>
                     <li class="li-dropdown linkSobre"><a href="../../../Paginas/sobre.php">Sobre Nós</a></li>
                     <li class="li-dropdown linkAdote"><a href="../../../Paginas/adote.php">Adote um pet</a></li>
                     <li class="li-dropdown linkCajudar"><a href="../../../Paginas/comoajudar.php">Como ajudar</a></li>
@@ -178,7 +178,7 @@ function formatarTelefone($tel) {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -214,83 +214,85 @@ function formatarTelefone($tel) {
             </div>
         </nav>
     </header>
-<div class="container">
-    <h1>Editar Usuário</h1>
+    <main>
+        <div class="container">
+            <h1>Editar Usuário</h1>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="id_cliente" value="<?= $idURL ?>">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id_cliente" value="<?= $idURL ?>">
 
-        <label>Nome</label>
-        <input type="text" name="nome" value="<?= htmlspecialchars($cliente['nome']) ?>" required>
+                <label>Nome</label>
+                <input type="text" name="nome" value="<?= htmlspecialchars($cliente['nome']) ?>" required>
 
-        <label>CPF</label>
-        <input type="text" name="cpf" value="<?= formatarCPF($cliente['cpf']) ?>" maxlength="14" required oninput="mascaraCPF(this)">
+                <label>CPF</label>
+                <input type="text" name="cpf" value="<?= formatarCPF($cliente['cpf']) ?>" maxlength="14" required oninput="mascaraCPF(this)">
 
-        <label>Data de Nascimento</label>
-        <input type="date" name="data_nasc" value="<?= htmlspecialchars($cliente['data_nasc']) ?>" required>
+                <label>Data de Nascimento</label>
+                <input type="date" name="data_nasc" value="<?= htmlspecialchars($cliente['data_nasc']) ?>" required>
 
-        <label>E-mail</label>
-        <input type="email" name="email" value="<?= htmlspecialchars($cliente['email']) ?>" required>
+                <label>E-mail</label>
+                <input type="email" name="email" value="<?= htmlspecialchars($cliente['email']) ?>" required>
 
-        <label>Telefone</label>
-        <input type="text" name="telefone" value="<?= formatarTelefone($cliente['telefone']) ?>" oninput="mascaraTel(this)">
+                <label>Telefone</label>
+                <input type="text" name="telefone" value="<?= formatarTelefone($cliente['telefone']) ?>" oninput="mascaraTel(this)">
 
-        <label>Whatsapp</label>
-        <input type="text" name="whatsapp" value="<?= formatarTelefone($cliente['whatsapp']) ?>" oninput="mascaraTel(this)">
+                <label>Whatsapp</label>
+                <input type="text" name="whatsapp" value="<?= formatarTelefone($cliente['whatsapp']) ?>" oninput="mascaraTel(this)">
 
-        <label>Estado</label>
-        <select name="estado" id="estado" class="input-info" onchange="carregarCidades()">
-            <option value="">Selecione</option>
-            <?php
-                $estados = [
-                    'AC'=>'Acre', 'AL'=>'Alagoas', 'AP'=>'Amapá', 'AM'=>'Amazonas', 'BA'=>'Bahia',
-                    'CE'=>'Ceará', 'DF'=>'Distrito Federal', 'ES'=>'Espírito Santo', 'GO'=>'Goiás',
-                    'MA'=>'Maranhão', 'MT'=>'Mato Grosso', 'MS'=>'Mato Grosso do Sul', 'MG'=>'Minas Gerais',
-                    'PA'=>'Pará', 'PB'=>'Paraíba', 'PR'=>'Paraná', 'PE'=>'Pernambuco', 'PI'=>'Piauí',
-                    'RJ'=>'Rio de Janeiro', 'RN'=>'Rio Grande do Norte', 'RS'=>'Rio Grande do Sul',
-                    'RO'=>'Rondônia', 'RR'=>'Roraima', 'SC'=>'Santa Catarina', 'SP'=>'São Paulo',
-                    'SE'=>'Sergipe', 'TO'=>'Tocantins'
-                ];
+                <label>Estado</label>
+                <select name="estado" id="estado" class="input-info" onchange="carregarCidades()">
+                    <option value="">Selecione</option>
+                    <?php
+                        $estados = [
+                            'AC'=>'Acre', 'AL'=>'Alagoas', 'AP'=>'Amapá', 'AM'=>'Amazonas', 'BA'=>'Bahia',
+                            'CE'=>'Ceará', 'DF'=>'Distrito Federal', 'ES'=>'Espírito Santo', 'GO'=>'Goiás',
+                            'MA'=>'Maranhão', 'MT'=>'Mato Grosso', 'MS'=>'Mato Grosso do Sul', 'MG'=>'Minas Gerais',
+                            'PA'=>'Pará', 'PB'=>'Paraíba', 'PR'=>'Paraná', 'PE'=>'Pernambuco', 'PI'=>'Piauí',
+                            'RJ'=>'Rio de Janeiro', 'RN'=>'Rio Grande do Norte', 'RS'=>'Rio Grande do Sul',
+                            'RO'=>'Rondônia', 'RR'=>'Roraima', 'SC'=>'Santa Catarina', 'SP'=>'São Paulo',
+                            'SE'=>'Sergipe', 'TO'=>'Tocantins'
+                        ];
 
-                foreach ($estados as $sigla => $nome) {
-                    $selected = ($cliente['estado'] == $sigla) ? 'selected' : '';
-                    echo "<option value='$sigla' $selected>$nome</option>";
-                }
-            ?>
-        </select>
+                        foreach ($estados as $sigla => $nome) {
+                            $selected = ($cliente['estado'] == $sigla) ? 'selected' : '';
+                            echo "<option value='$sigla' $selected>$nome</option>";
+                        }
+                    ?>
+                </select>
 
-        <label>Cidade</label>
-        <select name="cidade" id="cidade" class="input-info" required>
-            <option value="<?= htmlspecialchars($cliente['cidade']) ?>" selected><?= htmlspecialchars($cliente['cidade']) ?></option>
-        </select>
+                <label>Cidade</label>
+                <select name="cidade" id="cidade" class="input-info" required>
+                    <option value="<?= htmlspecialchars($cliente['cidade']) ?>" selected><?= htmlspecialchars($cliente['cidade']) ?></option>
+                </select>
 
-        <div class="form-img">
-            <label>Mudar Foto:</label>
-            <?php
-                $foto = $cliente['foto'] ?? '';
-                $nome = $cliente['nome'] ?? 'Usuário';
+                <div class="form-img">
+                    <label>Mudar Foto:</label>
+                    <?php
+                        $foto = $cliente['foto'] ?? '';
+                        $nome = $cliente['nome'] ?? 'Usuário';
 
-                // gerar iniciais
-                $partes = explode(' ', trim($nome));
-                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
-                ?>
+                        // gerar iniciais
+                        $partes = explode(' ', trim($nome));
+                        $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                        ?>
 
-                <?php if (!empty($foto)): ?>
-                    <img src="../../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
-                        alt="Foto do perfil" class="fotoPerfil preview-foto">
-                <?php else: ?>
-                    <div class="foto-inicial-perfil"><?= $iniciais ?></div>
-                <?php endif; ?>
+                        <?php if (!empty($foto)): ?>
+                            <img src="../../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
+                                alt="Foto do perfil" class="fotoPerfil preview-foto">
+                        <?php else: ?>
+                            <div class="foto-inicial-perfil"><?= $iniciais ?></div>
+                        <?php endif; ?>
+                </div>
+                <input type="file" name="foto">
+
+                <div class="links">
+                    <button type="submit">Salvar Alterações</button>
+                    <br><br>
+                    <a href="consulta.php" class="btn-voltar">Voltar</a>
+                </div>
+            </form>
         </div>
-        <input type="file" name="foto">
-
-        <div class="links">
-            <button type="submit">Salvar Alterações</button>
-            <br><br>
-            <a href="consulta.php" class="btn-voltar">Voltar</a>
-        </div>
-    </form>
-</div>
+    </main>
 <footer>
     <section class="footer">
         <div class="footer-coluna" id="cl1">

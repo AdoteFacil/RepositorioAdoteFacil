@@ -65,7 +65,7 @@ function formatarTelefone($tel) {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown linkIndex"><a href="../../../index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../../../index.php">Início</a></li>
                     <li class="li-dropdown linkSobre"><a href="../../../Paginas/sobre.php">Sobre Nós</a></li>
                     <li class="li-dropdown linkAdote"><a href="../../../Paginas/adote.php">Adote um pet</a></li>
                     <li class="li-dropdown linkCajudar"><a href="../../../Paginas/comoajudar.php">Como ajudar</a></li>
@@ -75,7 +75,7 @@ function formatarTelefone($tel) {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -111,74 +111,76 @@ function formatarTelefone($tel) {
             </div>
         </nav>
     </header>
-  <div class="container">
-    <h1>Usuários Cadastrados</h1>
+    <main>
+        <div class="container">
+            <h1>Usuários Cadastrados</h1>
 
-    <!-- Tabela de usuários -->
-    <table id="userTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Imagem Perfil</th>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>Data de Nascimento</th>
-          <th>E-mail</th>
-          <th>Telefone</th>
-          <th>Whatsapp</th>
-          <th>Estado</th>
-          <th>Cidade</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php if (count($cliente) > 0): ?>
-            <?php foreach ($cliente as $pessoa): ?>
+            <!-- Tabela de usuários -->
+            <table id="userTable">
+            <thead>
                 <tr>
-                    <td><?= $pessoa['id_cliente'] ?></td>
-                    <td><?php
-                $foto = $pessoa['foto'] ?? '';
-                $nome = $pessoa['nome'] ?? 'Usuário';
-
-                // gerar iniciais
-                $partes = explode(' ', trim($nome));
-                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
-                ?>
-
-                <?php if (!empty($foto)): ?>
-                    <img src="../../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
-                        alt="Foto do perfil" class="fotoPerfil">
-                <?php else: ?>
-                    <div class="foto-inicial-perfil"><?= $iniciais ?></div>
-                <?php endif; ?></td>
-                    <td><?= htmlspecialchars($pessoa['nome']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['cpf']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['data_nasc']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['email']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['telefone']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['whatsapp']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['estado']) ?></td>
-                    <td><?= htmlspecialchars($pessoa['cidade']) ?></td>
-                    <td class="acoes">
-                      <div class="acoes">
-                        <a href="editar.php?id=<?php echo $pessoa['id_cliente']; ?>">✏ Editar</a>
-                        <a href="apagar.php?id=<?= $pessoa['id_cliente'] ?>" class="btn-delete">🗑 Apagar</a>
-                      </div>
-                    </td>
+                <th>ID</th>
+                <th>Imagem Perfil</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Whatsapp</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Ações</th>
                 </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr><td colspan="10">Nenhum usuário cadastrado.</td></tr>
-        <?php endif; ?>
-        </tbody>
-    </table> 
+            </thead>
+            <tbody>
+                <?php if (count($cliente) > 0): ?>
+                    <?php foreach ($cliente as $pessoa): ?>
+                        <tr>
+                            <td><?= $pessoa['id_cliente'] ?></td>
+                            <td><?php
+                        $foto = $pessoa['foto'] ?? '';
+                        $nome = $pessoa['nome'] ?? 'Usuário';
 
-    <!-- Botão de voltar -->
-    <div class="back-button">
-      <a href="../../../index.php">Voltar</a>
-      <a href="../Pet/consulta.php">Consultar Pet</a>
-    </div>
-  </div>
+                        // gerar iniciais
+                        $partes = explode(' ', trim($nome));
+                        $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                        ?>
+
+                        <?php if (!empty($foto)): ?>
+                            <img src="../../../IMG/usuario/<?= htmlspecialchars($foto) ?>" 
+                                alt="Foto do perfil" class="fotoPerfil">
+                        <?php else: ?>
+                            <div class="foto-inicial-perfil"><?= $iniciais ?></div>
+                        <?php endif; ?></td>
+                            <td><?= htmlspecialchars($pessoa['nome']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['cpf']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['data_nasc']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['email']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['telefone']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['whatsapp']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['estado']) ?></td>
+                            <td><?= htmlspecialchars($pessoa['cidade']) ?></td>
+                            <td class="acoes">
+                            <div class="acoes">
+                                <a href="editar.php?id=<?php echo $pessoa['id_cliente']; ?>">✏ Editar</a>
+                                <a href="apagar.php?id=<?= $pessoa['id_cliente'] ?>" class="btn-delete">🗑 Apagar</a>
+                            </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr><td colspan="10">Nenhum usuário cadastrado.</td></tr>
+                <?php endif; ?>
+                </tbody>
+            </table> 
+
+            <!-- Botão de voltar -->
+            <div class="back-button">
+            <a href="../../../index.php">Voltar</a>
+            <a href="../Pet/consulta.php">Consultar Pet</a>
+            </div>
+        </div>
+    </main>
 <footer>
     <section class="footer">
         <div class="footer-coluna" id="cl1">

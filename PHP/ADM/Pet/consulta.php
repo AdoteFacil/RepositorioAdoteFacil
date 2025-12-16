@@ -43,7 +43,7 @@ if ($result) {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown linkIndex"><a href="../../../index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../../../index.php">Início</a></li>
                     <li class="li-dropdown linkSobre"><a href="../../../Paginas/sobre.php">Sobre Nós</a></li>
                     <li class="li-dropdown linkAdote"><a href="../../../Paginas/adote.php">Adote um pet</a></li>
                     <li class="li-dropdown linkCajudar"><a href="../../../Paginas/comoajudar.php">Como ajudar</a></li>
@@ -53,7 +53,7 @@ if ($result) {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -61,8 +61,19 @@ if ($result) {
                         <li class=" li-dropdown "><a href="../../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
-                            <img src="../../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                                class="foto-perfil" alt="Foto">
+                            <?php
+                                $foto = $_SESSION['usuario_foto'] ?? '';
+                                $nome = $_SESSION['usuario_nome'] ?? 'Usuário';
+
+                                $partes = explode(' ', trim($nome));
+                                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                                ?>
+                                                        
+                                <?php if (!empty($foto)): ?>
+                                    <img src="../../../IMG/usuario/<?php echo $foto; ?>" class="foto-perfil" alt="Foto">
+                                <?php else: ?>
+                                    <div class="foto-inicial"><?php echo $iniciais; ?></div>
+                            <?php endif; ?>
 
                             <div class="dropdown-user">
                                 <span class="nome-dropdown">
@@ -78,91 +89,93 @@ if ($result) {
             </div>
         </nav>
   </header>
-  <div class="container">
-    <h1>PETs Cadastrados</h1>
+  <main>
+        <div class="container">
+            <h1>PETs Cadastrados</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Foto</th>
-          <th>Nome</th>
-          <th>Gênero</th>
-          <th>Idade</th>
-          <th>Espécie</th>
-          <th>Porte</th>
-          <th>Raça</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+            <table>
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Gênero</th>
+                <th>Idade</th>
+                <th>Espécie</th>
+                <th>Porte</th>
+                <th>Raça</th>
+                <th>Status</th>
+                <th>Ações</th>
+                </tr>
+            </thead>
 
-      <tbody>
-      <?php if (count($pets) > 0): ?>
-          <?php foreach ($pets as $pet): ?>
-              <tr>
-                  <td><?= $pet['id_pet'] ?></td>
+            <tbody>
+            <?php if (count($pets) > 0): ?>
+                <?php foreach ($pets as $pet): ?>
+                    <tr>
+                        <td><?= $pet['id_pet'] ?></td>
 
-                  <td>
-                      <img src="../../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="70">
-                  </td>
+                        <td>
+                            <img src="../../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="70">
+                        </td>
 
-                  <td><?= htmlspecialchars($pet['nome'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['genero'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['idade'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['especie'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['porte'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($pet['raca'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['nome'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['genero'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['idade'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['especie'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['porte'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($pet['raca'] ?? '') ?></td>
 
-                  <td>
-                      <?= $pet['statusPet'] == 'adotado' ? '🐾 Adotado' : '🟢 Disponível' ?>
-                  </td>
+                        <td>
+                            <?= $pet['statusPet'] == 'adotado' ? '🐾 Adotado' : '🟢 Disponível' ?>
+                        </td>
 
-                  <!-- AÇÕES 2x2 -->
-                  <td class="acoes">
+                        <!-- AÇÕES 2x2 -->
+                        <td class="acoes">
 
-                      <!-- Linha 1 -->
-                      <div class="acoes-linha">
-                          <a href="editar.php?id=<?= $pet['id_pet']  ?>" class="botao btn-editar">✏ Editar</a>
+                            <!-- Linha 1 -->
+                            <div class="acoes-linha">
+                                <a href="editar.php?id=<?= $pet['id_pet']  ?>" class="botao btn-editar">✏ Editar</a>
 
-                          <a href="apagar.php?id_pet=<?= $pet['id_pet'] ?>" 
-                            class="botao btn-apagar btn-delete">🗑 Apagar</a>
-                      </div>
+                                <a href="apagar.php?id_pet=<?= $pet['id_pet'] ?>" 
+                                    class="botao btn-apagar btn-delete">🗑 Apagar</a>
+                            </div>
 
-                      <!-- Linha 2 -->
-                      <div class="acoes-linha">
-                          <form action="alterarStatus.php" method="POST">
-                              <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
+                            <!-- Linha 2 -->
+                            <div class="acoes-linha">
+                                <form action="alterarStatus.php" method="POST">
+                                    <input type="hidden" name="id_pet" value="<?= $pet['id_pet'] ?>">
 
-                              <select name="status" class="select-status">
-                                  <option value="disponivel" <?= $pet['statusPet']=='disponivel'?'selected':'' ?>>
-                                      🟢 Disponível
-                                  </option>
-                                  <option value="adotado" <?= $pet['statusPet']=='adotado'?'selected':'' ?>>
-                                      🐾 Adotado
-                                  </option>
-                              </select>
+                                    <select name="status" class="select-status">
+                                        <option value="disponivel" <?= $pet['statusPet']=='disponivel'?'selected':'' ?>>
+                                            🟢 Disponível
+                                        </option>
+                                        <option value="adotado" <?= $pet['statusPet']=='adotado'?'selected':'' ?>>
+                                            🐾 Adotado
+                                        </option>
+                                    </select>
 
-                              <button type="submit" class="botao btn-salvar">💾 Salvar</button>
-                          </form>
-                      </div>
+                                    <button type="submit" class="botao btn-salvar">💾 Salvar</button>
+                                </form>
+                            </div>
 
-                  </td>
+                        </td>
 
-              </tr>
-          <?php endforeach; ?>
-      <?php else: ?>
-          <tr><td colspan="13">Nenhum pet cadastrado.</td></tr>
-      <?php endif; ?>
-      </tbody>
-    </table>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr><td colspan="13">Nenhum pet cadastrado.</td></tr>
+            <?php endif; ?>
+            </tbody>
+            </table>
 
-    <div class="back-button">
-      <a href="../../../index.php">Voltar</a>
-      <a href="../Usuario/consulta.php">Consultar Humano</a>
-    </div>
+            <div class="back-button">
+            <a href="../../../index.php">Voltar</a>
+            <a href="../Usuario/consulta.php">Consultar Humano</a>
+            </div>
 
-  </div>
+        </div>
+    </main>
   <footer>
     <section class="footer">
         <div class="footer-coluna" id="cl1">

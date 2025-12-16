@@ -395,19 +395,22 @@ header {
   }
 
   .dropdown-content #userMenu{
-    order: 0;
-  }
-  .dropdown-content .linkIndex{
     order: 1;
   }
-  .dropdown-content .linkSobre{
+  .dropdown-content .linkAdmin{
     order: 2;
   }
-  .dropdown-content .linkAdote{
+  .dropdown-content .linkIndex{
     order: 3;
   }
-  .dropdown-content .linkCajudar{
+  .dropdown-content .linkSobre{
     order: 4;
+  }
+  .dropdown-content .linkAdote{
+    order: 5;
+  }
+  .dropdown-content .linkCajudar{
+    order: 6;
   }
 
   .dropdown-user{
@@ -537,7 +540,7 @@ footer h2 {
    ========================================= */
 
 /* TABLET (Menor que 1200px até 601px) */
-@media (max-width: 1200px) {
+@media (max-width: 1268px) {
     .footer {
         width: 100%;
         height: auto;
@@ -551,18 +554,7 @@ footer h2 {
         margin-bottom: 20px;
         flex: 1 1 40%;
     }
-    
-    #cl1{
-      max-width: 300px;
-    }
-
-    #cl3{
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      max-width: 200px;
-      padding: 0 20px;
-    }
+  
     .icons-row{
       display: flex;
       justify-content: center;
@@ -593,6 +585,8 @@ footer h2 {
       text-align: center;
     }
     #cl3{
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
 

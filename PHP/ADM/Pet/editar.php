@@ -81,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Editar Pet</title>
 <link rel="stylesheet" href="../../../CSS/padrao.css">
 <link rel="stylesheet" href="../../../CSS/consultaedit.css">
-<link rel="stylesheet" href="../../../CSS/consulta.css">
 <script src="../../../JS/padrao.js" defer></script>
 </head>
 <body>
@@ -98,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span></span>
                 </label>
                 <ul class="dropdown-content">
-                    <li class="li-dropdown linkIndex"><a href="../../../index.php" class="active">Início</a></li>
+                    <li class="li-dropdown linkIndex"><a href="../../../index.php">Início</a></li>
                     <li class="li-dropdown linkSobre"><a href="../../../Paginas/sobre.php">Sobre Nós</a></li>
                     <li class="li-dropdown linkAdote"><a href="../../../Paginas/adote.php">Adote um pet</a></li>
                     <li class="li-dropdown linkCajudar"><a href="../../../Paginas/comoajudar.php">Como ajudar</a></li>
@@ -108,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown"><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../../../PHP/ADM/Usuario/consulta.php" class="active">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -116,8 +115,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li class=" li-dropdown "><a href="../../../Paginas/entrar.php" id="btn-entrar" class="botao-entrar">Entrar</a></li>
                     <?php else: ?>
                         <div class="usuario-box" id="userMenu">
-                            <img src="../../../IMG/usuario/<?php echo $_SESSION['usuario_foto']; ?>" 
-                                class="foto-perfil" alt="Foto">
+                            <?php
+                                $foto = $_SESSION['usuario_foto'] ?? '';
+                                $nome = $_SESSION['usuario_nome'] ?? 'Usuário';
+
+                                $partes = explode(' ', trim($nome));
+                                $iniciais = strtoupper($partes[0][0] . ($partes[1][0] ?? ''));
+                                ?>
+                                                        
+                                <?php if (!empty($foto)): ?>
+                                    <img src="../../../IMG/usuario/<?php echo $foto; ?>" class="foto-perfil" alt="Foto">
+                                <?php else: ?>
+                                    <div class="foto-inicial"><?php echo $iniciais; ?></div>
+                            <?php endif; ?>
 
                             <div class="dropdown-user">
                                 <span class="nome-dropdown">
@@ -133,65 +143,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </nav>
 </header>
-<div class="container">
-    <h1>Editar Pet</h1>
+<main>
+    <div class="container">
+        <h1>Editar Pet</h1>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        
-        <label>Nome do Pet</label>
-        <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required>
+        <form action="" method="POST" enctype="multipart/form-data">
+            
+            <label>Nome do Pet</label>
+            <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required>
 
-        <label>Gênero</label>
-        <select name="genero" required>
-            <option value="">Selecione o gênero</option>
-            <option value="Macho" <?= $pet['genero'] == 'Macho' ? 'selected' : '' ?>>Macho</option>
-            <option value="Fêmea" <?= $pet['genero'] == 'Fêmea' ? 'selected' : '' ?>>Fêmea</option>
-        </select>
+            <label>Gênero</label>
+            <select name="genero" required>
+                <option value="">Selecione o gênero</option>
+                <option value="Macho" <?= $pet['genero'] == 'Macho' ? 'selected' : '' ?>>Macho</option>
+                <option value="Fêmea" <?= $pet['genero'] == 'Fêmea' ? 'selected' : '' ?>>Fêmea</option>
+            </select>
 
-        <label>Idade</label>
-        <input type="text" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>">
+            <label>Idade</label>
+            <input type="text" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>">
 
-        <label>Espécie</label>
-        <select name="especie" required>
-            <option value="">Selecione a espécie</option>
-            <option value="Cachorro" <?= $pet['especie'] == 'Cachorro' ? 'selected' : '' ?>>Cachorro</option>
-            <option value="Gato" <?= $pet['especie'] == 'Gato' ? 'selected' : '' ?>>Gato</option>
-        </select>
+            <label>Espécie</label>
+            <select name="especie" required>
+                <option value="">Selecione a espécie</option>
+                <option value="Cachorro" <?= $pet['especie'] == 'Cachorro' ? 'selected' : '' ?>>Cachorro</option>
+                <option value="Gato" <?= $pet['especie'] == 'Gato' ? 'selected' : '' ?>>Gato</option>
+            </select>
 
-        <label>Porte</label>
-        <select name="porte" required>
-            <option value="">Selecione o porte</option>
-            <option value="Pequeno"  <?= $pet['porte'] == 'Pequeno' ? 'selected' : '' ?>>Pequeno</option>
-            <option value="Médio"    <?= $pet['porte'] == 'Médio' ? 'selected' : '' ?>>Médio</option>
-            <option value="Grande"   <?= $pet['porte'] == 'Grande' ? 'selected' : '' ?>>Grande</option>
-        </select>
+            <label>Porte</label>
+            <select name="porte" required>
+                <option value="">Selecione o porte</option>
+                <option value="Pequeno"  <?= $pet['porte'] == 'Pequeno' ? 'selected' : '' ?>>Pequeno</option>
+                <option value="Médio"    <?= $pet['porte'] == 'Médio' ? 'selected' : '' ?>>Médio</option>
+                <option value="Grande"   <?= $pet['porte'] == 'Grande' ? 'selected' : '' ?>>Grande</option>
+            </select>
 
-        <label>Raça</label>
-        <input type="text" name="raca" value="<?= htmlspecialchars($pet['raca']) ?>">
+            <label>Raça</label>
+            <input type="text" name="raca" value="<?= htmlspecialchars($pet['raca']) ?>">
 
-        <label>Situação</label>
-        <select name="situacao" required>
-            <option value="Nenhum"                <?= $pet['situacao'] == 'Nenhum' ? 'selected' : '' ?>>Nenhum</option>
-            <option value="Vacinado"              <?= $pet['situacao'] == 'Vacinado' ? 'selected' : '' ?>>Vacinado</option>
-            <option value="Castrado"              <?= $pet['situacao'] == 'Castrado' ? 'selected' : '' ?>>Castrado</option>
-            <option value="Vacinado e Castrado"   <?= $pet['situacao'] == 'Vacinado e Castrado' ? 'selected' : '' ?>>Vacinado e Castrado</option>
-        </select>
+            <label>Situação</label>
+            <select name="situacao" required>
+                <option value="Nenhum"                <?= $pet['situacao'] == 'Nenhum' ? 'selected' : '' ?>>Nenhum</option>
+                <option value="Vacinado"              <?= $pet['situacao'] == 'Vacinado' ? 'selected' : '' ?>>Vacinado</option>
+                <option value="Castrado"              <?= $pet['situacao'] == 'Castrado' ? 'selected' : '' ?>>Castrado</option>
+                <option value="Vacinado e Castrado"   <?= $pet['situacao'] == 'Vacinado e Castrado' ? 'selected' : '' ?>>Vacinado e Castrado</option>
+            </select>
 
-        <div class="form-img">                
-            <label>Foto Atual:</label><br>
-            <img src="../../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="150"><br><br>
-        </div>
-        
-        <label>Mudar Foto:</label>
-        <input type="file" name="foto">
+            <div class="form-img">                
+                <label>Foto Atual:</label><br>
+                <img src="../../../IMG/adote/<?= htmlspecialchars($pet['foto']) ?>" width="150"><br><br>
+            </div>
+            
+            <label>Mudar Foto:</label>
+            <input type="file" name="foto">
 
-        <div class="links">
-            <button type="submit">Salvar Alterações</button>
-            <br><br>
-            <a href="consulta.php" class="btn-voltar">Voltar</a>
-        </div>
-    </form>
-</div>
+            <div class="links">
+                <button type="submit">Salvar Alterações</button>
+                <br><br>
+                <a href="consulta.php" class="btn-voltar">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
 <footer>
     <section class="footer">
         <div class="footer-coluna" id="cl1">

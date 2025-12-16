@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../ADM/Usuario/consulta.php">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 

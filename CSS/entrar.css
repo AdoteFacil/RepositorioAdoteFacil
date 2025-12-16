@@ -267,3 +267,13 @@ border-radius: 6px;
     display: none;
   }
 }
+
+.erro-login {
+    background: #ffe5e5;
+    color: #a30000;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}

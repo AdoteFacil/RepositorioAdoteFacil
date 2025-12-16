@@ -37,7 +37,7 @@ session_start();
                         $_SESSION['usuario_email'] === "admadote@gmail.com" &&
                         $_SESSION['usuario_id'] == 1   // <-- coloque o ID correto aqui
                     ): ?>
-                        <li class="li-dropdown "><a href="../PHP/ADM/Usuario/consulta.php">Admin</a></li>
+                        <li class="li-dropdown linkAdmin"><a href="../PHP/ADM/Usuario/consulta.php">Admin</a></li>
                     <?php endif; ?>
 
 
@@ -79,7 +79,16 @@ session_start();
         <div class="login-container">
             <h1>Entrar</h1>
             <div class="linha-decorativa"></div>
-
+            
+            <?php if (isset($_SESSION['erro_login'])): ?>
+                <div class="erro-login">
+                    <?php 
+                        echo $_SESSION['erro_login']; 
+                        unset($_SESSION['erro_login']);
+                    ?>
+                </div>
+            <?php endif; ?>
+                        
             <form class="login-form" action="../PHP/Usuario/loginUser.php" method="POST">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
